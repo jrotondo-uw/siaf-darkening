@@ -1,0 +1,224 @@
+Loaded OBS_B2_GLOBAL = 0.2062 from /glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_unified_diagnostics.csv
+======================================================================
+CESM2 SPATIAL SIAF RANGE  —  mean ± 2σ  (p < 0.05, Apr–Sep)
+  Target grid : 34 × 360  (1°×1°, 56–90 N)
+  N_WORKERS   : 4
+  CACHE_DIR   : /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/spatial_cache_cesm2
+  CSV         : /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/siaf_cmip6_pistone_summary.csv
+======================================================================
+
+Phase 0  –  CESM2 members in CSV: 11
+    r10i1p1f1        siaf_global = 0.1220 W m⁻² K⁻¹
+    r11i1p1f1        siaf_global = 0.1153 W m⁻² K⁻¹
+    r1i1p1f1         siaf_global = 0.1087 W m⁻² K⁻¹
+    r2i1p1f1         siaf_global = 0.1103 W m⁻² K⁻¹
+    r3i1p1f1         siaf_global = 0.0958 W m⁻² K⁻¹
+    r4i1p1f1         siaf_global = 0.0860 W m⁻² K⁻¹
+    r5i1p1f1         siaf_global = 0.0689 W m⁻² K⁻¹
+    r6i1p1f1         siaf_global = 0.1138 W m⁻² K⁻¹
+    r7i1p1f1         siaf_global = 0.1025 W m⁻² K⁻¹
+    r8i1p1f1         siaf_global = 0.1244 W m⁻² K⁻¹
+    r9i1p1f1         siaf_global = 0.1539 W m⁻² K⁻¹
+
+Phase 1  –  computing spatial fields for 11 members
+  [CESM2/r11i1p1f1] saved
+  [CESM2/r10i1p1f1] saved
+  ✓ CESM2/r10i1p1f1
+  ✓ CESM2/r11i1p1f1
+  [CESM2/r2i1p1f1] saved
+  ✓ CESM2/r2i1p1f1
+  [CESM2/r1i1p1f1] saved
+  ✓ CESM2/r1i1p1f1
+  [CESM2/r3i1p1f1] saved
+  ✓ CESM2/r3i1p1f1
+  [CESM2/r4i1p1f1] saved
+  ✓ CESM2/r4i1p1f1
+  [CESM2/r7i1p1f1] saved
+  ✓ CESM2/r7i1p1f1
+  [CESM2/r8i1p1f1] saved
+  ✓ CESM2/r8i1p1f1
+  [CESM2/r9i1p1f1] saved
+  ✓ CESM2/r9i1p1f1
+  [CESM2/r5i1p1f1] saved
+  ✓ CESM2/r5i1p1f1
+  [CESM2/r6i1p1f1] saved
+  ✓ CESM2/r6i1p1f1
+
+Phase 2  –  computing pixel-wise mean ± 2σ
+  Loaded 11 member(s): ['r10i1p1f1', 'r11i1p1f1', 'r1i1p1f1', 'r2i1p1f1', 'r3i1p1f1', 'r4i1p1f1', 'r5i1p1f1', 'r6i1p1f1', 'r7i1p1f1', 'r8i1p1f1', 'r9i1p1f1']
+  siaf_ext    Arctic mean = 5.7081  Arctic 2σ = 4.2669
+  siaf_drk    Arctic mean = 1.7101  Arctic 2σ = 2.2512
+  siaf_tot    Arctic mean = 4.7575  Arctic 2σ = 3.3378
+
+Phase 3  –  plotting
+  -> /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/cmip6_siaf_spatial_cesm2_range.png
+
+Done  ->  /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/cmip6_siaf_spatial_cesm2_range.png
+Loaded OBS_B2_GLOBAL = 0.2062 from /glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_unified_diagnostics.csv
+======================================================================
+CESM2 SPATIAL SIAF RANGE  —  mean ± 2σ  (p < 0.05, Apr–Sep)
+  Target grid : 34 × 360  (1°×1°, 56–90 N)
+  N_WORKERS   : 4
+  CACHE_DIR   : /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/spatial_cache_cesm2
+  CSV         : /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/siaf_cmip6_pistone_summary.csv
+======================================================================
+
+Phase 0  –  CESM2 members in CSV: 11
+    r10i1p1f1        siaf_global = 0.1220 W m⁻² K⁻¹
+    r11i1p1f1        siaf_global = 0.1153 W m⁻² K⁻¹
+    r1i1p1f1         siaf_global = 0.1087 W m⁻² K⁻¹
+    r2i1p1f1         siaf_global = 0.1103 W m⁻² K⁻¹
+    r3i1p1f1         siaf_global = 0.0958 W m⁻² K⁻¹
+    r4i1p1f1         siaf_global = 0.0860 W m⁻² K⁻¹
+    r5i1p1f1         siaf_global = 0.0689 W m⁻² K⁻¹
+    r6i1p1f1         siaf_global = 0.1138 W m⁻² K⁻¹
+    r7i1p1f1         siaf_global = 0.1025 W m⁻² K⁻¹
+    r8i1p1f1         siaf_global = 0.1244 W m⁻² K⁻¹
+    r9i1p1f1         siaf_global = 0.1539 W m⁻² K⁻¹
+
+Phase 1  –  computing spatial fields for 11 members
+  [CESM2/r2i1p1f1] cache hit
+  [CESM2/r11i1p1f1] cache hit
+  [CESM2/r1i1p1f1] cache hit
+  [CESM2/r10i1p1f1] cache hit
+  ✓ CESM2/r2i1p1f1
+  ✓ CESM2/r11i1p1f1
+  ✓ CESM2/r1i1p1f1
+  ✓ CESM2/r10i1p1f1
+  [CESM2/r4i1p1f1] cache hit
+  [CESM2/r6i1p1f1] cache hit
+  [CESM2/r5i1p1f1] cache hit
+  [CESM2/r3i1p1f1] cache hit
+  ✓ CESM2/r4i1p1f1
+  ✓ CESM2/r6i1p1f1
+  ✓ CESM2/r5i1p1f1
+  ✓ CESM2/r3i1p1f1
+  [CESM2/r7i1p1f1] cache hit
+  [CESM2/r9i1p1f1] cache hit
+  ✓ CESM2/r7i1p1f1
+  [CESM2/r8i1p1f1] cache hit
+  ✓ CESM2/r9i1p1f1
+  ✓ CESM2/r8i1p1f1
+
+Phase 2  –  computing pixel-wise mean ± 2σ
+  Loaded 11 member(s): ['r10i1p1f1', 'r11i1p1f1', 'r1i1p1f1', 'r2i1p1f1', 'r3i1p1f1', 'r4i1p1f1', 'r5i1p1f1', 'r6i1p1f1', 'r7i1p1f1', 'r8i1p1f1', 'r9i1p1f1']
+  siaf_ext    Arctic mean = 5.7081  Arctic 2σ = 4.2669
+  siaf_drk    Arctic mean = 1.7101  Arctic 2σ = 2.2512
+  siaf_tot    Arctic mean = 4.7575  Arctic 2σ = 3.3378
+
+Phase 3  –  plotting
+  -> /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/cmip6_siaf_spatial_cesm2_range.png
+
+Done  ->  /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/cmip6_siaf_spatial_cesm2_range.png
+Loaded OBS_B2_GLOBAL = 0.2062 from /glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_unified_diagnostics.csv
+======================================================================
+CESM2 SPATIAL SIAF RANGE  —  mean ± 2σ  (p < 0.05, Apr–Sep)
+  Target grid : 34 × 360  (1°×1°, 56–90 N)
+  N_WORKERS   : 4
+  CACHE_DIR   : /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/spatial_cache_cesm2
+  CSV         : /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/siaf_cmip6_pistone_summary.csv
+======================================================================
+
+Phase 0  –  CESM2 members in CSV: 11
+    r10i1p1f1        siaf_global = 0.1220 W m⁻² K⁻¹
+    r11i1p1f1        siaf_global = 0.1153 W m⁻² K⁻¹
+    r1i1p1f1         siaf_global = 0.1087 W m⁻² K⁻¹
+    r2i1p1f1         siaf_global = 0.1103 W m⁻² K⁻¹
+    r3i1p1f1         siaf_global = 0.0958 W m⁻² K⁻¹
+    r4i1p1f1         siaf_global = 0.0860 W m⁻² K⁻¹
+    r5i1p1f1         siaf_global = 0.0689 W m⁻² K⁻¹
+    r6i1p1f1         siaf_global = 0.1138 W m⁻² K⁻¹
+    r7i1p1f1         siaf_global = 0.1025 W m⁻² K⁻¹
+    r8i1p1f1         siaf_global = 0.1244 W m⁻² K⁻¹
+    r9i1p1f1         siaf_global = 0.1539 W m⁻² K⁻¹
+
+Phase 1  –  computing spatial fields for 11 members
+  [CESM2/r2i1p1f1] cache hit
+  [CESM2/r1i1p1f1] cache hit
+  [CESM2/r10i1p1f1] cache hit
+  [CESM2/r11i1p1f1] cache hit
+  ✓ CESM2/r2i1p1f1
+  [CESM2/r3i1p1f1] cache hit
+  [CESM2/r6i1p1f1] cache hit
+  ✓ CESM2/r1i1p1f1
+  ✓ CESM2/r10i1p1f1
+  [CESM2/r4i1p1f1] cache hit
+  [CESM2/r5i1p1f1] cache hit
+  ✓ CESM2/r11i1p1f1
+  ✓ CESM2/r3i1p1f1
+  ✓ CESM2/r6i1p1f1
+  ✓ CESM2/r4i1p1f1
+  ✓ CESM2/r5i1p1f1
+  [CESM2/r8i1p1f1] cache hit
+  [CESM2/r9i1p1f1] cache hit
+  ✓ CESM2/r8i1p1f1
+  [CESM2/r7i1p1f1] cache hit
+  ✓ CESM2/r9i1p1f1
+  ✓ CESM2/r7i1p1f1
+
+Phase 2  –  computing pixel-wise mean ± 2σ
+  Loaded 11 member(s): ['r10i1p1f1', 'r11i1p1f1', 'r1i1p1f1', 'r2i1p1f1', 'r3i1p1f1', 'r4i1p1f1', 'r5i1p1f1', 'r6i1p1f1', 'r7i1p1f1', 'r8i1p1f1', 'r9i1p1f1']
+  siaf_ext    Arctic mean = 5.7081  Arctic 2σ = 4.2669
+  siaf_drk    Arctic mean = 1.7101  Arctic 2σ = 2.2512
+  siaf_tot    Arctic mean = 4.7575  Arctic 2σ = 3.3378
+
+Phase 3  –  plotting
+  -> /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/cmip6_siaf_spatial_cesm2_range.png
+
+Done  ->  /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/cmip6_siaf_spatial_cesm2_range.png
+Loaded OBS_B2_GLOBAL = 0.2062 from /glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_unified_diagnostics.csv
+======================================================================
+CESM2 SPATIAL SIAF RANGE  —  mean ± 2σ  (p < 0.05, Apr–Sep)
+  Target grid : 34 × 360  (1°×1°, 56–90 N)
+  N_WORKERS   : 4
+  CACHE_DIR   : /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/spatial_cache_cesm2
+  CSV         : /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/siaf_cmip6_pistone_summary.csv
+======================================================================
+
+Phase 0  –  CESM2 members in CSV: 11
+    r10i1p1f1        siaf_global = 0.1220 W m⁻² K⁻¹
+    r11i1p1f1        siaf_global = 0.1153 W m⁻² K⁻¹
+    r1i1p1f1         siaf_global = 0.1087 W m⁻² K⁻¹
+    r2i1p1f1         siaf_global = 0.1103 W m⁻² K⁻¹
+    r3i1p1f1         siaf_global = 0.0958 W m⁻² K⁻¹
+    r4i1p1f1         siaf_global = 0.0860 W m⁻² K⁻¹
+    r5i1p1f1         siaf_global = 0.0689 W m⁻² K⁻¹
+    r6i1p1f1         siaf_global = 0.1138 W m⁻² K⁻¹
+    r7i1p1f1         siaf_global = 0.1025 W m⁻² K⁻¹
+    r8i1p1f1         siaf_global = 0.1244 W m⁻² K⁻¹
+    r9i1p1f1         siaf_global = 0.1539 W m⁻² K⁻¹
+
+Phase 1  –  computing spatial fields for 11 members
+  [CESM2/r2i1p1f1] cache hit
+  [CESM2/r11i1p1f1] cache hit
+  [CESM2/r10i1p1f1] cache hit
+  [CESM2/r1i1p1f1] cache hit
+  ✓ CESM2/r2i1p1f1
+  ✓ CESM2/r11i1p1f1
+  ✓ CESM2/r1i1p1f1
+  ✓ CESM2/r10i1p1f1
+  [CESM2/r3i1p1f1] cache hit
+  [CESM2/r5i1p1f1] cache hit
+  [CESM2/r4i1p1f1] cache hit
+  ✓ CESM2/r3i1p1f1
+  ✓ CESM2/r5i1p1f1
+  ✓ CESM2/r4i1p1f1
+  [CESM2/r6i1p1f1] cache hit
+  ✓ CESM2/r6i1p1f1
+  [CESM2/r8i1p1f1] cache hit
+  [CESM2/r7i1p1f1] cache hit
+  [CESM2/r9i1p1f1] cache hit
+  ✓ CESM2/r8i1p1f1
+  ✓ CESM2/r7i1p1f1
+  ✓ CESM2/r9i1p1f1
+
+Phase 2  –  computing pixel-wise mean ± 2σ
+  Loaded 11 member(s): ['r10i1p1f1', 'r11i1p1f1', 'r1i1p1f1', 'r2i1p1f1', 'r3i1p1f1', 'r4i1p1f1', 'r5i1p1f1', 'r6i1p1f1', 'r7i1p1f1', 'r8i1p1f1', 'r9i1p1f1']
+  siaf_ext    Arctic mean = 5.7081  Arctic 2σ = 4.2669
+  siaf_drk    Arctic mean = 1.7101  Arctic 2σ = 2.2512
+  siaf_tot    Arctic mean = 4.7575  Arctic 2σ = 3.3378
+
+Phase 3  –  plotting
+  -> /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/cmip6_siaf_spatial_cesm2_range.png
+
+Done  ->  /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/cmip6_siaf_spatial_cesm2_range.png

@@ -1,0 +1,78 @@
+Python: /glade/work/jrotondo/conda-envs/cice-scm-da/bin/python
+Start:  Mon Jun  8 05:32:41 PM MDT 2026
+Loaded OBS_B2_GLOBAL = 0.2062 from /glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_unified_diagnostics.csv
+======================================================================
+CMIP6 SIAF SPATIAL MMM  —  IS = −dα/dT  (direct OLS, p < 0.05)
+  Target grid : 34 rows × 360 cols  (1°×1°, 56–90 N)
+  N_WORKERS   : 4
+  CACHE_DIR   : /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/spatial_cache
+  FORCE       : False
+  cartopy     : True
+======================================================================
+
+Phase 1  –  per-model native → 1°×1° regrid
+  [E3SM-1-0] saved (1 member(s))
+  v E3SM-1-0
+  [MPI-ESM1-2-HR] saved (10 member(s))
+  v MPI-ESM1-2-HR
+  [CESM2] saved (11 member(s))
+  v CESM2
+  [MIROC-ES2L] saved (31 member(s))
+  v MIROC-ES2L
+  [MPI-ESM1-2-LR] saved (51 member(s))
+  v MPI-ESM1-2-LR
+  [MIROC6] saved (50 member(s))
+  v MIROC6
+  [GFDL-ESM4] saved (1 member(s))
+  v GFDL-ESM4
+  [IPSL-CM6A-LR] saved (33 member(s))
+  v IPSL-CM6A-LR
+  [HadGEM3-GC31-LL] saved (4 member(s))
+  v HadGEM3-GC31-LL
+  [UKESM1-0-LL] saved (17 member(s))
+  v UKESM1-0-LL
+  [BCC-CSM2-MR] saved (3 member(s))
+  v BCC-CSM2-MR
+  [ACCESS-ESM1-5] saved (40 member(s))
+  v ACCESS-ESM1-5
+  [ACCESS-CM2] saved (3 member(s))
+  v ACCESS-CM2
+  [CNRM-ESM2-1] saved (5 member(s))
+  v CNRM-ESM2-1
+  [CNRM-CM6-1] saved (21 member(s))
+  v CNRM-CM6-1
+  [GFDL-CM4] saved (1 member(s))
+  v GFDL-CM4
+    [triage] skipping corrupt file: tas_Amon_EC-Earth3-Veg_historical_r6i1p1f1_gr_198701-198712.nc
+  [EC-Earth3-Veg] saved (4 member(s))
+  v EC-Earth3-Veg
+  [INM-CM4-8] saved (1 member(s))
+  v INM-CM4-8
+  [CanESM5] saved (65 member(s))
+  v CanESM5
+  [INM-CM5-0] saved (10 member(s))
+  v INM-CM5-0
+  [NorESM2-LM] saved (2 member(s))
+  v NorESM2-LM
+  [NorESM2-MM] saved (3 member(s))
+  v NorESM2-MM
+  [MRI-ESM2-0] saved (6 member(s))
+  v MRI-ESM2-0
+  [GISS-E2-1-H] saved (23 member(s))
+  v GISS-E2-1-H
+  load_filtered(tas): Unable to allocate 768. GiB for an array with shape (12, 256, 512, 256, 512) and data type float32
+  [EC-Earth3] saved (56 member(s))
+  v EC-Earth3
+
+Phase 2  –  computing MMM
+  MMM: 25 models loaded
+  is_tot    mean=0.04095  p2=0.00000  p98=0.11578
+  is_ext    mean=0.02406  p2=0.00000  p98=0.08351
+  is_drk    mean=0.01688  p2=0.00000  p98=0.04558
+  siaf      mean=4.88091  p2=0.00000  p98=14.68814
+
+Phase 3  –  plotting
+  -> /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/cmip6_siaf_spatial_mmm.png
+
+Done  ->  /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/cmip6_siaf_spatial_mmm.png
+Finish: Mon Jun  8 06:58:23 PM MDT 2026

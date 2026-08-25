@@ -1,0 +1,70 @@
+Loaded OBS_B2_GLOBAL = 0.2062 from /glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_unified_diagnostics.csv
+======================================================================
+CMIP6 SIAF SPATIAL  –  HIGH-σ ENSEMBLE  (members > MMM + 2σ)
+  Target grid : 34 rows × 360 cols (1°×1°, 56–90 N)
+  N_WORKERS   : 4
+  CACHE_DIR   : /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/spatial_cache_highsig
+  CSV         : /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/siaf_cmip6_pistone_summary.csv
+  FORCE       : False
+  cartopy     : True
+======================================================================
+
+Phase 0  –  threshold identification  (n_sigma=2)
+  N members in CSV : 395
+  MMM              : 0.1216 W m⁻² K⁻¹
+  σ (sample)       : 0.0427 W m⁻² K⁻¹
+  Threshold (+2σ) : 0.2070 W m⁻² K⁻¹
+  Members above thr: 13
+  (reference +1σ = 0.1643,  56 members would qualify)
+    CanESM5                    r10i1p1f1        0.2127
+    CanESM5                    r13i1p2f1        0.2194
+    CanESM5                    r33i1p2f1        0.2091
+    CanESM5                    r3i1p2f1         0.2138
+    CanESM5                    r40i1p2f1        0.2199
+    GISS-E2-1-H                r5i1p1f2         0.2347
+    GISS-E2-1-H                r7i1p1f1         0.2077
+    INM-CM5-0                  r3i1p1f1         0.2279
+    INM-CM5-0                  r4i1p1f1         0.2279
+    IPSL-CM6A-LR               r16i1p1f1        0.2256
+    IPSL-CM6A-LR               r8i1p1f1         0.2257
+    MRI-ESM2-0                 r1i1p1f1         0.2360
+    UKESM1-0-LL                r2i1p1f2         0.2080
+
+Phase 1  –  computing spatial fields for 13 members
+  [CanESM5_r33i1p2f1] saved
+  [CanESM5_r13i1p2f1] saved
+  ✓ CanESM5/r33i1p2f1
+  ✓ CanESM5/r13i1p2f1
+  [CanESM5_r40i1p2f1] saved
+  ✓ CanESM5/r40i1p2f1
+  [GISS-E2-1-H_r5i1p1f2] saved
+  ✓ GISS-E2-1-H/r5i1p1f2
+  [CanESM5_r3i1p2f1] saved
+  ✓ CanESM5/r3i1p2f1
+  [CanESM5_r10i1p1f1] saved
+  ✓ CanESM5/r10i1p1f1
+  [INM-CM5-0_r3i1p1f1] saved
+  ✓ INM-CM5-0/r3i1p1f1
+  [GISS-E2-1-H_r7i1p1f1] saved
+  ✓ GISS-E2-1-H/r7i1p1f1
+  [INM-CM5-0_r4i1p1f1] saved
+  ✓ INM-CM5-0/r4i1p1f1
+  [UKESM1-0-LL_r2i1p1f2] saved
+  ✓ UKESM1-0-LL/r2i1p1f2
+  [IPSL-CM6A-LR_r16i1p1f1] saved
+  ✓ IPSL-CM6A-LR/r16i1p1f1
+  [IPSL-CM6A-LR_r8i1p1f1] saved
+  ✓ IPSL-CM6A-LR/r8i1p1f1
+  [MRI-ESM2-0_r1i1p1f1] saved
+  ✓ MRI-ESM2-0/r1i1p1f1
+
+Phase 2  –  aggregating member fields
+  Loaded 13 member(s)
+  siaf_ext    Arctic mean = 7.5289  p2 = 0.0000  p98 = 39.8071
+  siaf_drk    Arctic mean = 2.8399  p2 = 0.0000  p98 = 12.0114
+  siaf_tot    Arctic mean = 8.6660  p2 = 0.0000  p98 = 41.1493
+
+Phase 3  –  plotting
+  -> /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/cmip6_siaf_spatial_highsig.png
+
+Done  ->  /glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/cmip6_siaf_spatial_highsig.png
