@@ -1,23 +1,43 @@
-FIGDIR='/glade/derecho/scratch/jrotondo/paper_revision_20261024/figures'
+"""
+Supplementary Figure 3: Absolute two-sided classification leakage.
+Plots monthly contributions to the annual epoch-change flux in declining-ice
+and darkening regions for both monthly ice albedo and fixed 0.54 contrast.
+"""
+from pathlib import Path
+import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
-import numpy as np, matplotlib.pyplot as plt
-mon  = ["April", "May", "June", "July", "August", "September"]
-drk  = [95, 40, 20, 12, 6, 5]
-area = [8, 27, 28, 42, 46, 43]
-fig, ax = plt.subplots(figsize=(7.4, 4.1))
-x = np.arange(len(mon))
-ax.bar(x - 0.2, drk,  0.4, color="0.62",    edgecolor="k", lw=0.6,
-       label=r"$\Omega_{\mathrm{drk}}$ change explainable by concentration change")
-ax.bar(x + 0.2, area, 0.4, color="#2E86AB", edgecolor="k", lw=0.6,
-       label=r"residual darkening within $\Omega_{\mathrm{area}}$")
-ax.axhline(18, ls="--", color="0.4", lw=1.3); ax.axhline(31, ls="--", color="#2E86AB", lw=1.3)
-ax.text(5.48, 19.5, "18%", color="0.3", fontsize=9, ha="right")
-ax.text(5.48, 32.5, "31%", color="#2E86AB", fontsize=9, ha="right")
-ax.set_xticks(x); ax.set_xticklabels(mon); ax.set_ylim(0, 100)
-ax.set_ylabel("share of albedo change (%)")
-ax.set_title("Leakage in both directions, by melt-season month", fontsize=11.5)
-ax.legend(fontsize=8.5, frameon=False, loc="upper center")
-ax.grid(axis="y", alpha=0.25); ax.set_axisbelow(True)
-fig.tight_layout()
-fig.savefig(f"{FIGDIR}/fs13.png", dpi=300, bbox_inches="tight")
-print("wrote", f"{FIGDIR}/fs13.png")
+ROOT = Path(__file__).resolve().parents[1]
+data_file = ROOT / 'source_data' / 'SourceData_Supplementary_Figure3.csv'
+d = pd.read_csv(data_file)
+
+# Compute annual sums
+a = d.groupby('variant')[['residual_in_ext', 'concentration_in_drk', 'net_reassignment_to_darkening']].sum() / 6.0
+
+plt.rcParams.update({'font.size': 10, 'axes.spines.top': False, 'axes.spines.right': False})
+f, axs = plt.subplots(1, 2, figsize=(7.2, 4.5), sharey=True, layout='constrained')
+
+for ax, v, title in zip(axs, ['data_contrast', 'fixed_054'], ['a  Monthly ice albedo − 0.06', 'b  Fixed contrast: 0.54']):
+    s = d[d.variant == v].sort_values('month')
+    ax.plot(s.month, s.residual_in_ext / 6.0, 'o-', color='#0072B2', label='Residual in declining-ice region')
+    ax.plot(s.month, s.concentration_in_drk / 6.0, '^-', color='#D55E00', label='Concentration in darkening region')
+    ax.set_xticks(range(4, 10), ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'])
+    ax.set_title(title, loc='left', fontsize=10)
+    ax.axhline(0, color='0.6', lw=0.7)
+    ax.grid(axis='y', alpha=0.2)
+    r = a.loc[v]
+    ax.text(0.03, 0.97,
+            f"Annual sums (W m$^{{-2}}$)\nResidual: {r.residual_in_ext:.5f}\nConcentration: {r.concentration_in_drk:.5f}\nNet to darkening: {r.net_reassignment_to_darkening:.5f}",
+            transform=ax.transAxes, va='top', fontsize=9)
+    ax.set_ylim(-0.0008, 0.014)
+
+axs[0].set_ylabel('Monthly contribution to annual flux change (W m$^{-2}$)')
+f.legend(*axs[0].get_legend_handles_labels(), loc='outside lower center', fontsize=9)
+
+out_png = ROOT / 'figures' / 'fs03.png'
+out_pdf = ROOT / 'figures' / 'fs03.pdf'
+f.savefig(out_png, dpi=600, bbox_inches='tight')
+f.savefig(out_pdf, bbox_inches='tight')
+print(f"Saved {out_png} and {out_pdf}")
