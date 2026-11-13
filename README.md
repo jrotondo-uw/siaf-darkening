@@ -7,14 +7,17 @@ The sea ice albedo feedback (SIAF) is decomposed into two spatially distinct com
 ## Layout
 
 ```
-python/        core analysis, decomposition, and model evaluation routines
-shell/         PBS submission scripts for Derecho execution
-notebooks/     interactive workflows and figure development (final_figures.ipynb, siaf_figures_revised.ipynb)
-figures/       standalone publication figure generation scripts (f01–f09, s01–s09, s11)
-validation/    satellite–in-situ validation collocation routines (SHEBA, Tara, MOSAiC, airborne campaigns)
-sensitivity/   atmospheric, kernel, cloud/aerosol, and decadal sensitivity checks
-misc/          solar zenith angle utilities for tower and transect validation
-logs/          run and execution logs
+python/            core analysis, decomposition, and model evaluation routines
+shell/             PBS submission scripts for Derecho execution
+notebooks/         interactive workflows and figure development (final_figures.ipynb, siaf_figures_revised.ipynb)
+figures/           standalone publication figure generation scripts (f01–f09, s01–s09, s11)
+validation/        satellite–in-situ validation collocation routines (SHEBA, Tara, MOSAiC, airborne campaigns)
+sensitivity/       atmospheric, kernel, cloud/aerosol, and decadal sensitivity checks
+sanity_checks/     ocean-masking and grid-regridding verification tests
+cmip_6_tests/      diagnostic tests for low-ice CMIP6 ensemble members
+esgf_wget_scripts/ ESGF acquisition scripts for CMIP6 model radiative fields
+misc/              solar zenith angle utilities for tower and transect validation
+logs/              run and execution logs
 ```
 
 ## Principal Analysis Modules

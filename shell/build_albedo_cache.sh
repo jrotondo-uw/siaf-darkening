@@ -30,7 +30,7 @@ echo "====================================================================="
 export MPLBACKEND=Agg
 
 # Navigate to work directory (adjust path as needed)
-cd /glade/work/jrotondo/siaf_drk_paper_final/python/
+cd /glade/work/jrotondo/ncc_paper/python/
 
 # Run the correlation analysis
 python build_albedo_cache.py

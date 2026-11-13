@@ -5,16 +5,25 @@ __pycache__/
 # PBS / scheduler job output
 *.o[0-9]*
 *.e[0-9]*
+*.log
+*.status
+*progress.txt
 
 # data and derived products (regenerate with the scripts here)
 *.nc
 *.pkl
 *.npz
 *.csv
+*.zip
 
 # figures
 *.png
 *.pdf
 
+# backups and dependencies
+backups/
+**/_deps/
+
 .DS_Store
 .ipynb_checkpoints/
+
