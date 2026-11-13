@@ -1,0 +1,842 @@
+[
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0529.csv",
+    "path": "work/pre2012/raw/2008/kipps_0529.csv",
+    "ok": true,
+    "sha256": "d990e9ff5ccbd1d36c90a28200a7f8c54d3c9c871f22218c2fb1f91d27495022"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0606.csv",
+    "path": "work/pre2012/raw/2008/kipps_0606.csv",
+    "ok": true,
+    "sha256": "42e018f3a7c217a7879b866a1509f827629268e19f91a6ea9984cddf0f447159"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0604.csv",
+    "path": "work/pre2012/raw/2008/kipps_0604.csv",
+    "ok": true,
+    "sha256": "f2cd463b06f94421e6e5937b15252e616d06c64e00952c9e4f0bd53516cc7828"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0603.csv",
+    "path": "work/pre2012/raw/2008/kipps_0603.csv",
+    "ok": true,
+    "sha256": "c7f2d7566cd75fa285a7f68a468e3ebd420f6494b65fdac8d475d69848dc9f20"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0612.csv",
+    "path": "work/pre2012/raw/2008/kipps_0612.csv",
+    "ok": true,
+    "sha256": "06056a0619fa009468a31e271907c4616890e17a8d57b996938623cbf4a0901d"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0617.csv",
+    "path": "work/pre2012/raw/2008/kipps_0617.csv",
+    "ok": true,
+    "sha256": "2abbf56c36a4d3c737bbd129f2d35499848b76117aacb2d068ba85995d0b67f9"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/2008_Surface_Metadata.pdf",
+    "path": "work/pre2012/raw/2008/2008_Surface_Metadata.pdf",
+    "ok": true,
+    "sha256": "f390e71462daffce95e6a5de4473d7daa8d251b7f1da5da05f05ead180a79742"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0614am.csv",
+    "path": "work/pre2012/raw/2008/kipps_0614am.csv",
+    "ok": true,
+    "sha256": "240da108adfb77ba5f5e589889f92c7f6a925e6936331cdfc62dadb4abb8835f"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0530.csv",
+    "path": "work/pre2012/raw/2008/kipps_0530.csv",
+    "ok": true,
+    "sha256": "c9f8dfa2e76cfe365bbe73fd4225e300dd9f577e818870953b776dac929bdaef"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0531.csv",
+    "path": "work/pre2012/raw/2008/kipps_0531.csv",
+    "ok": true,
+    "sha256": "8f764b2b17c3fbff40100310b423b0d5c4f09a3f9c7d7ad723670502f607f6fb"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0608.csv",
+    "path": "work/pre2012/raw/2008/kipps_0608.csv",
+    "ok": true,
+    "sha256": "48e305d647466ded1313f536e2849a6dec2cce63c5ed7308a7d6b9d96ae2da47"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_summary.xls",
+    "path": "work/pre2012/raw/2008/kipps_summary.xls",
+    "ok": true,
+    "sha256": "fcddcfe2410541207e6991dae3eaac971647e51147c341d33b11eb9e7e218b3e"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0607.csv",
+    "path": "work/pre2012/raw/2008/kipps_0607.csv",
+    "ok": true,
+    "sha256": "5237bf885a3119918a9fbdeac5a4f0de288b456ac5e00b0682253f350c66ef24"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0613.csv",
+    "path": "work/pre2012/raw/2008/kipps_0613.csv",
+    "ok": true,
+    "sha256": "44c20ef940763589023241fc8f6ca15690372feba0bcfc99fb07d7e3899b191f"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0605.csv",
+    "path": "work/pre2012/raw/2008/kipps_0605.csv",
+    "ok": true,
+    "sha256": "aab1f971f0993f6ad3946a9bd3e5518399c242dcac3695e33f1fd0b20f3afad9"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0611.csv",
+    "path": "work/pre2012/raw/2008/kipps_0611.csv",
+    "ok": true,
+    "sha256": "532a60516b95aec49ad3e3d6cf201a9449e743069bab736cfc507af229b889c9"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0616.csv",
+    "path": "work/pre2012/raw/2008/kipps_0616.csv",
+    "ok": true,
+    "sha256": "d13b48c525c5f4f43e489dc52a30799bfe83d82a6cc2bfe5e024f63a0cb47015"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/2008_Kipps_Avg.csv",
+    "path": "work/pre2012/raw/2008/2008_Kipps_Avg.csv",
+    "ok": true,
+    "sha256": "a218b45e8543505e1ec04ae956669362e6f4d3e1e2d096462d5b214bb93e8f85"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0528.csv",
+    "path": "work/pre2012/raw/2008/kipps_0528.csv",
+    "ok": true,
+    "sha256": "7d6c4b28f38ceaeac7a8c8aea7f24247c20ddf8b64c37756f7259c56e5b4e6d2"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0615.csv",
+    "path": "work/pre2012/raw/2008/kipps_0615.csv",
+    "ok": true,
+    "sha256": "d90c3b037213140ad4615a8cc422b0e196469b15abd0d311c312e0c42a975baf"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0601.csv",
+    "path": "work/pre2012/raw/2008/kipps_0601.csv",
+    "ok": true,
+    "sha256": "e579265d72198ff31dec78d6b1c8b49e49deb93ea4de61a9775c592a52041615"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0408.csv",
+    "path": "work/pre2012/raw/2008/kipps_0408.csv",
+    "ok": true,
+    "sha256": "810459e30c3828c72323488d161faf05a7a4930d8a2cfae11852f811c0c68ae1"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/2008_Integ_Metadata.pdf",
+    "path": "work/pre2012/raw/2008/2008_Integ_Metadata.pdf",
+    "ok": true,
+    "sha256": "ac00a672e099f4a01516cc354596244a488e68af6c2d258ba72e309340468f91"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0610.csv",
+    "path": "work/pre2012/raw/2008/kipps_0610.csv",
+    "ok": true,
+    "sha256": "b0d2409a7db8ddfe89119f47eea6df0e64c3984700bf5212590a50d40edfdf9e"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0614pm.csv",
+    "path": "work/pre2012/raw/2008/kipps_0614pm.csv",
+    "ok": true,
+    "sha256": "3e18d8dd9b20b68389cf6bd7c72a86b60a076da7a7779ab971feb1f52fa4de97"
+  },
+  {
+    "campaign": "2008",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2008/Kipps/kipps_0609.csv",
+    "path": "work/pre2012/raw/2008/kipps_0609.csv",
+    "ok": true,
+    "sha256": "60360aaf51719c94a4f12fe897a4e22e659af38b502754b3ca248aac7a112a57"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June4.csv",
+    "path": "work/pre2012/raw/2009N/June4.csv",
+    "ok": true,
+    "sha256": "34c58d3344e5f0337d4c19b95c77a255630bd30316de38f86eebcd5045ef1282"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June2.csv",
+    "path": "work/pre2012/raw/2009N/June2.csv",
+    "ok": true,
+    "sha256": "7b756582a3c3379cdeb3d3df5b88e37b74a8534db0bc19ee3b11cdbb2ecb82bb"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June18.csv",
+    "path": "work/pre2012/raw/2009N/June18.csv",
+    "ok": true,
+    "sha256": "e20d6ecfdca2567472c02e0f20833428b81c5da21f209a2b97dffc0c63be201a"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/May24.csv",
+    "path": "work/pre2012/raw/2009N/May24.csv",
+    "ok": true,
+    "sha256": "fdac9534526394963cdefe86070450507e1fc16a318e66ca6cc39fdde42c7399"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/Summary_North.xls",
+    "path": "work/pre2012/raw/2009N/Summary_North.xls",
+    "ok": true,
+    "sha256": "800921e3e2c473d587cf5d8b22d6d89383810caff891a729c1004e7312f120b1"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June16.csv",
+    "path": "work/pre2012/raw/2009N/June16.csv",
+    "ok": true,
+    "sha256": "6788398d800441c116cc5af6140994b28256ff248932bd2e7713f9fa88b882f5"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June8.csv",
+    "path": "work/pre2012/raw/2009N/June8.csv",
+    "ok": true,
+    "sha256": "c6b94393abc4d54c2c1a82a2d9ff04b0b206c09984883e76ce50731eede4c76b"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June22.csv",
+    "path": "work/pre2012/raw/2009N/June22.csv",
+    "ok": true,
+    "sha256": "021804869c80d31ed8a8774812fe7543fbc1f43c0fef222c1c719ab0be5030bc"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June14.csv",
+    "path": "work/pre2012/raw/2009N/June14.csv",
+    "ok": true,
+    "sha256": "c3498a8d303dffa87ad9e4f5f6b89017f93dbfcd066b16b7fec9326f59ba2919"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June20.csv",
+    "path": "work/pre2012/raw/2009N/June20.csv",
+    "ok": true,
+    "sha256": "eb102c98b9d5a6391f954fb5049958dd07432316b7c692b6a46e233678217d3f"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June7.csv",
+    "path": "work/pre2012/raw/2009N/June7.csv",
+    "ok": true,
+    "sha256": "1145e5114fd8c529a48e6542e8eeccd83d9bd9ac4183ae34e408f5d1d7de7249"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/May22.csv",
+    "path": "work/pre2012/raw/2009N/May22.csv",
+    "ok": true,
+    "sha256": "4d013541ad6da3f91586649f1914647731afe4aa5b0bf4c0314a577cda5f8780"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/April14.csv",
+    "path": "work/pre2012/raw/2009N/April14.csv",
+    "ok": true,
+    "sha256": "d59a93a5ded0eb7023c9cfa61d8aeae99462121e7d7247fd871be163198744e1"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June5.csv",
+    "path": "work/pre2012/raw/2009N/June5.csv",
+    "ok": true,
+    "sha256": "40feb4b48349ae508875f1d40042a2000f0b41506aa885e55f24fc64c7928f35"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/SurfaceChar/2009N%20Surface%20Metadata.pdf",
+    "path": "work/pre2012/raw/2009N/2009N Surface Metadata.pdf",
+    "ok": true,
+    "sha256": "a10ff44186e62fa0f7fbe2f15a6b32b08099220a3f89ff44d1df7379e0131299"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/2009N_Integrate_Albedo_Metadata.pdf",
+    "path": "work/pre2012/raw/2009N/2009N_Integrate_Albedo_Metadata.pdf",
+    "ok": true,
+    "sha256": "5566f4643c092e0821e41aa93c3becca82e44fc5b2955e97f22790379050a869"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/May21.csv",
+    "path": "work/pre2012/raw/2009N/May21.csv",
+    "ok": true,
+    "sha256": "6f5c3ccdfa0e72e3dadd183ea3a30ac39e5e0f087ce25d18072c1977d1fb0cce"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June13.csv",
+    "path": "work/pre2012/raw/2009N/June13.csv",
+    "ok": true,
+    "sha256": "ceaba4272e55fce1903aced6eb84d26aa69a12acd4764520d58b06537f1883a5"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June10.csv",
+    "path": "work/pre2012/raw/2009N/June10.csv",
+    "ok": true,
+    "sha256": "faefb84d7bfd3b88e64dca436e6648f50f14fae5d670585aca30223aabe39a92"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June12.csv",
+    "path": "work/pre2012/raw/2009N/June12.csv",
+    "ok": true,
+    "sha256": "99f7046ae90042ee1486a8d6b3afd86cce07c4bffa3329d53acc35bc0e8fc389"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/May28.csv",
+    "path": "work/pre2012/raw/2009N/May28.csv",
+    "ok": true,
+    "sha256": "7326b18f8142880014b048ce7d474fa29fd8c61b95115ab49e6182464da7d0c8"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June11.csv",
+    "path": "work/pre2012/raw/2009N/June11.csv",
+    "ok": true,
+    "sha256": "ba403a0cd534e1a0949737904a57425d523c8086f59973bc10ffe5259fc45d59"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June19.csv",
+    "path": "work/pre2012/raw/2009N/June19.csv",
+    "ok": true,
+    "sha256": "309768f6b7bdc81bcb553087e3f7a3fc40fb2d1d1bf88b6fcc3917b281534a14"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June23.csv",
+    "path": "work/pre2012/raw/2009N/June23.csv",
+    "ok": true,
+    "sha256": "b9556aa654e95f1c7ae85d2b1aed98ccc3de4fa36e2677967286a6ba7fb35f8d"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June3.csv",
+    "path": "work/pre2012/raw/2009N/June3.csv",
+    "ok": true,
+    "sha256": "c0316bb32b92ef9739d6493f53e7483d4a0444233db0044d1a7c5483e295eb69"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June17.csv",
+    "path": "work/pre2012/raw/2009N/June17.csv",
+    "ok": true,
+    "sha256": "0513f46cf934bf4cf45b48b6da7e6c1b14f694fadf91d3c8b02bb8bf58fcefe3"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/May26.csv",
+    "path": "work/pre2012/raw/2009N/May26.csv",
+    "ok": true,
+    "sha256": "75ab7da005ab75923fb30624ef4a280fda88ec00655c0566fbe4407b9123f03f"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June15.csv",
+    "path": "work/pre2012/raw/2009N/June15.csv",
+    "ok": true,
+    "sha256": "d5de8501062f6425c6036ec2777622831c0e2e121ec521f14c102dfada9ea218"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June6.csv",
+    "path": "work/pre2012/raw/2009N/June6.csv",
+    "ok": true,
+    "sha256": "d8e5874aaec5437f8f220ab61ff783abec6ebfa93920b4c60202507f246abd2a"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/Average_North.csv",
+    "path": "work/pre2012/raw/2009N/Average_North.csv",
+    "ok": true,
+    "sha256": "c51d223d5e2a86fe6362c73ca6c7a53bf133e33ab0a30c0681f61459d55da6ee"
+  },
+  {
+    "campaign": "2009N",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009N/Kipps/June21.csv",
+    "path": "work/pre2012/raw/2009N/June21.csv",
+    "ok": true,
+    "sha256": "3fbc8a286cd1afe36f71c35c63c4194247203140bbf0cb9d8b070496fc854db9"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June24.csv",
+    "path": "work/pre2012/raw/2009S/June24.csv",
+    "ok": true,
+    "sha256": "db0d60aab9225c1a050bb189d23f2ef298c4fed5a18e12db37698ec50cf9a8df"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/May21.csv",
+    "path": "work/pre2012/raw/2009S/May21.csv",
+    "ok": true,
+    "sha256": "2c9d6195bb36fd440d392365a06ef4a534406086a7b5d91afa323af587883904"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/Summary_South.xls",
+    "path": "work/pre2012/raw/2009S/Summary_South.xls",
+    "ok": true,
+    "sha256": "e69cfd8ea11d21a9fff2bc7eaba7edb0ce54e090c0f162745621f73697581ba1"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/April14.csv",
+    "path": "work/pre2012/raw/2009S/April14.csv",
+    "ok": true,
+    "sha256": "68d7a52bc7b980eb50b0dc69df2bcf35127294085f4ffb863e419fddfee32be1"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June21.csv",
+    "path": "work/pre2012/raw/2009S/June21.csv",
+    "ok": true,
+    "sha256": "240e482083599e5f7f9f445da9e535d4a770bf0aa0d93b19a7a06e8be00a9822"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June17.csv",
+    "path": "work/pre2012/raw/2009S/June17.csv",
+    "ok": true,
+    "sha256": "c0f1ddcfd61ceaa3938477dd48894d1c0a98c0007fc5e4e50825ddc341e0033d"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June25.csv",
+    "path": "work/pre2012/raw/2009S/June25.csv",
+    "ok": true,
+    "sha256": "673f5b34d82965887041669d09543680ff6b50f61f0d1cc6b6e5d76baba1036d"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/2009S_Integrate_Albedo_Metadata.pdf",
+    "path": "work/pre2012/raw/2009S/2009S_Integrate_Albedo_Metadata.pdf",
+    "ok": true,
+    "sha256": "62d1cd7e280d0638d4c672264437088eb6818154d21b761fc112bb510ca845b7"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June10.csv",
+    "path": "work/pre2012/raw/2009S/June10.csv",
+    "ok": true,
+    "sha256": "dbb023926752467b0e339a43ad17d4124bf3e40e1cd07bdfc8e2300daac5aced"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June22.csv",
+    "path": "work/pre2012/raw/2009S/June22.csv",
+    "ok": true,
+    "sha256": "a22feab416ca0c92341e3db7f6826f372a5828af59d6cedfbedbf52a3d59cff8"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June15.csv",
+    "path": "work/pre2012/raw/2009S/June15.csv",
+    "ok": true,
+    "sha256": "c98aad5f9d7facee8cd9cefa6989767ca980102ba4abe922243458f9c80faca9"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/Average_South.csv",
+    "path": "work/pre2012/raw/2009S/Average_South.csv",
+    "ok": true,
+    "sha256": "961e1ceb002f9dc5553f5f000caaa0b800eb17f5db5ab3c26b050208bca8a94b"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June12.csv",
+    "path": "work/pre2012/raw/2009S/June12.csv",
+    "ok": true,
+    "sha256": "dbce8b3c79bff3b9fee72969a30a5c08557c4749b094f1266eb2f5c68f138ef7"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/2009SSurfaceCharacterizationMetadata.pdf",
+    "path": "work/pre2012/raw/2009S/2009SSurfaceCharacterizationMetadata.pdf",
+    "ok": true,
+    "sha256": "ef974436e5fc880d27c3fb2014b3cd36f5ac30d259b9b54853dc3aa071cc41bc"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/May29.csv",
+    "path": "work/pre2012/raw/2009S/May29.csv",
+    "ok": true,
+    "sha256": "cc83b19400a556cbf2ded45ca7f099db5fbdcdc230e3b4c8488e87dc48dcd61a"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June19.csv",
+    "path": "work/pre2012/raw/2009S/June19.csv",
+    "ok": true,
+    "sha256": "2741d6fc6d0ca374e6f7e7946f4198e383d468fc4975dc891efb1e9197e0e268"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June20.csv",
+    "path": "work/pre2012/raw/2009S/June20.csv",
+    "ok": true,
+    "sha256": "5e7d62d90b5d7bc3d3f294150aed023505fd5364edfec9e0f197748a316c972f"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June8.csv",
+    "path": "work/pre2012/raw/2009S/June8.csv",
+    "ok": true,
+    "sha256": "6ef4f1f0a34c5507c8b2616dbab49fe856e6708772c4a525a1af7dbb67f4f43b"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June16.csv",
+    "path": "work/pre2012/raw/2009S/June16.csv",
+    "ok": true,
+    "sha256": "0d1cd2a30ce5add9b2642182694412ae9a1521ba2983ffc7c1e77d80a7e4f135"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June5.csv",
+    "path": "work/pre2012/raw/2009S/June5.csv",
+    "ok": true,
+    "sha256": "0541de3345e00c033c0afba49f8aadd57e9ea092a4951a79956a34dd4d464391"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/May22.csv",
+    "path": "work/pre2012/raw/2009S/May22.csv",
+    "ok": true,
+    "sha256": "07c614ce4c361994e75b429794c57adbccbd176b9b8d7128b9f48d39a842daf3"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June23.csv",
+    "path": "work/pre2012/raw/2009S/June23.csv",
+    "ok": true,
+    "sha256": "21fff0757fdc0ddba3701ea0c557a976fcc38bf498dbd6e588ebf5fcae71725c"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June11.csv",
+    "path": "work/pre2012/raw/2009S/June11.csv",
+    "ok": true,
+    "sha256": "e7ff5d57e61d4360a9b8ef69af73434852e7ec7c7be0245cc9b04fd28fec6fc1"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June18.csv",
+    "path": "work/pre2012/raw/2009S/June18.csv",
+    "ok": true,
+    "sha256": "a4b07677df18ac7c976bfe52aebb9258e1c8e373d85c583df3ab79cfa84cf0f1"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June1.csv",
+    "path": "work/pre2012/raw/2009S/June1.csv",
+    "ok": true,
+    "sha256": "4dcbd6dcb7dbe5f4b27a94a592a98a67bb59a4afc1bae5c6d3994bd6084a2d0f"
+  },
+  {
+    "campaign": "2009S",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2009S/Kipps/June13.csv",
+    "path": "work/pre2012/raw/2009S/June13.csv",
+    "ok": true,
+    "sha256": "1014ad7fe8b0fe0eae67a7fa980004d82f390fbb76749625dd8b4f61e869e5ca"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June13.csv",
+    "path": "work/pre2012/raw/2010/June13.csv",
+    "ok": true,
+    "sha256": "096da8ea4df31c2bd2f9294647fe96106582dd1883bc883a22ea544c24e6b92c"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June11.csv",
+    "path": "work/pre2012/raw/2010/June11.csv",
+    "ok": true,
+    "sha256": "5379bec451fff2daac6f6941eb9e365af51e8854dcc1fe5b8859fc3836421b60"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June16.csv",
+    "path": "work/pre2012/raw/2010/June16.csv",
+    "ok": true,
+    "sha256": "2f2b23784248b1446a25e424060d02109985668ff9ac411436969a875a2dd92b"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June20.csv",
+    "path": "work/pre2012/raw/2010/June20.csv",
+    "ok": true,
+    "sha256": "70a7aa4f7d324e868445298df98ca81c85cbb49bb7927753fe2068d956ba6c63"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June18.csv",
+    "path": "work/pre2012/raw/2010/June18.csv",
+    "ok": true,
+    "sha256": "778d06d47623071d8df26a8d39d0838092bfec696de0a2e53edacea740cdf3f7"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June19.csv",
+    "path": "work/pre2012/raw/2010/June19.csv",
+    "ok": true,
+    "sha256": "3f2485c849a894bc6fe4f131ff451c83d0258dddc82a8950976105fbc9abb1ee"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June10.csv",
+    "path": "work/pre2012/raw/2010/June10.csv",
+    "ok": true,
+    "sha256": "85f0ed39182e13b557f048a3c6de4ece1cc6a63279583a745cab057e10a23a78"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June17.csv",
+    "path": "work/pre2012/raw/2010/June17.csv",
+    "ok": true,
+    "sha256": "bbac9dff63ff344d36b49c8bc155e3f8f1898ec9b14c6f729d0c6c4d6f3a151f"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June2.csv",
+    "path": "work/pre2012/raw/2010/June2.csv",
+    "ok": true,
+    "sha256": "23febfd1980d33cb81124bad932e8aad093d132a6130d3593b6ad1616e26d143"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June14.csv",
+    "path": "work/pre2012/raw/2010/June14.csv",
+    "ok": true,
+    "sha256": "b708b0f58f7421d5a6e4eaf47c5578949966fa528e5cf8bfc1627c23a795533d"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/Average.csv",
+    "path": "work/pre2012/raw/2010/Average.csv",
+    "ok": true,
+    "sha256": "19e3483b186404ecb90ff7655dca80b85b3feaf370ea3491eb767d5b181efc7e"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June6.csv",
+    "path": "work/pre2012/raw/2010/June6.csv",
+    "ok": true,
+    "sha256": "3ccefb5597d275f1ae4c7987deb1a24890a6228507903eda6be2f4f70dce6e5e"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June4.csv",
+    "path": "work/pre2012/raw/2010/June4.csv",
+    "ok": true,
+    "sha256": "cafee35a3c6c027e060f6036830f696a171dd5474285d104489660dda0ad1532"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/Summary.xls",
+    "path": "work/pre2012/raw/2010/Summary.xls",
+    "ok": true,
+    "sha256": "69a15beec53c55a4b72d91152071c48f69e66d2e4db3c517bca52e6cd795de6e"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June21.csv",
+    "path": "work/pre2012/raw/2010/June21.csv",
+    "ok": true,
+    "sha256": "41fb8158bf434a5c30799717308cc198b1351658eb63ebc9adae545b6bd4d164"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June8.csv",
+    "path": "work/pre2012/raw/2010/June8.csv",
+    "ok": true,
+    "sha256": "b660d3e9c1cd4293d1ca9bd0c50bee76f4cce1e7ae83ba93fd6c4af484676b66"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June12.csv",
+    "path": "work/pre2012/raw/2010/June12.csv",
+    "ok": true,
+    "sha256": "36cb8ddd75f07b065e2ca6177ed3f5702e36e27e0309d7aa8674b91196c2c0fc"
+  },
+  {
+    "campaign": "2010",
+    "url": "https://chrispolashenski.com/data/SeaIceMPData/2010/Kipps/June15.csv",
+    "path": "work/pre2012/raw/2010/June15.csv",
+    "ok": true,
+    "sha256": "d673ca18adc13741c154aad2f3557a3515df639d5effe7a6509e60e138dcde51"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%206/0703.xls",
+    "path": "work/pre2012/raw/cruise_data2010/0703.xls",
+    "ok": true,
+    "sha256": "e264c48c91afc415034d4759862df8c1a636e0ea5ce244790b7d21abcd47ed0c"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%207/0704.xls",
+    "path": "work/pre2012/raw/cruise_data2010/0704.xls",
+    "ok": true,
+    "sha256": "33889ec17471be952e46b4afd2da3056608905218239ca7e0a8aafb0f6e9567b"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%204/0627.xls",
+    "path": "work/pre2012/raw/cruise_data2010/0627.xls",
+    "ok": true,
+    "sha256": "10f5d1470ed39b59832a47f254ccff8e72842cd7a58fe1f2c0d52f488b8c4943"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%205/0702.xls",
+    "path": "work/pre2012/raw/cruise_data2010/0702.xls",
+    "ok": true,
+    "sha256": "47896e6d35a277d6f441a309076ce60b6500d671e7801768d149152305777359"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%208/0709.xls",
+    "path": "work/pre2012/raw/cruise_data2010/0709.xls",
+    "ok": true,
+    "sha256": "c89d2ee3cdef74fd15e3829985850005fb37bde6a6f161a1ba9ca65fa27ecc63"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%202/0625.xls",
+    "path": "work/pre2012/raw/cruise_data2010/0625.xls",
+    "ok": true,
+    "sha256": "be10a1c4d986350174e9c3043548dfd394ec172c0b7ec2dc83b0339812c46d18"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%209/0710.xls",
+    "path": "work/pre2012/raw/cruise_data2010/0710.xls",
+    "ok": true,
+    "sha256": "6e52af4140aa4d61882b947a3bf1be950f24f4d3570cb71ac4a6b2428a5a8734"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%2010/0711.xls",
+    "path": "work/pre2012/raw/cruise_data2010/0711.xls",
+    "ok": true,
+    "sha256": "63370ddab70d8d803d30228525f83cdc1a458b86a3debe29889fe99e721897f3"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%203/0626.xls",
+    "path": "work/pre2012/raw/cruise_data2010/0626.xls",
+    "ok": true,
+    "sha256": "4a40705a9bf4746f1ff9ee8794578fb8bd688275c254f974cbb52335bd69da47"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%201/0624.xls",
+    "path": "work/pre2012/raw/cruise_data2010/0624.xls",
+    "ok": true,
+    "sha256": "b5a50c024ad15565d441ef5959fe1f3ca98c7f878107d21be0f21ec8b76dc02d"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%206/0713.xls",
+    "path": "work/pre2012/raw/cruise_data2011/0713.xls",
+    "ok": true,
+    "sha256": "a047195f8a58d3b3cb59367c39a41b0ec29b26052e717598bc9cd2146e3c77c1"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%209/0719.xls",
+    "path": "work/pre2012/raw/cruise_data2011/0719.xls",
+    "ok": true,
+    "sha256": "038292e3109e058a233a11b30ef50c40da33581c0c3458540bc1f133fb082298"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%204/0710.xls",
+    "path": "work/pre2012/raw/cruise_data2011/0710.xls",
+    "ok": true,
+    "sha256": "6daa66c40c681c903113c5c758026606ffaa48cfb2eed3a9033f60fb454457fc"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%208/0718.xls",
+    "path": "work/pre2012/raw/cruise_data2011/0718.xls",
+    "ok": true,
+    "sha256": "4453cbc66f74b3a121c839eee34b0b6a688d3ae356606164f5d2f9cd05524054"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%207/0718.xls",
+    "path": "work/pre2012/raw/cruise_data2011/0718.xls",
+    "ok": false,
+    "sha256": null
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%203/0706.xls",
+    "path": "work/pre2012/raw/cruise_data2011/0706.xls",
+    "ok": true,
+    "sha256": "c7ebcb675be42ef974499b239784cc59e911a23f32950915f0c91b46ff760c7c"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%201/0704.xls",
+    "path": "work/pre2012/raw/cruise_data2011/0704.xls",
+    "ok": true,
+    "sha256": "d8781c70a8b5140240da864831c03bef0ba6a7d2262e8723509e369b6937beaf"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%202/0705.xls",
+    "path": "work/pre2012/raw/cruise_data2011/0705.xls",
+    "ok": true,
+    "sha256": "301820961ecc5a804c2fe5b1c415fea2f8ef272db5310a57602ea70b595137e3"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%205/0712.xls",
+    "path": "work/pre2012/raw/cruise_data2011/0712.xls",
+    "ok": true,
+    "sha256": "85aa46b57bfec4393f07ecc7b04c2a5cff95b7fece5063937e658976e6ad8251"
+  }
+]

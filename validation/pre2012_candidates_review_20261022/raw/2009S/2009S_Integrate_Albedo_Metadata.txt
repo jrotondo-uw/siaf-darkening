@@ -1,0 +1,43 @@
+2009S Integrated Albedo Data
+Location:
+
+Every 2.5m along the 2009 South Site transect line, ~200m long
+UTM Zone 4 North
+From
+7920261.77 N 587718.95 E (“0 m end”)
+To
+7920274.16 N 587519.66 E (“200 m end”)
+
+Collection:
+
+Wavelength integrated albedos
+(from 300-3000 nm) were
+measured every 2.5 m along the
+transect line, according to a tape
+measure laid out along the
+transect daily. The instrument
+used was a Kipp and Zonen
+CM14 Albedometer with voltage
+output read either manually using
+a voltmeter or with a Campbell
+CR10 Datalogger. Albedo
+measurements were collected by
+mounting the sensor on a 1.5 m
+long arm and positioning it ~1 m
+above the snow surface to
+minimize shadowing.
+
+Data Format:
+
+Kipp and Zonen CM14 Albedometer
+Photo: Chris Petrich
+
+Data files are comma separated text with a single header line naming the
+columns. Filename indicates date. Individual daily files have column 1
+representing distance along the transect line (0-200 m) and column 2
+representing albedo at that location. Summary file includes a matrix of all
+data with each date’s albedo’s representing a column. Average file shows
+the average albedo in the second column for dates listed in the first
+column.
+
+

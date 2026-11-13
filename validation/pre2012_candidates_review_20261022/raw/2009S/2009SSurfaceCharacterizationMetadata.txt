@@ -1,0 +1,84 @@
+2009S Surface Characterization
+Location:
+
+Along the 2009 South transect line, ~200m long
+UTM Zone 4 North
+From
+7920261.77 N 587718.95 E (“0 m end”)
+To
+7920274.16 N 587519.66 E (“200 m end”)
+
+Collection:
+
+Tape measure is laid out along the 200 m transect line at the site, and
+surface conditions are visually characterized along the line with 0.1 m
+resolution.
+
+Data Format:
+Data files are comma separated text with a single header line naming the columns.
+Filename indicates the observation date. Column 1 is the start location of the feature. Column 2
+is the end location of the feature. Column 3 is the abbreviation for feature type. Distances along
+the transect are measured from East to West, with 0 m at the East end and 200 m at the west end.
+Feature types are classified as:
+RN
+
+“Broken Ice” – loose pieces of ice rubble not covered by snow.
+
+SN
+
+“Snow” – Describes accumulated precipitation, should not include the surface scattering
+layer of deteriorating ice crystals which forms after snowmelt is complete, though
+differentiating the two is sometimes difficult.
+
+BI
+
+“Bare Ice” – Ice which no longer has snow covering, but has a surface above pooling
+meltwater. Qualifiers differentiate into two categories if additional information was
+noted:
+DBI
+
+SBI
+
+MP
+
+“Drained Bare Ice” – Ice which no longer has snow covering, but has a surface
+above any ponding meltwater and a developed surface scattering layer of loose
+decaying ice crystals.
+“Slushy Bare Ice” – In general terms, ice which has predominantly wetted surface
+crystals, despite the fact that they protrude above the nominal water surface, due
+to water cohesion and capillary action. Specifically, any water saturated surface
+that has snow or ice crystals protruding above the surface of the water (in
+significant coverage… > 20%) but lacks sufficient topographic relief to drain a
+white surface scattering layer on at least 50% of the area.
+
+“Melt Pond” – Ice which is fully covered by a layer of liquid water, but does not include
+any information about the underlying ice. Qualifiers are added if additional information
+was obtained:
+MPSI – “Melt pond Superimposed Ice” indicates a melt pond which is visually
+determined to be lined with superimposed ice formed from refrozen
+snowmelt. This determination is based on bubble fraction and separability
+of a surface ice layer.
+
+MPOI – “Melt Pond Ocean Ice” – indicates a melt pond lined which is visually
+determined to be lined with sea ice formed by solidification of ocean
+water.
+OW
+
+“Open Water” – no ice present, typically a melt pond that melted through entirely.
+
+Examples of the surface types:
+
+RI – Note small protruding ridge on left of
+image.
+
+SN – Snow Covered
+
+DBI – Thick Surface Scattering Layer
+
+SBI – A patch of SBI emerging from a pond
+
+MPSI – Note bubbly lining
+
+MPSI – Note bubbly lining
+
+

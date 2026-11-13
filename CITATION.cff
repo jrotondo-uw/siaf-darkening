@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Rotondo"
+    given-names: "Joey"
+    affiliation: "Department of Atmospheric Sciences, University of Washington, Seattle, WA, USA"
+  - family-names: "Bitz"
+    given-names: "Cecilia M."
+    affiliation: "Department of Atmospheric Sciences, University of Washington, Seattle, WA, USA"
+  - family-names: "Cox"
+    given-names: "Christopher J."
+    affiliation: "Physical Sciences Laboratory, NOAA, Boulder, CO, USA"
+  - family-names: "Gallagher"
+    given-names: "Matthew R."
+    affiliation: "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder, Boulder, CO, USA"
+  - family-names: "Donohoe"
+    given-names: "Aaron"
+    affiliation: "Polar Science Center, Applied Physics Laboratory, University of Washington, Seattle, WA, USA"
+  - family-names: "Riihelä"
+    given-names: "Aku"
+    affiliation: "Finnish Meteorological Institute, Helsinki, Finland"
+  - family-names: "Webster"
+    given-names: "Melinda A."
+    affiliation: "Polar Science Center, Applied Physics Laboratory, University of Washington, Seattle, WA, USA"
+title: "siaf-darkening: Analysis code for Arctic sea ice darkening SIAF decomposition"
+version: 1.0.0
+date-released: 2026-11-12
+url: "https://github.com/jrotondo-uw/siaf-darkening"

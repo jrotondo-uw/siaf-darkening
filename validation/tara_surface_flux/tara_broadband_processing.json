@@ -1,0 +1,13 @@
+{
+  "source_rows": 281145,
+  "duplicate_timestamp_rows_excluded": 292,
+  "valid_rows": 217037,
+  "flux_rejected": 60306,
+  "outside_or_missing_track": 51606,
+  "days": 162,
+  "start": "2007-04-01 00:00:00",
+  "end": "2007-09-20 00:00:00",
+  "time_assumption": "Source timestamps assumed UTC; timezone not stated in workbook",
+  "qc": "SW In >=20 W/m2; finite fluxes; 0<=SW Out/SW In<=1; position within track, max 2h gap",
+  "averaging": "Daily sum(SW Out)/sum(SW In) over accepted minute samples"
+}

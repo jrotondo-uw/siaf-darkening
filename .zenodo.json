@@ -1,0 +1,46 @@
+{
+  "title": "siaf-darkening: Analysis code for Arctic sea ice darkening SIAF decomposition",
+  "description": "Analysis code for 'Sea Ice Darkening of Surviving Arctic Sea Ice Accelerates Radiative Forcing' (Rotondo et al.). Decomposes the Arctic sea ice albedo feedback (SIAF) into area-loss and ice-darkening components across satellite records (CLARA-A3, APP-x, NSIDC CDR) and 378 CMIP6 historical ensemble members using the APRP radiative sensitivity framework.",
+  "creators": [
+    {
+      "name": "Rotondo, Joey",
+      "affiliation": "Department of Atmospheric Sciences, University of Washington, Seattle, WA, USA"
+    },
+    {
+      "name": "Bitz, Cecilia M.",
+      "affiliation": "Department of Atmospheric Sciences, University of Washington, Seattle, WA, USA"
+    },
+    {
+      "name": "Cox, Christopher J.",
+      "affiliation": "Physical Sciences Laboratory, NOAA, Boulder, CO, USA"
+    },
+    {
+      "name": "Gallagher, Matthew R.",
+      "affiliation": "Cooperative Institute for Research in Environmental Sciences, University of Colorado Boulder, Boulder, CO, USA"
+    },
+    {
+      "name": "Donohoe, Aaron",
+      "affiliation": "Polar Science Center, Applied Physics Laboratory, University of Washington, Seattle, WA, USA"
+    },
+    {
+      "name": "Riihelä, Aku",
+      "affiliation": "Finnish Meteorological Institute, Helsinki, Finland"
+    },
+    {
+      "name": "Webster, Melinda A.",
+      "affiliation": "Polar Science Center, Applied Physics Laboratory, University of Washington, Seattle, WA, USA"
+    }
+  ],
+  "keywords": [
+    "Arctic sea ice",
+    "sea ice albedo feedback",
+    "surface albedo",
+    "climate feedback",
+    "CMIP6",
+    "remote sensing",
+    "CLARA-A3",
+    "APP-x"
+  ],
+  "license": "MIT",
+  "upload_type": "software"
+}

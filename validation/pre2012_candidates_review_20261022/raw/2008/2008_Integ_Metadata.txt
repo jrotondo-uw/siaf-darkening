@@ -1,0 +1,40 @@
+2008 Integrated Albedo Data
+Location:
+
+Along the 2008 transect line, ~200m long running E-W
+Located immediately adjacent to UAF Mass Balance Site
+71.36568 N 156.54417 W
+
+Collection:
+
+Wavelength integrated albedos
+(from 300-3000 nm) were
+measured every 5 m along the
+transect line, according to a tape
+measure laid out along the
+transect daily. The instrument
+used was a Kipp and Zonen
+CM14 Albedometer with voltage
+output read either manually using
+a voltmeter or with a Campbell
+CR10 Datalogger. Albedo
+measurements were collected by
+mounting the sensor on a 1.5 m
+Kipp and Zonen CM14 Albedometer
+Photo: Chris Petrich
+long arm and positioning it ~1 m
+above the snow surface to
+minimize shadowing. All albedos are collected to the south of the E-W
+transect line, where foot traffic is not permitted.
+
+Data Format:
+
+Data files are comma separated text with a single header line naming the
+columns. Filename indicates date. Individual daily files have column 1
+representing distance along the transect line (0-200 m) and column 2
+representing albedo at that location. Summary file includes a matrix of all
+data with each date’s albedos representing a column. Average file shows
+the average albedo in the second column for dates listed in the first
+column.
+
+

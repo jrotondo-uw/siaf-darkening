@@ -1,0 +1,26 @@
+#!/bin/bash
+#PBS -N era5_tcwv
+#PBS -A UNYU0023
+#PBS -q main
+#PBS -l walltime=01:00:00
+#PBS -l select=1:ncpus=1:mem=4GB
+#PBS -j oe
+#PBS -o /glade/work/jrotondo/logs/era5_tcwv.log
+
+echo "====================================================================="
+echo ">>> ERA5 TCWV DOWNLOAD"
+echo "Job ID  : $PBS_JOBID"
+echo "Host    : $(hostname)"
+echo "Start   : $(date)"
+echo "====================================================================="
+
+module load conda
+conda activate npl
+
+python -c "import cdsapi; print('cdsapi OK')" 2>/dev/null || pip install cdsapi --quiet
+
+python /glade/work/jrotondo/ncc_paper/python/download_era5_tcwv.py
+
+echo "====================================================================="
+echo ">>> DONE at $(date)"
+echo "====================================================================="

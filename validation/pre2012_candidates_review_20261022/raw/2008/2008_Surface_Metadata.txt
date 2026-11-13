@@ -1,0 +1,65 @@
+2008 Surface Characterization
+Location:
+
+Along the 2008 transect line, ~200m long running E-W
+Located immediately adjacent to UAF Mass Balance Site
+71.36568 N 156.54417 W
+
+Collection:
+
+Tape measure is laid out along the 200 m transect line at the site, and
+surface conditions are visually characterized along the line with 1 m
+resolution.
+
+Data Format:
+Data files are comma separated text with a single header line naming the columns.
+Filename indicates the observation date. Column 1 is the start location of the feature. Column 2
+is the end location of the feature. Column 3 is the abbreviation for feature type. Distances along
+the transect are measured from East to West, with 0 m at the East end and 200 m at the west end.
+A summary file provides the surface fraction covered by each type vs. date. Feature types are
+classified as:
+RN
+
+“Broken Ice” – loose pieces of ice rubble not covered by snow.
+
+HS
+
+“Heavy Snow” – Snow which appears optically thick, generally greater than 10 cm thick.
+
+W
+
+“Moderate Snow” – Snow which is not optically thick but still appears rather white
+usually 5-10cm thick.
+
+SN
+
+“Thin Snow” – Snow which is optically thin and appears gray.
+
+BI
+
+“Bare Ice” – Ice which no longer has snow covering, but has a surface above pooling
+meltwater. Qualifiers differentiate into two categories if additional information was
+noted:
+DBI
+
+SBI
+
+“Drained Bare Ice” – Ice which no longer has snow covering, but has a surface
+above any ponding meltwater and a developed surface scattering layer of loose
+decaying ice crystals.
+“Slushy Bare Ice” – In general terms, ice which has predominantly wetted surface
+crystals, despite the fact that they protrude above the nominal water surface, due
+to water cohesion and capillary action. Specifically, any water saturated surface
+that has snow or ice crystals protruding above the surface of the water (in
+significant coverage… > 20%) but lacks sufficient topographic relief to drain a
+white surface scattering layer on at least 50% of the area.
+
+SK
+
+“Melt Pond which has frozen over with a skim ice”
+
+MP
+
+“Melt Pond” – Ice which is fully covered by a layer of liquid water.
+
+

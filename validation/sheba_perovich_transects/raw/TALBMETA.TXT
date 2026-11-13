@@ -1,0 +1,25 @@
+Instrument: Kipp and Zonen albedometer. 
+Uncertainty: 0.01 
+File format: Files are in the subdirectory TOTALB of the OPTICS directory. 
+The filename convention is ALBTmmdd.csv where mm is month and dd is day. 
+The file ALBTMay.csv has all the data from May 1998 and the file ALBTsum.csv 
+has all the data from June 1998 through September 1998. The first line of the 
+file has the date. In subsequent lines the first column is the position along 
+the albedo line followed by the albedo for each date. 
+Contacts: perovich@crrel.army.mil 
+
+ 
+As part of ice-albedo feedback studies during SHEBA, we measured 
+spectral and wavelength-integrated albedos. Measurements were 
+made at least weekly every 2.5 m along a 200-m survey line from 
+April through October. Initially this line was completely snowcovered, 
+but as the melt season progressed it became a mixture of bare ice and 
+melt ponds. Observed changes in albedo were a combination of a gradual 
+evolution due to seasonal transitions and abrupt shifts resulting from 
+synoptic weather events. Surface conditions evolved from dry snow (April-May)
+to melting snow (June 3) to early melt ponds (mid-late June) to fully developed 
+melt ponds (July-Augugust). From June through August albedo measurements 
+were made every other day. Albedos integrated from 300 to 3000 nm 
+were measured using a Kipp&Zonen albedometer. Total albedos from 
+300 to 2000 nm were measured using a Kipp and Zonen albedometer. 
+Albedos were accurate to within +/- 0.01.

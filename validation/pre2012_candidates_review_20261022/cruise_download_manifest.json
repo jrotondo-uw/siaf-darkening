@@ -1,0 +1,135 @@
+[
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%205/0702.xls",
+    "path": "work/pre2012/raw/cruise_data2010/station5_0702.xls",
+    "ok": true,
+    "sha256": "47896e6d35a277d6f441a309076ce60b6500d671e7801768d149152305777359"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%209/0710.xls",
+    "path": "work/pre2012/raw/cruise_data2010/station9_0710.xls",
+    "ok": true,
+    "sha256": "6e52af4140aa4d61882b947a3bf1be950f24f4d3570cb71ac4a6b2428a5a8734"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%206/0703.xls",
+    "path": "work/pre2012/raw/cruise_data2010/station6_0703.xls",
+    "ok": true,
+    "sha256": "e264c48c91afc415034d4759862df8c1a636e0ea5ce244790b7d21abcd47ed0c"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%204/0627.xls",
+    "path": "work/pre2012/raw/cruise_data2010/station4_0627.xls",
+    "ok": true,
+    "sha256": "10f5d1470ed39b59832a47f254ccff8e72842cd7a58fe1f2c0d52f488b8c4943"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%208/0709.xls",
+    "path": "work/pre2012/raw/cruise_data2010/station8_0709.xls",
+    "ok": true,
+    "sha256": "c89d2ee3cdef74fd15e3829985850005fb37bde6a6f161a1ba9ca65fa27ecc63"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%203/0626.xls",
+    "path": "work/pre2012/raw/cruise_data2010/station3_0626.xls",
+    "ok": true,
+    "sha256": "4a40705a9bf4746f1ff9ee8794578fb8bd688275c254f974cbb52335bd69da47"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%202/0625.xls",
+    "path": "work/pre2012/raw/cruise_data2010/station2_0625.xls",
+    "ok": true,
+    "sha256": "be10a1c4d986350174e9c3043548dfd394ec172c0b7ec2dc83b0339812c46d18"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%2010/0711.xls",
+    "path": "work/pre2012/raw/cruise_data2010/station10_0711.xls",
+    "ok": true,
+    "sha256": "63370ddab70d8d803d30228525f83cdc1a458b86a3debe29889fe99e721897f3"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%207/0704.xls",
+    "path": "work/pre2012/raw/cruise_data2010/station7_0704.xls",
+    "ok": true,
+    "sha256": "33889ec17471be952e46b4afd2da3056608905218239ca7e0a8aafb0f6e9567b"
+  },
+  {
+    "campaign": "cruise_data2010",
+    "url": "https://chrispolashenski.com/data/cruiseData/2010/station%201/0624.xls",
+    "path": "work/pre2012/raw/cruise_data2010/station1_0624.xls",
+    "ok": true,
+    "sha256": "b5a50c024ad15565d441ef5959fe1f3ca98c7f878107d21be0f21ec8b76dc02d"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%201/0704.xls",
+    "path": "work/pre2012/raw/cruise_data2011/station1_0704.xls",
+    "ok": true,
+    "sha256": "d8781c70a8b5140240da864831c03bef0ba6a7d2262e8723509e369b6937beaf"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%202/0705.xls",
+    "path": "work/pre2012/raw/cruise_data2011/station2_0705.xls",
+    "ok": true,
+    "sha256": "301820961ecc5a804c2fe5b1c415fea2f8ef272db5310a57602ea70b595137e3"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%207/0718.xls",
+    "path": "work/pre2012/raw/cruise_data2011/station7_0718.xls",
+    "ok": false,
+    "sha256": null
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%209/0719.xls",
+    "path": "work/pre2012/raw/cruise_data2011/station9_0719.xls",
+    "ok": true,
+    "sha256": "038292e3109e058a233a11b30ef50c40da33581c0c3458540bc1f133fb082298"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%205/0712.xls",
+    "path": "work/pre2012/raw/cruise_data2011/station5_0712.xls",
+    "ok": true,
+    "sha256": "85aa46b57bfec4393f07ecc7b04c2a5cff95b7fece5063937e658976e6ad8251"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%206/0713.xls",
+    "path": "work/pre2012/raw/cruise_data2011/station6_0713.xls",
+    "ok": true,
+    "sha256": "a047195f8a58d3b3cb59367c39a41b0ec29b26052e717598bc9cd2146e3c77c1"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%208/0718.xls",
+    "path": "work/pre2012/raw/cruise_data2011/station8_0718.xls",
+    "ok": true,
+    "sha256": "4453cbc66f74b3a121c839eee34b0b6a688d3ae356606164f5d2f9cd05524054"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%203/0706.xls",
+    "path": "work/pre2012/raw/cruise_data2011/station3_0706.xls",
+    "ok": true,
+    "sha256": "c7ebcb675be42ef974499b239784cc59e911a23f32950915f0c91b46ff760c7c"
+  },
+  {
+    "campaign": "cruise_data2011",
+    "url": "https://chrispolashenski.com/data/cruiseData/2011/station%204/0710.xls",
+    "path": "work/pre2012/raw/cruise_data2011/station4_0710.xls",
+    "ok": true,
+    "sha256": "6daa66c40c681c903113c5c758026606ffaa48cfb2eed3a9033f60fb454457fc"
+  }
+]

@@ -1,0 +1,108 @@
+{
+  "dataset": "UCAR 13.826",
+  "doi": "10.5065/D6SB444G",
+  "files": [
+    {
+      "file": "ALBT0401.CSV",
+      "sha256": "084b8add906469fecb964b358ce88eb422f25a6e68e3d9639976960b2d6272e5",
+      "url": "https://psl.noaa.gov/arctic/sheba/netcdf/datasets/Ice_snow_data/ICEDATA/OPTICS/TOTALB/ALBT0401.CSV"
+    },
+    {
+      "file": "ALBT0405.CSV",
+      "sha256": "abac5855973975f562e0cf5934eeba2829605ddebea953aac62edf7eacfa86b4",
+      "url": "https://psl.noaa.gov/arctic/sheba/netcdf/datasets/Ice_snow_data/ICEDATA/OPTICS/TOTALB/ALBT0405.CSV"
+    },
+    {
+      "file": "ALBT0408.CSV",
+      "sha256": "b573327d0c63948f36f66c6c118427d2ae4c8da69704c294af3e185b6832f5b6",
+      "url": "https://psl.noaa.gov/arctic/sheba/netcdf/datasets/Ice_snow_data/ICEDATA/OPTICS/TOTALB/ALBT0408.CSV"
+    },
+    {
+      "file": "ALBT0430.CSV",
+      "sha256": "f8161c84302f020fcbfc7b3b4a17b11380a930201875caecf96817489e473418",
+      "url": "https://psl.noaa.gov/arctic/sheba/netcdf/datasets/Ice_snow_data/ICEDATA/OPTICS/TOTALB/ALBT0430.CSV"
+    },
+    {
+      "file": "ALBT0508.CSV",
+      "sha256": "9ce6f9780fef557304be9a92a3e86f3595c9d9dac3d412e441b4d6c04505fac4",
+      "url": "https://psl.noaa.gov/arctic/sheba/netcdf/datasets/Ice_snow_data/ICEDATA/OPTICS/TOTALB/ALBT0508.CSV"
+    },
+    {
+      "file": "ALBT0601.CSV",
+      "sha256": "33bb5d420b1f5c5fb4b685fa3811d48714ce34621b1c758362ef9eee720caf91",
+      "url": "https://psl.noaa.gov/arctic/sheba/netcdf/datasets/Ice_snow_data/ICEDATA/OPTICS/TOTALB/ALBT0601.CSV"
+    },
+    {
+      "file": "ALBT0603.CSV",
+      "sha256": "592dd226be56d9e3a002e40fbdd43cf6d07c440bc8429444e8622147862f42c7",
+      "url": "https://psl.noaa.gov/arctic/sheba/netcdf/datasets/Ice_snow_data/ICEDATA/OPTICS/TOTALB/ALBT0603.CSV"
+    },
+    {
+      "file": "ALBT0605.CSV",
+      "sha256": "159bd4e2a55628596a0a3575f1e4f3d0922592905537c48f94a1f7a84a33b6d9",
+      "url": "https://psl.noaa.gov/arctic/sheba/netcdf/datasets/Ice_snow_data/ICEDATA/OPTICS/TOTALB/ALBT0605.CSV"
+    },
+    {
+      "file": "ALBT1011.CSV",
+      "sha256": "b301266c58b9fa4890d367543f7e0aa3e614258f59300b3866869109b50b75c0",
+      "url": "https://psl.noaa.gov/arctic/sheba/netcdf/datasets/Ice_snow_data/ICEDATA/OPTICS/TOTALB/ALBT1011.CSV"
+    },
+    {
+      "file": "ALBTMAY.CSV",
+      "sha256": "9afc6c78f39f5cb5ace7d6ed1806e01dd9b61ea2dec2e5be55c9765aeb1460ed",
+      "url": "https://psl.noaa.gov/arctic/sheba/netcdf/datasets/Ice_snow_data/ICEDATA/OPTICS/TOTALB/ALBTMAY.CSV"
+    },
+    {
+      "file": "ALBTSUM.CSV",
+      "sha256": "629cfa3e3e457d2a01e799c5009a77771cc081451af9b159e2158cecad73709d",
+      "url": "https://psl.noaa.gov/arctic/sheba/netcdf/datasets/Ice_snow_data/ICEDATA/OPTICS/TOTALB/ALBTSUM.CSV"
+    },
+    {
+      "file": "TALBMETA.TXT",
+      "sha256": "28d88b265a2c9995f04a1e67ae4570a43fc589ffdf8b6d0127ff6596a2dbf24a",
+      "url": "https://psl.noaa.gov/arctic/sheba/netcdf/datasets/Ice_snow_data/ICEDATA/OPTICS/TOTALB/TALBMETA.TXT"
+    }
+  ],
+  "decisions": [
+    {
+      "file": "ALBT0405.CSV",
+      "action": "excluded from dated analysis",
+      "reason": "Filename/header conflict or malformed year",
+      "header": [
+        "1-Apr-98",
+        ""
+      ]
+    },
+    {
+      "file": "ALBT1011.CSV",
+      "action": "excluded from dated analysis",
+      "reason": "Filename/header conflict or malformed year",
+      "header": [
+        "October 11, 19997",
+        ""
+      ]
+    },
+    {
+      "file": "ALBTMAY.CSV",
+      "action": "year corrected",
+      "old": "8-May-99",
+      "new": "8-May-98",
+      "reason": "File title and metadata explicitly May 1998; May 8 duplicated in ALBT0508.CSV"
+    },
+    {
+      "file": "ALBTMAY.CSV",
+      "action": "year corrected",
+      "old": "11-May-99",
+      "new": "11-May-98",
+      "reason": "File title and metadata explicitly May 1998; May 8 duplicated in ALBT0508.CSV"
+    }
+  ],
+  "missing_position_dates": [
+    "1998-06-05",
+    "1998-07-13",
+    "1998-07-21",
+    "1998-08-24"
+  ],
+  "spatial_average": "trapezoidal integral over observed length / observed length; no extrapolation",
+  "geolocation": "existing SHEBA daily camp track; proxy for 200-m transect"
+}
