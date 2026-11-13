@@ -1,0 +1,5 @@
+panel,location,variable,radial_axis,angular_axis,resolution,key_regime
+a,MOSAiC drift track (83-87N),Directional snow/ice reflectance,"View Zenith Angle (VZA, deg)",Azimuthal deviation from principal plane (deg),AVHRR GAC (1.1 km sampled at 4 km),Backward-scattering hemisphere dominant
+b,MOSAiC drift (83-87N),Observation geometry polar distribution,VZA (0-70 deg),Relative Azimuth Angle (0-360 deg),May-June 2020 valid cloud-free daytime,Restricted exclusively to backward hemisphere
+c,"West of Svalbard (78N, 9E)",Observation geometry polar distribution,VZA (0-70 deg),Relative Azimuth Angle (0-360 deg),May-June 2020 valid cloud-free daytime,Balanced forward and backward scattering sampling
+d,"North Pole reference (89N, 9E)",Observation geometry polar distribution,VZA (0-70 deg),Relative Azimuth Angle (0-360 deg),May-June 2020 valid cloud-free daytime,Extreme backward-scattering concentration

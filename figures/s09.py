@@ -1,114 +1,28 @@
-# %%
-import pickle
-import numpy as np
-import matplotlib as mpl
+"""Readable six-page validation supplement, using the unchanged 22 paired datasets."""
+from pathlib import Path
+import numpy as np,pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import matplotlib.path as mpath
-import matplotlib.patches as mpatches
-import matplotlib.colors as mcolors
-import cartopy.crs as ccrs
-import cartopy.feature as cfeature
-from matplotlib.gridspec import GridSpec
-
-PKL_PATH = '/glade/work/jrotondo/ncc_paper/plots/plot_data_sic_trend_maps.pkl'
-OUT_PATH = '/glade/work/jrotondo/ncc_paper/plots/extended_data_fig_unified_masks'
-
-# ── load ──────────────────────────────────────────────────────────────
-with open(PKL_PATH, 'rb') as fh:
-    d = pickle.load(fh)
-
-sig_maps        = d['sig_maps']
-meta            = d['meta']
-lons            = d['lons']
-lats            = d['lats']
-EXPERIMENTS     = d['EXPERIMENTS']
-MONTHS          = d['MONTHS']
-PVAL_THRESHOLDS = d['PVAL_THRESHOLDS']
-
-# ── style ─────────────────────────────────────────────────────────────
-mpl.rcParams.update({
-    'font.family': 'sans-serif', 'font.sans-serif': ['Arial','Helvetica','DejaVu Sans'],
-    'font.size': 9, 'axes.titlesize': 7, 'axes.labelsize': 7,
-    'xtick.labelsize': 6, 'ytick.labelsize': 6, 'legend.fontsize': 7,
-    'axes.linewidth': 0.5, 'pdf.fonttype': 42, 'ps.fonttype': 42,
-})
-
-# Updated colors: Blue for significant extent loss, Orange for darkening
-COLOR_SIG    = '#2980b9'  # Deep Blue
-COLOR_NONSIG = '#e67e22'  # Vibrant Orange
-COLOR_OCEAN  = '#eaf4fb'
-COLOR_LAND   = '#e8e6e1'
-
-proj          = ccrs.NorthPolarStereo(central_longitude=-45)
-data_crs      = ccrs.PlateCarree()
-cmap_discrete = mcolors.ListedColormap([COLOR_NONSIG, COLOR_SIG])
-
-def make_circle_boundary(ax, n=100):
-    theta = np.linspace(0, 2 * np.pi, n)
-    verts = np.vstack([np.sin(theta), np.cos(theta)]).T * 0.5 + 0.5
-    ax.set_boundary(mpath.Path(verts), transform=ax.transAxes)
-
-# ── layout ────────────────────────────────────────────────────────────
-# 13 rows: 6 obs + 1 spacer + 6 cmip6
-
-MONTHS = MONTHS[4:6]
-gs = GridSpec(5, 3, figure=plt.figure(figsize=(7.2, 8.4)))
-
-fig = plt.gcf()
-
-obs_axes   = np.array([[fig.add_subplot(gs[r,   c], projection=proj) for c in range(3)] for r in range(2)])
-cmip6_axes = np.array([[fig.add_subplot(gs[r+3, c], projection=proj) for c in range(3)] for r in range(2)])
-exp_axes   = [obs_axes, cmip6_axes]
-
-# ── draw ──────────────────────────────────────────────────────────────
-for exp_idx, (exp_name, exp_label, _) in enumerate(EXPERIMENTS):
-    axes_block = exp_axes[exp_idx]
-
-    axes_block[0, 1].text(0.5, 1.22, exp_label,
-                          transform=axes_block[0, 1].transAxes,
-                          ha='center', va='bottom', fontsize=9, fontweight='bold')
-
-    for r_idx, mname in enumerate(MONTHS):
-        for c_idx, pthresh in enumerate(PVAL_THRESHOLDS):
-            ax  = axes_block[r_idx, c_idx]
-            sig = sig_maps[(exp_name, mname, pthresh)]
-            m   = meta[(exp_name, mname, pthresh)]
-
-            ax.set_facecolor(COLOR_OCEAN)
-            make_circle_boundary(ax)
-            ax.set_extent([-180, 180, 60, 90], crs=data_crs)
-
-            ax.pcolormesh(lons, lats, sig, transform=data_crs,
-                          cmap=cmap_discrete, vmin=0, vmax=1,
-                          shading='auto', zorder=2)
-            ax.add_feature(cfeature.LAND, facecolor=COLOR_LAND, zorder=3)
-            ax.add_feature(cfeature.COASTLINE, edgecolor='#777777',
-                           linewidth=0.2, zorder=4)
-
-            ax.text(0.97, 0.03, f"{m['pct_drk']:.0f}% drk",
-                    transform=ax.transAxes, fontsize=9, ha='right',
-                    color='white', fontweight='bold',
-                    bbox=dict(facecolor=COLOR_NONSIG, alpha=0.8, lw=0))
-
-            if c_idx == 0:
-                ax.text(-0.12, 0.5, mname, transform=ax.transAxes,
-                        fontsize=9, fontweight='bold',
-                        va='center', ha='right', rotation=0)
-            if r_idx == 0:
-                ax.set_title(f'p < {pthresh:.2f}', fontsize=9,
-                             fontweight='bold', pad=4)
-
-# ── legend ────────────────────────────────────────────────────────────
-legend_patches = [
-    mpatches.Patch(facecolor=COLOR_SIG,    label='Area Loss (significant negative SIC trend)'),
-    mpatches.Patch(facecolor=COLOR_NONSIG, label='Darkening (complement of significant retreat)'),
-    mpatches.Patch(facecolor=COLOR_OCEAN,  label='Open Ocean (SIC < 15%)'),
-    mpatches.Patch(facecolor=COLOR_LAND,   label='Land'),
-]
-fig.legend(handles=legend_patches, loc='lower center', ncol=2, fontsize=9,
-           frameon=False, bbox_to_anchor=(0.5, 0.01))
-
-for ext in ('pdf', 'png'):
-    fig.savefig(f'{OUT_PATH}.{ext}', dpi=300, bbox_inches='tight')
-    print(f'Saved → {OUT_PATH}.{ext}')
-plt.show()
+from matplotlib.backends.backend_pdf import PdfPages
+ROOT=Path(__file__).resolve().parents[1];DATA=ROOT/'source_data';OUT=ROOT/'figures'
+d=pd.read_csv(DATA/'validation_pairs.csv');m=pd.read_csv(DATA/'validation_metrics_ordered.csv')
+plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'pdf.fonttype':42})
+with PdfPages(OUT/'fs09.pdf') as pdf:
+ for page in range(6):
+  fig,axs=plt.subplots(2,2,figsize=(7.2,7.4),layout='constrained')
+  for j,ax in enumerate(axs.flat):
+   i=page*4+j
+   if i>=len(m):ax.axis('off');continue
+   r=m.iloc[i];q=d[(d.dataset==r.dataset)&(d['product']==r['product'])]
+   col='#0072B2' if r['product']=='CLARA-A3' else '#D55E00'
+   ax.scatter(q.reference,q.satellite,color=col,s=12,alpha=.5,rasterized=True,linewidths=0)
+   ax.plot([0,1],[0,1],color='.35',ls='--',lw=1)
+   if len(q)>1 and np.corrcoef(q.reference,q.satellite)[0,1]>=.5:
+    z=np.polyfit(q.reference,q.satellite,1);x=np.array([q.reference.min(),q.reference.max()]);ax.plot(x,np.polyval(z,x),color=col,lw=1)
+   title=r.dataset.replace('helicopter / HELiPOD','helicopter/HELiPOD')
+   ax.set_title(f'{chr(97+i)}  {title}\n{r["product"]}',loc='left',fontsize=10)
+   st='No retained pairs (n = 0)' if not len(q) else f'n = {int(r.n)}\nbias = {r.bias:+.3f}\nRMSE = {r.rmse:.3f}\nCCC = {r.ccc:.3f}'
+   ax.text(.04,.96,st,transform=ax.transAxes,va='top',fontsize=9,bbox=dict(facecolor='white',alpha=.85,edgecolor='none'))
+   ax.set(xlim=(0,1),ylim=(0,1),xlabel='Reference broadband albedo',ylabel='Satellite broadband albedo',aspect='equal');ax.grid(alpha=.15)
+  pdf.savefig(fig);fig.savefig(OUT/f's11_page{page+1}.pdf');fig.savefig(OUT/f's11_page{page+1}.png',dpi=170);plt.close(fig)
