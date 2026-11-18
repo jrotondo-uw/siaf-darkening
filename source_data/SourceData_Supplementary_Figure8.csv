@@ -1,5 +1,13 @@
-panel,location,variable,radial_axis,angular_axis,resolution,key_regime
-a,MOSAiC drift track (83-87N),Directional snow/ice reflectance,"View Zenith Angle (VZA, deg)",Azimuthal deviation from principal plane (deg),AVHRR GAC (1.1 km sampled at 4 km),Backward-scattering hemisphere dominant
-b,MOSAiC drift (83-87N),Observation geometry polar distribution,VZA (0-70 deg),Relative Azimuth Angle (0-360 deg),May-June 2020 valid cloud-free daytime,Restricted exclusively to backward hemisphere
-c,"West of Svalbard (78N, 9E)",Observation geometry polar distribution,VZA (0-70 deg),Relative Azimuth Angle (0-360 deg),May-June 2020 valid cloud-free daytime,Balanced forward and backward scattering sampling
-d,"North Pole reference (89N, 9E)",Observation geometry polar distribution,VZA (0-70 deg),Relative Azimuth Angle (0-360 deg),May-June 2020 valid cloud-free daytime,Extreme backward-scattering concentration
+period,month,p_val_threshold,total_active_ice_pixels,area_loss_pixels,darkening_pixels,area_loss_pct,darkening_pct
+1982-2024 (Observational era),June,0.01,19327,5788,13539,29.947741501526362,70.05225849847363
+1982-2024 (Observational era),June,0.05,19327,8592,10735,44.45594246391059,55.54405753608941
+1982-2024 (Observational era),June,0.1,19327,10071,9256,52.108449319604695,47.891550680395305
+1982-2024 (Observational era),July,0.01,17741,9502,8239,53.55955132179697,46.44044867820303
+1982-2024 (Observational era),July,0.05,17741,12408,5333,69.93968772898934,30.060312271010652
+1982-2024 (Observational era),July,0.1,17741,13592,4149,76.61349416605603,23.38650583394397
+1982-2014 (CMIP6 era),June,0.01,19320,4382,14938,22.681159420289855,77.31884057971014
+1982-2014 (CMIP6 era),June,0.05,19320,7663,11657,39.66356107660455,60.33643892339545
+1982-2014 (CMIP6 era),June,0.1,19320,9301,10019,48.14182194616977,51.85817805383023
+1982-2014 (CMIP6 era),July,0.01,17742,6794,10948,38.293315297035285,61.706684702964715
+1982-2014 (CMIP6 era),July,0.05,17742,9784,7958,55.145981287340774,44.854018712659226
+1982-2014 (CMIP6 era),July,0.1,17742,11242,6500,63.36376958629241,36.63623041370759

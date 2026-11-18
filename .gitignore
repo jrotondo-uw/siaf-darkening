@@ -15,6 +15,8 @@ __pycache__/
 *.npz
 *.csv
 !source_data/*.csv
+# QA-treated Tara broadband albedo, redistributed with DAMOCLES permission
+!validation/tara_surface_flux/tara_broadband_*.csv
 *.zip
 
 # figures
