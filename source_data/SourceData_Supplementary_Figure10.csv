@@ -1,5 +1,13 @@
-panel,location,variable,radial_axis,angular_axis,resolution,key_regime
-a,MOSAiC drift track (83-87N),Directional snow/ice reflectance,"View Zenith Angle (VZA, deg)",Azimuthal deviation from principal plane (deg),AVHRR GAC (1.1 km sampled at 4 km),Backward-scattering hemisphere dominant
-b,MOSAiC drift (83-87N),Observation geometry polar distribution,VZA (0-70 deg),Relative Azimuth Angle (0-360 deg),May-June 2020 valid cloud-free daytime,Restricted exclusively to backward hemisphere
-c,"West of Svalbard (78N, 9E)",Observation geometry polar distribution,VZA (0-70 deg),Relative Azimuth Angle (0-360 deg),May-June 2020 valid cloud-free daytime,Balanced forward and backward scattering sampling
-d,"North Pole reference (89N, 9E)",Observation geometry polar distribution,VZA (0-70 deg),Relative Azimuth Angle (0-360 deg),May-June 2020 valid cloud-free daytime,Extreme backward-scattering concentration
+period,month,p_val_threshold,total_active_ice_pixels,area_loss_pixels,darkening_pixels,area_loss_pct,darkening_pct
+1982-2024 (Observational era),August,0.01,14041,8782,5259,62.54540274909194,37.45459725090806
+1982-2024 (Observational era),August,0.05,14041,10232,3809,72.87230254255395,27.12769745744605
+1982-2024 (Observational era),August,0.1,14041,10955,3086,78.02150843956983,21.978491560430168
+1982-2024 (Observational era),September,0.01,13088,7661,5427,58.534535452322736,41.465464547677264
+1982-2024 (Observational era),September,0.05,13088,8883,4205,67.87133251833741,32.12866748166259
+1982-2024 (Observational era),September,0.1,13088,9425,3663,72.0125305623472,27.987469437652813
+1982-2014 (CMIP6 era),August,0.01,14044,6202,7842,44.16120763315295,55.83879236684705
+1982-2014 (CMIP6 era),August,0.05,14044,9416,4628,67.04642551979494,32.95357448020507
+1982-2014 (CMIP6 era),August,0.1,14044,10337,3707,73.60438621475363,26.39561378524637
+1982-2014 (CMIP6 era),September,0.01,13091,5431,7660,41.4865174547399,58.5134825452601
+1982-2014 (CMIP6 era),September,0.05,13091,7940,5151,60.65235658085708,39.34764341914292
+1982-2014 (CMIP6 era),September,0.1,13091,8723,4368,66.63356504468719,33.36643495531281

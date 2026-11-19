@@ -30,3 +30,6 @@ backups/
 .DS_Store
 .ipynb_checkpoints/
 
+
+# Inputs to the four-panel Figure 5, copied in from scratch
+!figures/f05_cd_*.csv
