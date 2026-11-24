@@ -1,0 +1,19 @@
+#!/bin/bash
+#PBS -N bivmod31
+#PBS -A UOKL0045
+#PBS -q develop
+#PBS -l select=1:ncpus=16:mem=220GB
+#PBS -l walltime=03:00:00
+#PBS -j oe
+#PBS -o /glade/derecho/scratch/jrotondo/bivmod31_develop.log
+# Direct-slope decomposition on the 31-model headline ensemble (Fig. 5c-d).
+# No `set -u` (see bivmod_casper.pbs). Shared develop node: charged per core.
+echo "host: $(hostname)  start: $(date)"
+cd /glade/work/jrotondo/siaf_drk_paper_final/notebooks/revision_20261028 || exit 1
+export NPROC=14 OMP_NUM_THREADS=1 HDF5_USE_FILE_LOCKING=FALSE
+source /etc/profile
+module load conda
+conda activate npl
+echo "python: $(which python)"
+python -u bivariate_model_31.py
+echo "rc=$?  end: $(date)"

@@ -1,0 +1,69 @@
+===== FILTERED  /glade/derecho/scratch/jrotondo/fig5_rerun31_patched_20261123/model_bivariate_by_month.csv
+      obs: /glade/derecho/scratch/jrotondo/fig5_review_20261112/observations/stage3_bivariate.csv
+models: 31  rows: 368  n_years: 33 - 33
+
+--- L on area-loss
+            n    mean     sd1     obs   ratio
+month                                        
+April      29  0.2317  0.1151  0.3467  0.6684
+May        30  0.2221  0.1282  0.3605  0.6160
+June       31  0.2611  0.0788  0.4105  0.6361
+July       31  0.2903  0.0736  0.5072  0.5725
+August     31  0.3523  0.0932  0.5899  0.5972
+September  31  0.3938  0.1218  0.7784  0.5059
+season: model 0.2919  obs 0.4989  ratio-of-means 0.5851  mean-of-ratios 0.5993  monthly ratio range 0.51-0.67
+models in all 6 months: 29 of 31;  below obs season mean: 29;  above: []
+obs 2sigma half-width: {'April': np.float64(0.1032), 'May': np.float64(0.0899), 'June': np.float64(0.0895), 'July': np.float64(0.096), 'August': np.float64(0.1118), 'September': np.float64(0.1236)}
+intervals overlap: {'April': np.True_, 'May': np.True_, 'June': np.True_, 'July': np.True_, 'August': np.True_, 'September': np.False_}
+obs value inside model mean +/- 2sd: {'April': np.True_, 'May': np.True_, 'June': np.True_, 'July': np.False_, 'August': np.False_, 'September': np.False_}
+models below obs, by month: {'April': 25, 'May': 27, 'June': 30, 'July': 31, 'August': 31, 'September': 31}
+
+--- IS on darkening
+            n    mean     sd1     obs   ratio
+month                                        
+April      31  0.0197  0.0157  0.0264  0.7471
+May        31  0.0256  0.0120  0.0881  0.2908
+June       31  0.0497  0.0169  0.0965  0.5156
+July       31  0.0668  0.0304  0.0823  0.8111
+August     31  0.0851  0.0285  0.1019  0.8347
+September  30  0.1051  0.0372  0.0864  1.2164
+season: model 0.0587  obs 0.0803  ratio-of-means 0.7310  mean-of-ratios 0.7360  monthly ratio range 0.29-1.22
+models in all 6 months: 30 of 31;  below obs season mean: 26;  above: ['CESM2', 'CESM2-WACCM', 'EC-Earth3-Veg', 'MPI-ESM-1-2-HAM']
+obs 2sigma half-width: {'April': np.float64(0.0242), 'May': np.float64(0.0195), 'June': np.float64(0.0273), 'July': np.float64(0.0343), 'August': np.float64(0.0447), 'September': np.float64(0.0621)}
+intervals overlap: {'April': np.True_, 'May': np.False_, 'June': np.True_, 'July': np.True_, 'August': np.True_, 'September': np.True_}
+obs value inside model mean +/- 2sd: {'April': np.True_, 'May': np.False_, 'June': np.False_, 'July': np.True_, 'August': np.True_, 'September': np.True_}
+models below obs, by month: {'April': 20, 'May': 31, 'June': 31, 'July': 25, 'August': 22, 'September': 8}
+
+--- residual L on darkening
+            n    mean     sd1     obs   ratio
+month                                        
+April      31  0.0244  0.0208  0.0240  1.0153
+May        31  0.0273  0.0156  0.0655  0.4165
+June       31  0.0423  0.0232  0.1121  0.3777
+July       31  0.0816  0.0395  0.1364  0.5983
+August     31  0.1212  0.0495  0.1530  0.7924
+September  30  0.1445  0.0549  0.1193  1.2119
+season: model 0.0736  obs 0.1017  ratio-of-means 0.7232  mean-of-ratios 0.7353  monthly ratio range 0.38-1.21
+models in all 6 months: 30 of 31;  below obs season mean: 25;  above: ['CESM2', 'E3SM-1-0', 'EC-Earth3-Veg', 'IPSL-CM6A-LR', 'MPI-ESM-1-2-HAM']
+
+--- total I on area-loss
+            n    mean     sd1     obs   ratio
+month                                        
+April      29  0.1562  0.0782  0.1886  0.8281
+May        30  0.1511  0.0879  0.2253  0.6704
+June       31  0.1636  0.0489  0.2147  0.7618
+July       31  0.1528  0.0424  0.1729  0.8841
+August     31  0.1917  0.0528  0.2444  0.7844
+September  31  0.2464  0.0740  0.2846  0.8659
+season: model 0.1770  obs 0.2217  ratio-of-means 0.7980  mean-of-ratios 0.7991  monthly ratio range 0.67-0.88
+models in all 6 months: 29 of 31;  below obs season mean: 24;  above: ['CNRM-ESM2-1', 'IPSL-CM6A-LR', 'MPI-ESM-1-2-HAM', 'MPI-ESM1-2-HR', 'MRI-ESM2-0']
+
+--- r(I, L) across models
+area_loss: r(all-6-month models, n=29) = +0.863;  r(available months, n=31) = +0.862
+darkening: r(all-6-month models, n=30) = +0.880;  r(available months, n=31) = +0.850
+
+--- optical shortfall: 1 - (IS_m - c Lres_m)/(IS_o - c Lres_o)
+c=0.54: 0.2522
+c=0.7: 0.2080
+deficits: L 0.4149  IS 0.2690
+May darkening: model 0.0256 obs 0.0881 deficit 0.709

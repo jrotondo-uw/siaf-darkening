@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -N sdcheck31
+#PBS -A UOKL0045
+#PBS -q develop
+#PBS -l select=1:ncpus=16:mem=220GB:ompthreads=1
+#PBS -l walltime=00:30:00
+#PBS -j oe
+#PBS -o /glade/derecho/scratch/jrotondo/sdcheck31_develop.log
+# SIC-sigma filter share on the 31-model Fig. 5c-d run (bivariate_sdcheck_31.py).
+echo "host: $(hostname)  start: $(date)"
+cd /glade/work/jrotondo/siaf_drk_paper_final/notebooks/revision_20261028 || exit 1
+source /etc/profile
+module load conda
+conda activate npl
+export HDF5_USE_FILE_LOCKING=FALSE OMP_NUM_THREADS=1 NPROC=14
+python -u bivariate_sdcheck_31.py 2>&1 | grep -v "^\[grid_patch\]"
+echo "rc=${PIPESTATUS[0]}  end: $(date)"

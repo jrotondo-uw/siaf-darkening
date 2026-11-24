@@ -14,9 +14,16 @@ Do NOT fall back to ncc_paper/plots/bivariate_diag/stage3_bivariate.csv for
 observations -- that is the superseded mixed-period file.  The three inputs
 below are local copies, taken because two of the originals sit on purgeable
 scratch:
-  fig5_review_20261112/preview/Figure5_new_panels_source.csv  -> f05_cd_panels.csv
-  fig5_uncertainty_20261112/uncertainty_summary.csv           -> f05_cd_obs_sigma.csv
-  ncc_paper/plots/bivariate_diag/model_bivariate_by_month.csv -> f05_cd_models.csv
+  sdfilter_test_20261123/obs_nofilter/stage3_bivariate.csv    -> f05_cd_obs_stage3.csv
+                                                     (and f05_cd_panels.csv)
+  fig5_uncertainty_nofilter_20261123/uncertainty_summary_direct_nofilter.csv
+                                                              -> f05_cd_obs_sigma.csv
+  fig5_rerun31_patched_20261123/model_bivariate_by_month_nofilter.csv
+                                                              -> f05_cd_models.csv
+    (23 Nov 2026: one retained member from each of the 31 headline models,
+    grid_patch applied, and NO SIC-sigma filter -- Joey dropped it the same
+    day; restage_f05_nofilter.py did the swap. The filtered tables are kept as
+    *.filtered_superseded and the 24-model ones as *.24model_superseded.)
 
 Conventions.  Every interval is written as sigma, never "s.d.".  Model spread
 in c-d is +/-2 sigma across models, matching the manuscript caption; the
@@ -75,7 +82,8 @@ for i, ax in enumerate(axes[0]):
     ax.plot(xr, sl * xr + b, color=MOD_C, ls='--', lw=1.2)
     ax.errorbar(ox, OBS_TOT, yerr=.04384, fmt='*', color=OBS_C, markersize=15,
                 capsize=4, label='Observed, 1982–2014', zorder=4)
-    ax.text(.04, .95, f'r = {r:.2f}; p = {p:.3f}', va='top', transform=ax.transAxes)
+    ax.text(.04, .95, f'r = {r:.2f}\np = {p:.3f}'.replace('-', '\u2212'),
+            va='top', transform=ax.transAxes)
     ax.set_title(chr(97 + i) + '  ' + title, loc='left', weight='bold', fontsize=15)
     ax.set_xlabel(xlab)
     ax.set_ylim(0, .30)
@@ -84,8 +92,8 @@ axes[0, 0].set_ylabel('Total SIAF (W m$^{-2}$ K$^{-1}$)')
 
 SPEC = [('area_loss', 'L', '$-$dSIC/dT (K$^{-1}$)',
          'Concentration loss per K', 'Area-loss region'),
-        ('darkening', 'D', r'$-\partial\alpha/\partial T|_{\rm SIC}$ (K$^{-1}$)',
-         'Albedo loss at fixed SIC', 'Darkening region')]
+        ('darkening', 'I', r'$-$d$\alpha$/d$T$ (K$^{-1}$)',
+         'Albedo loss per K', 'Darkening region')]
 
 for i, (ax, (region, var, ylab, title, where)) in enumerate(zip(axes[1], SPEC)):
     sub = cd[cd.region == region].set_index('month').loc[MONTHS]
@@ -119,14 +127,10 @@ for ax in axes.ravel():
 axes[0, 0].legend(fontsize=12, framealpha=.85, loc='lower left')
 axes[1, 0].legend(fontsize=12, framealpha=.85, loc='upper left',
                   bbox_to_anchor=(0, .88))
-fig.text(.5, .012,
-         '1982–2014 throughout  ·  monthly regions in c–d, one member per model, '
-         'cosine-latitude weighting\n'
-         'a–b: family whiskers 2$\\sigma$, observed model-based 2$\\sigma$\n'
-         'c–d: model spread 2$\\sigma$ across models, '
-         'observed 2$\\sigma$ from CMIP6 paired block resampling',
-         ha='center', va='bottom', fontsize=10.5, color='0.3')
-fig.subplots_adjust(top=.955, bottom=.165, left=.093, right=.985,
+# No footer: the editor does not allow text in a figure file that is not part
+# of the figure. Period, member, weighting and interval definitions are all
+# in the caption.
+fig.subplots_adjust(top=.955, bottom=.085, left=.093, right=.985,
                     wspace=.28, hspace=.40)
 for ext in ('pdf', 'png'):
     fig.savefig(OUT / f'f05.{ext}', dpi=300)
@@ -134,5 +138,5 @@ for ext in ('pdf', 'png'):
 chk = cd[(cd.region == 'darkening') & (cd.month == 'May')].iloc[0]
 s5 = float(sig[(sig.region == 'darkening') & (sig.month == 5)].halfwidth_2sigma.iloc[0])
 print(f'May darkening: obs {chk.observed:.4f} +/- {s5:.4f}, model {chk.model_mean:.4f} '
-      f'-> paper says 0.0401 +/- 0.0087 and 0.0091')
+      f'-> paper says 0.075 and 0.024 (direct -dalpha/dT, no SIC-sigma filter)')
 print('wrote', OUT / 'f05.png')
