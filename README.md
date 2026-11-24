@@ -45,6 +45,8 @@ The directory `figures/` provides modular, standalone plotting scripts:
 - `make_s09.py`: writes `s09_validation.py`, the generator for the in-situ albedo validation figure (Supplementary Figure 12).
 - `bivariate_model_31.py`, `bivariate_sdcheck_31.py`, `restage_f05_31.py`, `restage_f05_nofilter.py`, `fig5_nofilter/`: Figure 5c–d on the 31-model headline ensemble (one retained member per model), without the filter that dropped pixels whose SIC σ over the record is below 0.005; `f05.py` draws panels c–d from the staged `f05_cd_*.csv` tables.
 - `compute_leakage_budget.py`, `compute_leakage_flux.py`, `siaf_obs_core.py` (written by `make_core.py`: a header plus the verbatim first 588 lines of `python/siaf_obs_analysis.py`): Supplementary Figure 3, the two-sided classification leakage in W m⁻², converted with the published radiative sensitivity, masks and area weights; `s03.py` draws it from `leakage_flux.csv`.
+- `uncertainty_is/` (`extract_is.py`, `run_is.sh`, `is_boot.py`, `is_seeds.py`): the model-based 2σ on the observed ice sensitivity, i.e. the SIAF model-based procedure (common family-weighted multi-model-mean trend subtraction, paired circular 3-year blocks, 4,000 replicates) applied to the albedo series without radiative weighting. It writes `uncertainty_is.csv`, which `f07.py` reads for the gray band in Figure 7; `uncertainty.csv` holds the SIAF model-based uncertainty read by `f06.py` and `s05.py`.
+- `f07_observed_source_data.py`: writes `source_data/SourceData_Figure7_Observed.csv`, the two observational points, the ice-sensitivity band and the family-weighted multi-model mean drawn in Figure 7, with their intervals.
 
 ## Validation Routines (`validation/`)
 

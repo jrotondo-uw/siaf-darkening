@@ -7,6 +7,7 @@ markers or error bars: the member cloud carries the spread directly, and
 overlapping bars from models of the same family were unreadable. Only the
 observations and the multi-model mean carry error bars.
 """
+import os
 import numpy as np, pandas as pd
 import matplotlib
 matplotlib.use('Agg')
@@ -58,13 +59,22 @@ OBS_STYLE = {
 }
 
 
+# 24 Nov 2026: the observed IS interval (gray band and the vertical bars on both
+# observational points) is the model-based 2-sigma from uncertainty_is.csv (is_boot.py:
+# the SIAF model-based procedure without radiative weighting), not the pairs bootstrap.
+# The CERES-APRP RS interval is still the bootstrap 2-sigma.
+_U = pd.read_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uncertainty_is.csv'))
+IS_2S_MODEL = float(_U[(_U.method == 'Common MMM trend') & (_U.block_years == 3) &
+                       (_U.component == 'total')].two_sigma_IS.iloc[0])
+
+
 def load_obs(df_obs, method):
     m = df_obs[(df_obs.rs_method == method) & (df_obs.period == 'CMIP6') &
                (np.isclose(df_obs.pval, 0.05))]
     if m.empty:
         print(f'WARNING: no OBS row for {method}'); return None
     r = m.iloc[0]
-    o = dict(is_=float(r.IS_tot_arctic), is_2s=float(r.sigma2_IS_arctic),
+    o = dict(is_=float(r.IS_tot_arctic), is_2s=IS_2S_MODEL,
              rs=float(r.RS_arctic),      rs_2s=float(r.sigma2_RS_arctic))
     print(f'OBS {method:7s}: IS={o["is_"]:.4f}±{o["is_2s"]:.4f}  '
           f'RS={o["rs"]:.2f}±{o["rs_2s"]:.2f}')
