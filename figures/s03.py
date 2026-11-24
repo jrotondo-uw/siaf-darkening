@@ -1,7 +1,10 @@
-"""
-Supplementary Figure 3: Absolute two-sided classification leakage.
-Plots monthly contributions to the annual epoch-change flux in declining-ice
-and darkening regions for both monthly ice albedo and fixed 0.54 contrast.
+"""Supplementary Figure 3 — absolute two-sided classification leakage, W m-2.
+
+Reads leakage_flux.csv (written by compute_leakage_flux.py); draws only.
+Replaces the earlier relative-share version, kept as s03_relative_superseded.py.
+
+Font sizes follow the convention of the rest of the set: the figure is drawn
+10 in wide and scaled to the 5.147 in column, so 15.5 pt renders at 8.0 pt.
 """
 from pathlib import Path
 import pandas as pd
@@ -9,35 +12,58 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-ROOT = Path(__file__).resolve().parents[1]
-data_file = ROOT / 'source_data' / 'SourceData_Supplementary_Figure3.csv'
-d = pd.read_csv(data_file)
+R = Path(__file__).resolve().parent
+OUT = R / 'figures'
+OUT.mkdir(exist_ok=True)
 
-# Compute annual sums
-a = d.groupby('variant')[['residual_in_ext', 'concentration_in_drk', 'net_reassignment_to_darkening']].sum() / 6.0
+FS = 15.5
+plt.rcParams.update({'font.size': FS, 'axes.spines.top': False,
+                     'axes.spines.right': False, 'pdf.fonttype': 42})
 
-plt.rcParams.update({'font.size': 10, 'axes.spines.top': False, 'axes.spines.right': False})
-f, axs = plt.subplots(1, 2, figsize=(7.2, 4.5), sharey=True, layout='constrained')
+BLUE, ORANGE = '#3A6BAF', '#D95F1A'
+d = pd.read_csv(R / 'leakage_flux.csv')
+months = [m[:3] for m in d.month]
+x = range(len(d))
 
-for ax, v, title in zip(axs, ['data_contrast', 'fixed_054'], ['a  Monthly ice albedo − 0.06', 'b  Fixed contrast: 0.54']):
-    s = d[d.variant == v].sort_values('month')
-    ax.plot(s.month, s.residual_in_ext / 6.0, 'o-', color='#0072B2', label='Residual in declining-ice region')
-    ax.plot(s.month, s.concentration_in_drk / 6.0, '^-', color='#D55E00', label='Concentration in darkening region')
-    ax.set_xticks(range(4, 10), ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'])
-    ax.set_title(title, loc='left', fontsize=10)
-    ax.axhline(0, color='0.6', lw=0.7)
-    ax.grid(axis='y', alpha=0.2)
-    r = a.loc[v]
-    ax.text(0.03, 0.97,
-            f"Annual sums (W m$^{{-2}}$)\nResidual: {r.residual_in_ext:.5f}\nConcentration: {r.concentration_in_drk:.5f}\nNet to darkening: {r.net_reassignment_to_darkening:.5f}",
-            transform=ax.transAxes, va='top', fontsize=9)
-    ax.set_ylim(-0.0008, 0.014)
+PANELS = [('mon', 'Monthly ice albedo $-$ 0.06'),
+          ('fix', 'Fixed contrast: 0.54')]
 
-axs[0].set_ylabel('Monthly contribution to annual flux change (W m$^{-2}$)')
-f.legend(*axs[0].get_legend_handles_labels(), loc='outside lower center', fontsize=9)
+fig, axs = plt.subplots(1, 2, figsize=(10, 4.8), sharey=True)
 
-out_png = ROOT / 'figures' / 'fs03.png'
-out_pdf = ROOT / 'figures' / 'fs03.pdf'
-f.savefig(out_png, dpi=600, bbox_inches='tight')
-f.savefig(out_pdf, bbox_inches='tight')
-print(f"Saved {out_png} and {out_pdf}")
+for i, (ax, (tag, title)) in enumerate(zip(axs, PANELS)):
+    ax.plot(x, d[f'blue_{tag}'], marker='o', ms=7, lw=2.0, color=BLUE)
+    ax.plot(x, d[f'orange_{tag}'], marker='^', ms=8, lw=2.0, color=ORANGE)
+    ax.axhline(0, color='.6', lw=.8)
+    ax.set_xticks(list(x), months)
+    ax.set_title(f'{chr(97 + i)}  {title}', loc='left', fontsize=FS)
+    ax.grid(axis='y', color='.92')
+    ax.set_axisbelow(True)
+
+    res = d[f'blue_{tag}'].sum()
+    sic = d[f'orange_{tag}'].sum()
+    ax.text(.02, .97,
+            f'Annual sums (W m$^{{-2}}$)\nResidual: {res:.5f}\n'
+            f'Concentration: {sic:.5f}\nNet to darkening: {res - sic:.5f}',
+            transform=ax.transAxes, va='top', ha='left', fontsize=FS - 1.5,
+            linespacing=1.35)
+
+# headroom for the four-line annotation, measured from the larger panel
+ymax = max(d.blue_mon.max(), d.orange_mon.max())
+ymin = min(0., d.blue_fix.min(), d.orange_fix.min())
+axs[0].set_ylim(ymin - .05 * ymax, ymax * 1.78)
+
+axs[0].set_ylabel('Monthly contribution to annual\nflux change (W m$^{-2}$)')
+
+fig.legend(handles=[plt.Line2D([], [], color=BLUE, marker='o', ms=7, lw=2.0,
+                               label='Residual in declining-ice region'),
+                    plt.Line2D([], [], color=ORANGE, marker='^', ms=8, lw=2.0,
+                               label='Concentration in darkening region')],
+           loc='lower center', ncol=2, frameon=False, fontsize=FS,
+           bbox_to_anchor=(.5, -.02))
+fig.subplots_adjust(top=.92, bottom=.22, left=.13, right=.98, wspace=.10)
+
+for ext in ['png', 'pdf']:
+    fig.savefig(OUT / f's03.{ext}', dpi=300, bbox_inches='tight',
+                facecolor='white')
+plt.close(fig)
+print('wrote', OUT / 's03.png')

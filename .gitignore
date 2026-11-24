@@ -33,3 +33,6 @@ backups/
 
 # Inputs to the four-panel Figure 5, copied in from scratch
 !figures/f05_cd_*.csv
+# Inputs to Supplementary Figure 3 (read by s03.py and compute_leakage_flux.py)
+!figures/leakage_budget.csv
+!figures/leakage_flux.csv
