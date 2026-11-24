@@ -3,6 +3,15 @@ import pickle
 import numpy as np
 import matplotlib.pyplot as plt
 
+plt.rcParams.update({
+    'font.size': 24.9,
+    'axes.labelsize': 24.9,
+    'axes.titlesize': 29.8,
+    'xtick.labelsize': 24.9,
+    'ytick.labelsize': 24.9,
+    'legend.fontsize': 24.9,
+})
+
 
 # ── Config ────────────────────────────────────────────────────────────
 EXP         = 'obs'   # change to 'cmip6' for the other experiment

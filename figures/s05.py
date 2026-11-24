@@ -32,7 +32,7 @@ matplotlib.rcParams.update({
     'axes.titlesize':   15,
     'xtick.labelsize':  12,
     'ytick.labelsize':  12,
-    'legend.fontsize':  11,
+    'legend.fontsize':  11.2,
 })
 
 COL_EXT, COL_DRK = '#3A6BAF', '#D95F1A'
@@ -139,14 +139,14 @@ handles = [Line2D([0], [0], color=COL_UW,  ls='--', lw=2.2, label='Unweighted en
            Line2D([0], [0], color=COL_BMA, lw=2.6, label='BMA-weighted ensemble'),
            Line2D([0], [0], color=COL_VC,  lw=2.2, label='Variance-constrained'),
            Patch(facecolor=COL_OBS, alpha=0.34, edgecolor=COL_OBS,
-                 label='Observed center, model-based 2 SD')]
+                 label='Observed center, model-based 2$\\sigma$')]
 handles += [Line2D([0], [0], color=CMAP[m], lw=2.0,
                    label=f'{m} (w={wmap[m]:.3f})') for m in keep]
 fig.legend(handles=handles, loc='upper center', bbox_to_anchor=(0.5, 0.02),
-           ncol=2, framealpha=0.95, fontsize=9)
+           ncol=2, framealpha=0.95, fontsize=11.2)
 
 out = os.path.join(OUT_DIR, 'fe06.png')
-fig.tight_layout(rect=[0,.12,1,1])
+fig.tight_layout(rect=[0,.035,1,1])
 fig.savefig(out, dpi=DPI, bbox_inches='tight', facecolor='white')
 plt.close(fig)
 print(f'\n-> {out}  (dpi={DPI})')

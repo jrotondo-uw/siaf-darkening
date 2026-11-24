@@ -42,6 +42,7 @@ The directory `figures/` provides modular, standalone plotting scripts:
 - `s01.py`–`s09.py`, `s11.py`: Supplementary Figures 1 through 9.
 - `bivariate_model.py`, `bivariate_diag.py`: Joint BMA and Bayesian likelihood weighting models.
 - `regen_figs.sh`: Master batch execution script.
+- `make_s09.py`: writes `s09_validation.py`, the generator for the in-situ albedo validation figure (Supplementary Figure 12).
 
 ## Validation Routines (`validation/`)
 

@@ -12,9 +12,9 @@ u=pd.read_csv(R/'uncertainty.csv').query("method == 'Common MMM trend' and block
 obs=pd.read_csv('/glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_pixelwise_summary.csv')
 o=obs[obs.rs_method.eq('CERES')&obs.period.eq('CMIP6')&np.isclose(obs.pval,.05)].iloc[0]
 fig,axes=plt.subplots(3,1,figsize=(7.2,8.5),sharex=True)
-plt.rcParams.update({'font.size':10,'pdf.fonttype':42})
+plt.rcParams.update({'font.size':11.2,'pdf.fonttype':42})
 rows=[]
-for j,(ax,c,modelcol,obscol,label) in enumerate(zip(axes,['area_loss','darkening','total'],['siaf_ext_global','siaf_drk_global','siaf_global'],['SIAF_ext_global','SIAF_drk_global','SIAF_tot_global'],['Area loss','Darkening','Total'])):
+for j,(ax,c,modelcol,obscol,label) in enumerate(zip(axes,['area_loss','darkening','total'],['siaf_ext_global','siaf_drk_global','siaf_global'],['SIAF_ext_global','SIAF_drk_global','SIAF_tot_global'],[r'SIAF$_{\mathrm{area}}$',r'SIAF$_{\mathrm{drk}}$',r'SIAF$_{\mathrm{tot}}$'])):
  g=d.groupby('model')[modelcol].agg(['mean','std','count'])
  mu=float(o[obscol]);sd=float(u.loc[c,'joint_2sigma'])/2
  x=np.linspace(-.08,.36,1800)
@@ -27,11 +27,13 @@ for j,(ax,c,modelcol,obscol,label) in enumerate(zip(axes,['area_loss','darkening
  ax.plot(x,vc,color='#4B3F9E',label='Common variance')
  ax.plot(x,norm.pdf(x,mu,sd),color='#b5000a',label='Observed center, model-based uncertainty')
  ax.axvline(mu,color='#b5000a',ls=':',lw=.8)
- ax.set_title(f'{chr(97+j)}  {label}',loc='left',fontsize=11,fontweight='bold')
+ ax.set_title(f'{chr(97+j)}  {label}',loc='left',fontsize=11,fontweight='bold',
+              color=['#3A6BAF','#D95F1A','#333333'][j])
  ax.set_ylabel('Density');ax.spines[['top','right']].set_visible(False)
  ax.set_ylim(bottom=0);ax.set_xlim(-.04,.32)
  for model,row in g.iterrows():rows.append(dict(component=c,model=model,n=int(row['count']),mean=row['mean'],sd=row['std'],weight=w.loc[model],obs_mean=mu,obs_sd=sd))
-axes[0].legend(fontsize=8,frameon=False)
+_h,_l=axes[0].get_legend_handles_labels()
+fig.legend(_h,_l,loc='lower center',bbox_to_anchor=(0.5,-0.05),ncol=2,frameon=False,fontsize=11.2)
 axes[-1].set_xlabel('SIAF (W m$^{-2}$ K$^{-1}$)')
 fig.tight_layout();fig.savefig(R/'figures'/'f08.png',dpi=300)
 pd.DataFrame(rows).to_csv(R/'figures'/'BMA_weights.csv',index=False)

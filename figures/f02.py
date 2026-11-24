@@ -31,11 +31,11 @@ PLOT_OUT = os.path.join(OUT_DIR, 'f01.png')
 DPI = 300
 
 matplotlib.rcParams.update({
-    'font.size':       13,
-    'axes.labelsize':  14.5,
-    'xtick.labelsize': 13,
-    'ytick.labelsize': 12.5,
-    'legend.fontsize': 12,
+    'font.size':       16.3,
+    'axes.labelsize':  16.3,
+    'xtick.labelsize': 16.3,
+    'ytick.labelsize': 16.3,
+    'legend.fontsize': 16.3,
 })
 
 COL_EXT, COL_DRK = '#3A6BAF', '#D95F1A'
@@ -69,6 +69,7 @@ fig.patch.set_facecolor('white')
 ax.set_facecolor('white')
 
 ymax = 0.0
+period_labels = []
 for period in periods:
     a, hat = ALPHA[period], HATCH[period]
     for i, (rs, _) in enumerate(methods):
@@ -105,26 +106,30 @@ for period in periods:
             if val > 0.004:
                 ax.text(xp - w * 0.24, base + val / 2, f'{val / tot * 100:.0f}%',
                         ha='center', va='center', color='white',
-                        fontsize=12.5, fontweight='bold', zorder=7)
+                        fontsize=16.3, fontweight='bold', zorder=7)
 
-        ax.text(xp - w * 0.08, tot + err + 0.006, PERIOD_LABEL[period],
-                ha='center', va='bottom', color='#333333', fontsize=11.5)
+        # drawn after the loop, at a common height clear of every dot strip
+        period_labels.append((xp - w * 0.08, PERIOD_LABEL[period]))
         ymax = max(ymax, tot + err)
 
 ax.set_xticks(x)
 ax.set_xticklabels([lbl for _, lbl in methods])
 ax.set_ylabel('Pan-Arctic annual SIAF  (W m$^{-2}$ K$^{-1}$)')
 ax.set_xlim(-0.6, n - 0.4)
-ax.set_ylim(0, ymax * 1.30)
+# stagger the two period labels in each pair so they do not run together
+for _i, (_lx, _llab) in enumerate(period_labels):
+    ax.text(_lx, ymax * (1.04 if _i % 2 == 0 else 1.26), _llab,
+            ha='center', va='bottom', color='#333333', fontsize=13)
+
+ax.set_ylim(0, ymax * 1.52)
 ax.yaxis.grid(True, alpha=0.35, linewidth=0.8, zorder=0)
 ax.set_axisbelow(True)
 for sp in ('top', 'right'):
     ax.spines[sp].set_visible(False)
 
-ax.set_title('Satellite observations only: both bars in each pair are '
-             'observational estimates,\nevaluated over two periods with the '
-             'same method. No model output appears in this figure.',
-             fontsize=12.5, color='#333333', pad=14, loc='left')
+# No explanatory title inside the figure (editor: no text in a figure file
+# that is not part of the figure); the caption states that both bars in each
+# pair are observational estimates over two periods.
 
 handles = [
     mpatches.Patch(facecolor=COL_EXT, edgecolor='white',
@@ -137,8 +142,8 @@ handles = [
            markeredgecolor='none', markersize=5, alpha=0.5,
            label='Bootstrap replicates (n = 1000)'),
 ]
-ax.legend(handles=handles, loc='upper right', framealpha=0.95,
-          handlelength=1.6, borderpad=0.7)
+ax.legend(handles=handles, loc='upper center', bbox_to_anchor=(0.5, -0.17),
+          ncol=2, framealpha=0.95, handlelength=1.6, borderpad=0.7)
 
 fig.tight_layout()
 fig.savefig(PLOT_OUT, dpi=DPI, bbox_inches='tight', facecolor='white')

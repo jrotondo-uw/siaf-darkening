@@ -25,9 +25,9 @@ MONTHS           = d['MONTHS']
 # ── style ─────────────────────────────────────────────────────────────
 mpl.rcParams.update({
     'font.family': 'sans-serif', 'font.sans-serif': ['Arial','Helvetica','DejaVu Sans'],
-    'font.size': 7, 'axes.titlesize': 7, 'axes.labelsize': 7,
-    'xtick.labelsize': 6, 'ytick.labelsize': 6,
-    'legend.fontsize': 6, 'legend.title_fontsize': 6,
+    'font.size': 9.8, 'axes.titlesize': 11.7, 'axes.labelsize': 9.8,
+    'xtick.labelsize': 9.8, 'ytick.labelsize': 9.8,
+    'legend.fontsize': 9.8, 'legend.title_fontsize': 6,
     'axes.linewidth': 0.6, 'xtick.major.width': 0.6, 'ytick.major.width': 0.6,
     'xtick.major.size': 3, 'ytick.major.size': 3,
     'xtick.direction': 'out', 'ytick.direction': 'out',
@@ -57,7 +57,7 @@ for mn in sorted(monthly_res_ext):
     kde = gaussian_kde(res, bw_method='silverman')
     y   = kde(x_kde)
     ax.plot(x_kde, y, color=col, lw=1.4,
-            label=f"{MONTHS[mn][:3]}  (med={np.median(res):+.3f})")
+            label=f"{MONTHS[mn][:3]}  {np.median(res):+.3f}".replace('-', '\u2212'))
     ax.fill_between(x_kde, y, where=(x_kde < 0), color=col, alpha=0.10, lw=0)
     if mn in monthly_dalb_drk:
         drk = monthly_dalb_drk[mn][np.isfinite(monthly_dalb_drk[mn])]
@@ -82,9 +82,13 @@ ax.set_title('a)', loc='left', pad=4)
 ax.set_xlim(-0.38, 0.28)
 ax.yaxis.set_major_locator(mticker.MaxNLocator(4, integer=True))
 ax.xaxis.set_major_locator(mticker.MultipleLocator(0.1))
-leg = ax.legend(loc='upper left', frameon=False, title='Month (median)',
-                handlelength=1.2, handletextpad=0.4, labelspacing=0.25)
-leg.get_title().set_fontsize(6)
+# 23 Nov 2026: this legend filled the top half of panel a and the zero line
+# and dotted curves ran through it; it now sits under the panel, like b's.
+leg = ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.40), frameon=False,
+                ncol=2, title=r'Month and median $\Delta\alpha_\mathrm{res}$',
+                handlelength=1.2, handletextpad=0.4, labelspacing=0.25,
+                columnspacing=1.2)
+leg.get_title().set_fontsize(9.8)
 
 # panel (b) — stacked bar decomposition
 mn_list  = sorted(monthly_dalb_ext)
@@ -100,9 +104,9 @@ ax2.bar(x_pos, res_vals,  width=0.55, bottom=sic_vals, color=COL_RES, zorder=3,
 
 for i, (sv, rv, tv) in enumerate(zip(sic_vals, res_vals, tot_vals)):
     if tv != 0 and np.isfinite(rv) and abs(rv / tv) > 0.02:
-        ax2.text(x_pos[i], sv + rv / 2, f'{rv/tv*100:.0f}%',
-                 ha='center', va='center', fontsize=5.5,
-                 color='white', fontweight='bold', zorder=6)
+        ax2.text(x_pos[i], sv + rv, f'{rv/tv*100:.0f}%',
+                 ha='center', va='top', fontsize=9.8,
+                 color='#333333', fontweight='bold', zorder=6)
 
 ax2.axhline(0, color='0.6', lw=0.5, zorder=1)
 ax2.set_xticks(x_pos)
@@ -110,8 +114,11 @@ ax2.set_xticklabels([MONTHS[m][:3] for m in mn_list])
 ax2.set_ylabel(r'Mean $\Delta$SIAL in area pixels')
 ax2.set_title('b)', loc='left', pad=4)
 ax2.yaxis.set_major_locator(mticker.MultipleLocator(0.05))
-ax2.yaxis.set_major_formatter(mticker.FormatStrFormatter('%.2f'))
-ax2.legend(loc='lower left', frameon=False,
+ax2.yaxis.set_major_formatter(mticker.FuncFormatter(
+    lambda v, _: f'{v:.2f}'.replace('-', '\u2212')))
+# room under the deepest bar for its percentage label (it ran into the axis)
+ax2.set_ylim(1.14 * float(np.nanmin(sic_vals + res_vals)), 0.0)
+ax2.legend(loc='upper center', bbox_to_anchor=(0.5, -0.22), frameon=False,
            handlelength=1.0, handletextpad=0.4, labelspacing=0.3)
 
 # ── save ──────────────────────────────────────────────────────────────

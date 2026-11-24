@@ -6,6 +6,15 @@ from scipy import stats
 import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
+matplotlib.rcParams.update({
+    'font.size': 14.8,
+    'axes.labelsize': 14.8,
+    'axes.titlesize': 17.7,
+    'xtick.labelsize': 14.8,
+    'ytick.labelsize': 14.8,
+    'legend.fontsize': 14.8,
+})
+
 DIR_CMIP6_CSV = '/glade/derecho/scratch/jrotondo/siaf_cmip6_summary_final.csv'
 DIR_OBS_CSV   = '/glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_pixelwise_summary.csv'
 NCEP_PATH     = '/glade/work/jrotondo/ncep_air_sig995.nc'
@@ -119,22 +128,28 @@ print(f'OLS (family means): r={r:+.3f} r2={r**2:.3f} p={p_ols:.4f}')
 
 pal = list(plt.get_cmap('tab20').colors)
 cols = {f: pal[i % len(pal)] for i, f in enumerate(order)}
-fig, ax = plt.subplots(figsize=(9.5, 7), dpi=300)
+fig, ax = plt.subplots(figsize=(9.5, 9.6), dpi=300, layout='constrained')
 fig.patch.set_facecolor('#FAFAFA'); ax.set_facecolor('#FAFAFA')
 
 for f in order:
     s_ = df[df.family == f]
     ax.scatter(s_.AA, s_.siaf_global, color=cols[f], s=12, alpha=0.40,
                zorder=1, edgecolors='none')
+# Label only outlying families: the extremes in feedback and in Arctic
+# amplification. Labelling all 18 made the text overlap illegibly.
+_sf = fam.siaf_global.sort_values()
+_aa = fam.AA.sort_values()
+label_fams = set(list(_sf.index[:3]) + list(_sf.index[-3:])
+                 + list(_aa.index[:2]) + list(_aa.index[-2:]))
+
 for f in order:
     x_m, y_m = fam.AA[f], fam.siaf_global[f]
     ax.errorbar(x_m, y_m, xerr=fam.aa_sd[f] or None, yerr=fam.siaf_sd[f] or None,
                 fmt='none', color=cols[f], alpha=0.5, lw=1.0, capsize=2.5, zorder=2)
     ax.scatter(x_m, y_m, color=cols[f], s=75, zorder=4,
-               edgecolors='white', linewidths=0.6)
-    ax.annotate(f'{f} (n={int(fam.n_mem[f])})', xy=(x_m, y_m), xytext=(6, 3),
-                textcoords='offset points', fontsize=7, color=cols[f],
-                zorder=5, fontweight='bold')
+               edgecolors='white', linewidths=0.6,
+               label=f'{f} (n={int(fam.n_mem[f])})')
+    # families are identified by the legend outside the axes
 
 xx = np.linspace(aa_arr[fin_].min()*0.9, aa_arr[fin_].max()*1.1, 100)
 ax.plot(xx, slope*xx + intercept, color='#333333', lw=1.5, ls='--', zorder=3,
@@ -157,12 +172,26 @@ if 'CMIP6' in obs and 'Obs-era' in obs:
                     xytext=(o1['aa_mean'], o1['siaf']),
                     arrowprops=dict(arrowstyle='->', color='#b5000a', lw=1.6,
                                     linestyle='dashed', connectionstyle='arc3,rad=0.18'))
-ax.set_xlabel(r'Arctic Amplification ($\Delta T_\mathrm{Arctic}\ /\ \Delta T_\mathrm{global}$)',
-              fontsize=11)
-ax.set_ylabel(r'Pan-Arctic Annual SIAF (W m$^{-2}$ K$^{-1}$)', fontsize=11)
-ax.tick_params(axis='both', labelsize=10)
-ax.legend(loc='upper left', fontsize=9.5, framealpha=0.9)
+ax.set_xlabel('Arctic amplification\n' r'($\Delta T_\mathrm{Arctic}\ /\ \Delta T_\mathrm{global}$)',
+              fontsize=14.8)
+ax.set_ylabel(r'Pan-Arctic annual SIAF (W m$^{-2}$ K$^{-1}$)', fontsize=14.8)
+ax.tick_params(axis='both', labelsize=14.8)
+# 23 Nov 2026: the 21-entry legend beside the axes was as large as the plot.
+# Families go under the axes in three columns; the fit and the two observed
+# points keep a small legend in the empty upper-left corner.
+_h, _l = ax.get_legend_handles_labels()
+_fam = [(a, b) for a, b in zip(_h, _l) if ' (n=' in b]
+_ref = [(a, b) for a, b in zip(_h, _l) if ' (n=' not in b]
+ax.legend([x[0] for x in _ref], [x[1] for x in _ref], loc='upper left',
+          fontsize=14.8, framealpha=0.9)
+# headroom so that small legend clears the tallest whiskers (INM reaches 0.253)
+ax.set_ylim(top=0.32)
+fig.legend([x[0] for x in _fam], [x[1] for x in _fam], loc='outside lower center',
+           ncol=3, fontsize=14.8, frameon=False, handletextpad=0.3,
+           columnspacing=1.0, labelspacing=0.3)
 ax.grid(True, alpha=0.2, zorder=0)
 for sp_ in ['top','right']: ax.spines[sp_].set_visible(False)
-fig.tight_layout(); fig.savefig(PLOT_OUT, facecolor=fig.get_facecolor()); plt.close(fig)
+fig.savefig(PLOT_OUT, facecolor=fig.get_facecolor())
+fig.savefig('/glade/work/jrotondo/siaf_drk_paper_final/notebooks/revision_20261028/figures/s04.png',
+            facecolor=fig.get_facecolor()); plt.close(fig)
 print(f'Saved → {PLOT_OUT}')

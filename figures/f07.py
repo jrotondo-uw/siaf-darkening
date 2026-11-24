@@ -12,6 +12,15 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
+matplotlib.rcParams.update({
+    'font.size': 17.1,
+    'axes.labelsize': 17.1,
+    'axes.titlesize': 20.5,
+    'xtick.labelsize': 17.1,
+    'ytick.labelsize': 17.1,
+    'legend.fontsize': 17.1,
+})
+
 CMIP6_CSV = '/glade/derecho/scratch/jrotondo/siaf_cmip6_summary_final.csv'
 OBS_CSV   = '/glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_pixelwise_summary.csv'
 PLOT_OUT  = '/glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/f04_family.png'
@@ -96,7 +105,8 @@ obs = {m: load_obs(df_obs, m) for m in ('CERES', 'Kernel')}
 o_prim = obs['CERES']
 
 # ── figure ────────────────────────────────────────────────────────────────
-fig, ax = plt.subplots(figsize=(11, 7.5), facecolor='#FAFAFA', dpi=300)
+fig, ax = plt.subplots(figsize=(11, 9.4), facecolor='#FAFAFA', dpi=300,
+                       layout='constrained')
 ax.set_facecolor('#FAFAFA')
 
 fams = list(fam.index)
@@ -136,16 +146,33 @@ if obs['CERES'] and obs['Kernel']:
     ax.annotate('', xy=(rk, yc), xytext=(rc, yc),
                 arrowprops=dict(arrowstyle='<->', color='#333', lw=1.3), zorder=8)
 
-ax.set_xlabel(r'RS  [W m$^{-2}$]', fontsize=12)
-ax.set_ylabel(r'IS  [K$^{-1}$]', fontsize=12)
+ax.set_xlabel(r'RS  [W m$^{-2}$]', fontsize=17.1)
+ax.set_ylabel(r'IS  [K$^{-1}$]', fontsize=17.1)
 ax.grid(True, alpha=0.3, zorder=0); ax.set_axisbelow(True)
-ax.tick_params(axis='both', labelsize=11)
+ax.tick_params(axis='both', labelsize=17.1)
 for sp in ('top', 'right'):
     ax.spines[sp].set_visible(False)
-ax.legend(loc='upper left', bbox_to_anchor=(1.01, 1.0), fontsize=8,
-          framealpha=0.9, handlelength=1.4, borderpad=0.6, labelspacing=0.45)
+# 23 Nov 2026: the 21-entry legend sat outside the axes and, cropped tight,
+# widened the canvas well past the 11 in the font sizes assume, so the plot
+# printed small. Three columns under the axes instead: observations and the
+# MMM across the first row, the 18 families below.
+_h, _l = ax.get_legend_handles_labels()
+_fam = [(a, b) for a, b in zip(_h, _l) if ' (n=' in b]
+_ref = [(a, b) for a, b in zip(_h, _l) if ' (n=' not in b]
+_rows = -(-len(_h) // 3)
+_cols = [[r_] for r_ in _ref[:3]] + [[] for _ in range(3 - len(_ref[:3]))]
+_it = iter(_fam)
+for _c in _cols:
+    while len(_c) < _rows:
+        _nx = next(_it, None)
+        if _nx is None:
+            break
+        _c.append(_nx)
+_ord = [x for _c in _cols for x in _c]
+fig.legend([x[0] for x in _ord], [x[1] for x in _ord], loc='outside lower center',
+           ncol=3, fontsize=15, frameon=False, handlelength=1.4,
+           columnspacing=1.2, labelspacing=0.35)
 
-plt.tight_layout()
 plt.savefig(PLOT_OUT, dpi=300, bbox_inches='tight', facecolor=fig.get_facecolor())
 plt.close()
 print(f'-> {PLOT_OUT}')

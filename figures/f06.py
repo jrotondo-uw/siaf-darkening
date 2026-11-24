@@ -34,11 +34,11 @@ SCALE = 0.0347 * 0.5
 DPI = 300
 
 matplotlib.rcParams.update({
-    'font.size':       13,
-    'axes.labelsize':  14,
-    'xtick.labelsize': 11.5,
-    'ytick.labelsize': 12,
-    'legend.fontsize': 12,
+    'font.size':       22.4,
+    'axes.labelsize':  22.4,
+    'xtick.labelsize': 19.6,
+    'ytick.labelsize': 22.4,
+    'legend.fontsize': 22.4,
 })
 
 COL_EXT, COL_DRK, COL_OBS_EDGE, COL_MMM = '#3A6BAF', '#D95F1A', '#b5000a', '#333333'
@@ -111,8 +111,8 @@ mmm_e_2s = float(2 * fam.ext_loc.std(ddof=1))
 mmm_d_lc = float(fam.drk_loc.mean())
 mmm_d_2s = float(2 * fam.drk_loc.std(ddof=1))
 
-labels = [f'{f}\n({int(fam.n_mod[f])} model{"s" if fam.n_mod[f] > 1 else ""}, '
-          f'n={int(fam.n_mem[f])})' for f in fams] + ['Observations\n(1982-2014)']
+labels = [f'{f} ({int(fam.n_mod[f])} model{"s" if fam.n_mod[f] > 1 else ""}, '
+          f'n={int(fam.n_mem[f])})' for f in fams] + ['Observations (1982-2014)']
 tot = list(fam.tot) + [obs['tot']]
 ext = list(fam.ext) + [obs['ext']]
 drk = list(fam.drk) + [obs['drk']]
@@ -134,9 +134,9 @@ fig.patch.set_facecolor('white')
 for a in (ax, ax2):
     a.set_facecolor('white')
 
-ax.text(-0.05, 1.05, 'a', transform=ax.transAxes, fontsize=18,
+ax.text(-0.05, 1.05, 'a', transform=ax.transAxes, fontsize=22.4,
         fontweight='bold', va='top')
-ax2.text(-0.05, 1.05, 'b', transform=ax2.transAxes, fontsize=18,
+ax2.text(-0.05, 1.05, 'b', transform=ax2.transAxes, fontsize=22.4,
          fontweight='bold', va='top')
 
 # ---- panel a: global-mean, stacked ----
@@ -175,7 +175,8 @@ ax.legend(handles=[mpatches.Patch(facecolor=COL_EXT, label=r'SIAF$_{\mathrm{area
                           markerfacecolor=COL_PT, markeredgecolor='none',
                           markersize=5, alpha=0.6,
                           label='Individual members / bootstrap replicates')],
-          loc='upper left', framealpha=0.92)
+          loc='lower left', bbox_to_anchor=(0, 1.01), ncol=2,
+          framealpha=0.92, frameon=False)
 
 # ---- panel b: local intensity, grouped ----
 w2, gap = 0.28, 0.05

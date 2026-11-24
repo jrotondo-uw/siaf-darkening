@@ -28,8 +28,8 @@ PVAL_THRESHOLDS = d['PVAL_THRESHOLDS']
 # ── style ─────────────────────────────────────────────────────────────
 mpl.rcParams.update({
     'font.family': 'sans-serif', 'font.sans-serif': ['Arial','Helvetica','DejaVu Sans'],
-    'font.size': 9, 'axes.titlesize': 7, 'axes.labelsize': 7,
-    'xtick.labelsize': 6, 'ytick.labelsize': 6, 'legend.fontsize': 7,
+    'font.size': 11.2, 'axes.titlesize': 13.4, 'axes.labelsize': 11.2,
+    'xtick.labelsize': 11.2, 'ytick.labelsize': 11.2, 'legend.fontsize': 11.2,
     'axes.linewidth': 0.5, 'pdf.fonttype': 42, 'ps.fonttype': 42,
 })
 
@@ -66,7 +66,7 @@ for exp_idx, (exp_name, exp_label, _) in enumerate(EXPERIMENTS):
 
     axes_block[0, 1].text(0.5, 1.22, exp_label,
                           transform=axes_block[0, 1].transAxes,
-                          ha='center', va='bottom', fontsize=9, fontweight='bold')
+                          ha='center', va='bottom', fontsize=11.2, fontweight='bold')
 
     for r_idx, mname in enumerate(MONTHS):
         for c_idx, pthresh in enumerate(PVAL_THRESHOLDS):
@@ -86,16 +86,16 @@ for exp_idx, (exp_name, exp_label, _) in enumerate(EXPERIMENTS):
                            linewidth=0.2, zorder=4)
 
             ax.text(0.97, 0.03, f"{m['pct_drk']:.0f}% drk",
-                    transform=ax.transAxes, fontsize=9, ha='right',
+                    transform=ax.transAxes, fontsize=11.2, ha='right',
                     color='white', fontweight='bold',
                     bbox=dict(facecolor=COLOR_NONSIG, alpha=0.8, lw=0))
 
             if c_idx == 0:
                 ax.text(-0.12, 0.5, mname, transform=ax.transAxes,
-                        fontsize=9, fontweight='bold',
+                        fontsize=11.2, fontweight='bold',
                         va='center', ha='right', rotation=0)
             if r_idx == 0:
-                ax.set_title(f'p < {pthresh:.2f}', fontsize=9,
+                ax.set_title(f'p < {pthresh:.2f}', fontsize=11.2,
                              fontweight='bold', pad=4)
 
 # ── legend ────────────────────────────────────────────────────────────
@@ -105,7 +105,7 @@ legend_patches = [
     mpatches.Patch(facecolor=COLOR_OCEAN,  label='Open Ocean (SIC < 15%)'),
     mpatches.Patch(facecolor=COLOR_LAND,   label='Land'),
 ]
-fig.legend(handles=legend_patches, loc='lower center', ncol=2, fontsize=9,
+fig.legend(handles=legend_patches, loc='lower center', ncol=2, fontsize=11.2,
            frameon=False, bbox_to_anchor=(0.5, 0.01))
 
 for ext in ('pdf', 'png'):
