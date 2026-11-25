@@ -9,9 +9,9 @@ the intervals exactly as f07.py draws them.
                                       pairs-bootstrap 2-sigma for CERES-APRP; the
                                       ERA5-kernel RS is a fixed climatological
                                       field with no bootstrap uncertainty (0).
-                                      IS interval: the model-based 2-sigma
-                                      (uncertainty_is.csv, common family-weighted
-                                      MMM trend, 3-year blocks), which is also
+                                      IS interval: the observed residual-based 2-sigma
+                                      (observed_minus_MMM_consistent_widths.csv,
+                                      3-year blocks), which is also
                                       the gray band.
   Family-weighted multi-model mean    18 family means (members -> models ->
                                       families); interval is 2-sigma across the
@@ -27,8 +27,8 @@ import numpy as np
 import pandas as pd
 
 HERE = Path(__file__).resolve().parent
-CMIP6_CSV = '/glade/derecho/scratch/jrotondo/siaf_cmip6_summary_final.csv'
-OBS_CSV = '/glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_pixelwise_summary.csv'
+CMIP6_CSV = HERE/'siaf_cmip6_summary_final.csv'
+OBS_CSV = HERE/'siaf_pixelwise_summary.csv'
 MIN_MEMBERS = 3
 
 FAMILY = {**{m: 'CESM2' for m in ['CESM2', 'CESM2-WACCM', 'CESM2-FV2', 'CESM2-WACCM-FV2']},
@@ -51,9 +51,8 @@ FAMILY = {**{m: 'CESM2' for m in ['CESM2', 'CESM2-WACCM', 'CESM2-FV2', 'CESM2-WA
           **{m: 'ACCESS' for m in ['ACCESS-CM2', 'ACCESS-ESM1-5']},
           **{m: 'GISS' for m in ['GISS-E2-1-H', 'GISS-E2-1-G']}}
 
-U = pd.read_csv(HERE / 'uncertainty_is.csv')
-IS_2S_MODEL = float(U[(U.method == 'Common MMM trend') & (U.block_years == 3) &
-                      (U.component == 'total')].two_sigma_IS.iloc[0])
+U = pd.read_csv(HERE.parent/'analysis_data/observed_uncertainty_20261125/observed_minus_MMM_consistent_widths.csv')
+IS_2S_MODEL = float(U.query("metric=='full_IS' and component=='total'").block3_2sigma.iloc[0])
 
 O = pd.read_csv(OBS_CSV)
 rows = []
@@ -67,7 +66,7 @@ for method, label in (('CERES', 'CERES-APRP'), ('Kernel', 'ERA5 kernel')):
                      rs_arctic_Wm2=float(r.RS_arctic), rs_arctic_2sigma_Wm2=float(r.sigma2_RS_arctic),
                      rs_interval=RS_INTERVAL[method],
                      is_tot_arctic_perK=float(r.IS_tot_arctic), is_tot_arctic_2sigma_perK=IS_2S_MODEL,
-                     is_interval='model-based 2 sigma (gray band)'))
+                     is_interval='observed residual-based 2 sigma (gray band)'))
 
 df = pd.read_csv(CMIP6_CSV)
 df = df[df.rs_method == 'full_T07'].copy()

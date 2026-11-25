@@ -1,4 +1,4 @@
 element,rs_method,rs_arctic_Wm2,rs_arctic_2sigma_Wm2,rs_interval,is_tot_arctic_perK,is_tot_arctic_2sigma_perK,is_interval
-Observed,CERES-APRP,150.5187,0.9936,pairs-bootstrap 2 sigma,0.0824,0.0185123094660022,model-based 2 sigma (gray band)
-Observed,ERA5 kernel,163.6363,0.0,"none: fixed climatological field, no bootstrap uncertainty",0.0824,0.0185123094660022,model-based 2 sigma (gray band)
+Observed,CERES-APRP,147.6964,0.8936,pairs-bootstrap 2 sigma,0.0817,0.0184955359883705,observed residual-based 2 sigma (gray band)
+Observed,ERA5 kernel,165.798,0.0,"none: fixed climatological field, no bootstrap uncertainty",0.0817,0.0184955359883705,observed residual-based 2 sigma (gray band)
 Family-weighted multi-model mean,"CMIP6 (378 members, 31 models, 18 families)",151.9541514701087,38.024391524716265,2 sigma across the 18 family means,0.05487112345081519,0.02904442737300338,2 sigma across the 18 family means

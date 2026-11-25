@@ -1,7 +1,8 @@
+from pathlib import Path
 """Threshold sensitivity: dot-and-interval plots, exact saved 2-sigma widths."""
 import numpy as np,pandas as pd,matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-D=pd.read_csv('/glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_pixelwise_summary.csv')
+D=pd.read_csv(Path(__file__).resolve().parent/'siaf_pixelwise_summary.csv')
 plt.rcParams.update({'font.size':11.2,'pdf.fonttype':42})
 fig,axs=plt.subplots(4,2,figsize=(7.2,9),gridspec_kw={'width_ratios':[1.5,1]},layout='constrained')
 for j,(period,method,title) in enumerate([('CMIP6','CERES','1982–2014 · CERES APRP'),('CMIP6','Kernel','1982–2014 · ERA5 kernel'),('Obs-era','CERES','1982–2024 · CERES APRP'),('Obs-era','Kernel','1982–2024 · ERA5 kernel')]):

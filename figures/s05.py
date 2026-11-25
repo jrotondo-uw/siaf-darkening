@@ -1,3 +1,4 @@
+from pathlib import Path
 #!/usr/bin/env python
 """
 Supplementary Fig. 5 (was Extended Data Fig. 6) and Supplementary Table 5.
@@ -16,9 +17,9 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 
-CMIP6_CSV = '/glade/derecho/scratch/jrotondo/siaf_cmip6_summary_final.csv'
-OBS_CSV   = '/glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_pixelwise_summary.csv'
-OUT_DIR   = '/glade/derecho/scratch/jrotondo/paper_revision_20261024/figures'
+CMIP6_CSV = str(Path(__file__).resolve().parent / 'siaf_cmip6_summary_final.csv')
+OBS_CSV   = str(Path(__file__).resolve().parent / 'siaf_pixelwise_summary.csv')
+OUT_DIR   = str(Path(__file__).resolve().parent / 'figures')
 os.makedirs(OUT_DIR, exist_ok=True)
 
 MIN_MEMBERS = 5
@@ -58,8 +59,8 @@ OBS = {
 }
 
 
-unc=pd.read_csv(os.path.join(os.path.dirname(__file__),'uncertainty.csv')).query("method == 'Common MMM trend' and block_years == 3").set_index('component')
-OBS={k:(v[0],float(unc.loc[{'area':'area_loss','drk':'darkening','tot':'total'}[k],'joint_2sigma'])/2) for k,v in OBS.items()}
+unc=pd.read_csv(os.path.join(os.path.dirname(__file__),'observed_uncertainty.csv')).query("block_years == 3").set_index('component')
+OBS={k:(v[0],float(unc.loc[{'area':'area_loss','drk':'darkening','tot':'total'}[k],'halfwidth_2sigma'])/2) for k,v in OBS.items()}
 
 def norm(x, mu, sd):
     sd = max(float(sd), 1e-6)
@@ -139,7 +140,7 @@ handles = [Line2D([0], [0], color=COL_UW,  ls='--', lw=2.2, label='Unweighted en
            Line2D([0], [0], color=COL_BMA, lw=2.6, label='BMA-weighted ensemble'),
            Line2D([0], [0], color=COL_VC,  lw=2.2, label='Variance-constrained'),
            Patch(facecolor=COL_OBS, alpha=0.34, edgecolor=COL_OBS,
-                 label='Observed center, model-based 2$\\sigma$')]
+                 label='Observed center, residual-based 2$\\sigma$')]
 handles += [Line2D([0], [0], color=CMAP[m], lw=2.0,
                    label=f'{m} (w={wmap[m]:.3f})') for m in keep]
 fig.legend(handles=handles, loc='upper center', bbox_to_anchor=(0.5, 0.02),

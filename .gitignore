@@ -36,3 +36,20 @@ backups/
 # Inputs to Supplementary Figure 3 (read by s03.py and compute_leakage_flux.py)
 !figures/leakage_budget.csv
 !figures/leakage_flux.csv
+
+# Curated, reproducible derived inputs for the November 25 weighting revision.
+!analysis_data/weighting_revision_20261125/*.csv
+!analysis_data/weighting_revision_20261125/*.npz
+!analysis_data/observed_uncertainty_20261125/*.csv
+!figures/observed_uncertainty.csv
+!figures/uncertainty_is.csv
+!figures/siaf_pixelwise_summary.csv
+!figures/siaf_pixelwise_summary_monthly.csv
+!figures/siaf_cmip6_summary_final.csv
+!figures/sie_df_common.pkl
+!figures/obs_sie_by_month.pkl
+
+# Regenerated local rendering and verification output
+/figures/figures/
+/figures/Figures/
+/output/

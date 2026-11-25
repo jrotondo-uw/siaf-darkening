@@ -22,10 +22,10 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.lines import Line2D
 
-CMIP6_CSV = '/glade/derecho/scratch/jrotondo/siaf_cmip6_summary_final.csv'
-OBS_CSV   = '/glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_pixelwise_summary.csv'
-BOOT_NPZ  = '/glade/derecho/scratch/jrotondo/rev_out/fig1_bootstrap_replicates.npz'
-OUT_DIR   = '/glade/derecho/scratch/jrotondo/paper_revision_20261024/figures'
+CMIP6_CSV = str(Path(__file__).resolve().parent / 'siaf_cmip6_summary_final.csv')
+OBS_CSV   = str(Path(__file__).resolve().parent / 'siaf_pixelwise_summary.csv')
+BOOT_NPZ  = '/glade/work/jrotondo/siaf_weight_fix_review_20261125/results/new_pairs_replicates_not_available.npz'
+OUT_DIR   = str(Path(__file__).resolve().parent / 'figures')
 os.makedirs(OUT_DIR, exist_ok=True)
 PLOT_OUT  = os.path.join(OUT_DIR, 'f03.png')
 
@@ -89,9 +89,9 @@ fams = list(fam.index)
 o = pd.read_csv(OBS_CSV)
 o = o[(o.rs_method == 'CERES') & (o.period == 'CMIP6')
       & (np.isclose(o.pval, 0.05))].iloc[0]
-unc=pd.read_csv(Path(__file__).parent/'uncertainty.csv').query("method == 'Common MMM trend' and block_years == 3").set_index('component')
+unc=pd.read_csv(Path(__file__).parent/'observed_uncertainty.csv').query("block_years == 3").set_index('component')
 obs = dict(tot=float(o.SIAF_tot_global), ext=float(o.SIAF_ext_global),
-           drk=float(o.SIAF_drk_global), err=float(unc.loc['total','joint_2sigma']),
+           drk=float(o.SIAF_drk_global), err=float(unc.loc['total','halfwidth_2sigma']),
            ext_loc=float(o.SIAF_ext_per_area) / SCALE,
            drk_loc=float(o.SIAF_drk_per_area) / SCALE,
            ext_loc_e=float(o.sigma2_ext_per_area) / SCALE,
@@ -174,7 +174,7 @@ ax.legend(handles=[mpatches.Patch(facecolor=COL_EXT, label=r'SIAF$_{\mathrm{area
                    Line2D([0], [0], marker='o', color='none',
                           markerfacecolor=COL_PT, markeredgecolor='none',
                           markersize=5, alpha=0.6,
-                          label='Individual members / bootstrap replicates')],
+                          label='Individual model members')],
           loc='lower left', bbox_to_anchor=(0, 1.01), ncol=2,
           framealpha=0.92, frameon=False)
 

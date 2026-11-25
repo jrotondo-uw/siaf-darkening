@@ -1,3 +1,4 @@
+from pathlib import Path
 #!/usr/bin/env python
 """
 Extended Data — SIE bias vs SIAF structure, family-grouped.
@@ -19,13 +20,13 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import scipy.stats as stats
 
-PLOT_DIR  = '/glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/sie_comparison/'
+PLOT_DIR  = str(Path(__file__).resolve().parent / 'figures/sie_comparison')
 CACHE_DIR = os.path.join(PLOT_DIR, 'cache')
 OUT_DIR   = os.path.join(PLOT_DIR, 'family')
 os.makedirs(OUT_DIR, exist_ok=True)
 
-CMIP6_SIAF_CSV = '/glade/derecho/scratch/jrotondo/siaf_cmip6_summary_final.csv'
-OBS_SIAF_CSV   = ('/glade/work/jrotondo/ncc_paper/plots/sensitivity/'
+CMIP6_SIAF_CSV = str(Path(__file__).resolve().parent / 'siaf_cmip6_summary_final.csv')
+OBS_SIAF_CSV   = ('/glade/work/jrotondo/siaf_weight_fix_review_20261125/results/'
                   'siaf_pixelwise_summary.csv')
 SIE_PKL        = '/glade/derecho/scratch/jrotondo/sie_df_common.pkl'   # CHANGED
 

@@ -4,6 +4,8 @@ Analysis code for *"Darkening of surviving Arctic sea ice contributes one third 
 
 The sea ice albedo feedback (SIAF) is decomposed into two spatially distinct components — loss of ice **area**, and **darkening** of ice that persists — and compared against 378 CMIP6 historical ensemble members. SIAF is computed as the product of an ice sensitivity (IS, the change in surface albedo per degree of global warming) and a radiative sensitivity (RS, the top-of-atmosphere flux response per unit albedo change).
 
+See [the November 25 revision notes](REVISION_20261125.md) for the corrected observational weighting, primary residual uncertainty, source-data coverage, and local reproduction commands.
+
 ## Layout
 
 ```
@@ -93,7 +95,7 @@ Contains collocation algorithms, nearest-neighbor fallback logic, and Lin's Conc
 
 ## Data Inputs
 
-All observational and model datasets are publicly available from their respective archives:
+The satellite and model inputs are available from the archives listed below. Individual Raven/SLEIGH observations and matchup pairs are not redistributed; access is available upon request to the data providers, subject to permission. Public figure-level validation summary statistics are retained. Tara QA-treated data retain their documented DAMOCLES provenance and redistribution permission in `validation/tara_surface_flux/README_broadband.md`.
 - **CLARA-A3 SAL**: EUMETSAT CM SAF (DOI: 10.5676/EUM_SAF_CM/CLARA_AVHRR/V003)
 - **APP-x**: NOAA NCEI (CDR Version 2.0)
 - **Sea ice concentration**: NOAA/NSIDC Climate Data Record Version 6 (G02202)

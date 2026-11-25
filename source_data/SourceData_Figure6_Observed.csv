@@ -1,0 +1,4 @@
+component,obs_center,obs_2sigma,interval_method,local_center,local_2sigma,local_interval_method
+total,0.209822,0.0537936108477549,"observed-minus-MMM residual, 3-year block resampling, 2 sigma",,,
+area_loss,0.138269,0.0318321980322539,"observed-minus-MMM residual, 3-year block resampling, 2 sigma",32.688126801152734,3.417348703170029,"observational pairs bootstrap, 1000 replicates, 2 sigma; sampling diagnostic"
+darkening,0.071553,0.0255494134567264,"observed-minus-MMM residual, 3-year block resampling, 2 sigma",14.70991354466859,2.2065706051873195,"observational pairs bootstrap, 1000 replicates, 2 sigma; sampling diagnostic"

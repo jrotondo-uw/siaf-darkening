@@ -1,0 +1,182 @@
+[
+  {
+    "file": "SourceData_Figure1.csv",
+    "rows": 43,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "c651667297246e316b81982340d9395d6f2d47f986f1b541c1a1320c4a861a60"
+  },
+  {
+    "file": "SourceData_Figure2.csv",
+    "rows": 4,
+    "revision": "Historical primary residual intervals; 1982\u20132024 sampling diagnostic; full observed centers and shares",
+    "sha256": "e4f1da99d2629cdf2b4fe9fbfce0e78e16d97af3b89692a33e5335c2738b6a3f"
+  },
+  {
+    "file": "SourceData_Figure3.csv",
+    "rows": 72,
+    "revision": "Corrected monthly observed summaries; divide by six for contribution to annual feedback",
+    "sha256": "f4d3fee11a253f6ea40223d34af6701570c853923b11438ac1b7854346b3bdfa"
+  },
+  {
+    "file": "SourceData_Figure4.csv",
+    "rows": 12,
+    "revision": "Corrected scalar summary supporting all observational panels",
+    "sha256": "5f2cc76740f81934f8177f493484d996eaedb2e2b34b27cfd29fc12473e8ca7a"
+  },
+  {
+    "file": "SourceData_Figure4_maps.csv",
+    "rows": 27027,
+    "revision": "Both radiative methods; 27027 grid cells; no display gap filling; map sampling interval",
+    "sha256": "c154a3c00a21a9f69de695438d57ed6f14f4478b22801cb1331014e658d3e63d"
+  },
+  {
+    "file": "SourceData_Figure5.csv",
+    "rows": 19,
+    "revision": "18 family means and corrected observed point; residual interval",
+    "sha256": "1fc415b9cb01944f0c9b3ab6f735cb51c0509b6b43d765211db3407d71135935"
+  },
+  {
+    "file": "SourceData_Figure5_cd.csv",
+    "rows": 12,
+    "revision": "Monthly native-grid observations and model summaries; own residual intervals",
+    "sha256": "2df312fd4efdc36905140580ff1e9500c3556a9333e32f7bb8cc205ff4d601af"
+  },
+  {
+    "file": "SourceData_Figure5_cd_models.csv",
+    "rows": 369,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "135a6aa89fbf949082e703d46574a5f600facf044b03f4e4599974631707ea7e"
+  },
+  {
+    "file": "SourceData_Figure6.csv",
+    "rows": 394,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "02b45f932b2dd6c8b8e6aaa36bac66c50d5d5f4f470ff2408987f256a7755231"
+  },
+  {
+    "file": "SourceData_Figure6_Observed.csv",
+    "rows": 3,
+    "revision": "Added companion: observed global bars/residual intervals and local bars/sampling intervals",
+    "sha256": "063d75ec90a467ae784c013936c257568bcee7a361392b27277a5db772d976be"
+  },
+  {
+    "file": "SourceData_Figure7.csv",
+    "rows": 394,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "a9ca84185b253004de9761d85307c385f43c484be0ae6b86e926442ea349131f"
+  },
+  {
+    "file": "SourceData_Figure7_Observed.csv",
+    "rows": 3,
+    "revision": "Corrected RS/IS centers; IS residual interval; RS sampling interval",
+    "sha256": "a2ec3e713fc6c3d3044cce2f4b96ce82de59b920e4fdeaa6dd078c1ba8820467"
+  },
+  {
+    "file": "SourceData_Figure8.csv",
+    "rows": 63,
+    "revision": "Updated observation-conditioned BMA weights and observed residual interval",
+    "sha256": "d1aa7c2f191c1bc1e78a9698b36c5bfbde50cfc4b03f42e163a511efcbf5a91f"
+  },
+  {
+    "file": "SourceData_Figure9.csv",
+    "rows": 22,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "872aab8f93fc8d93cc98a189352fa9eb3eca01ba2f7717f9a3386e5beb370b0f"
+  },
+  {
+    "file": "SourceData_Supplementary_DiagnosticConsistency.csv",
+    "rows": 75,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "fb930b00ab342dabbd43a1ae7df338549aa6bc50ef3e98167f269f41f353d039"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure1.csv",
+    "rows": 12,
+    "revision": "Corrected thresholds and component shares, with sampling intervals",
+    "sha256": "9146f789306bfb3d1f4c797a973fa3b49020ae66aaef5f52dbf70b4ff99712b0"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure10.csv",
+    "rows": 4,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "ba5eb93cce37bcc57dbee41a6bd6094d5ba80527cff029ef0c01b8f09e7d8ef4"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure11.csv",
+    "rows": 5455,
+    "revision": "Public validation pairs; 36 Raven/SLEIGH individual pairs excluded",
+    "sha256": "8d825660983020a031fd0ac36bdcea3a66a3a132268455023c0541eb3ee18327"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure2.csv",
+    "rows": 6,
+    "revision": "Fixed0.54 contrast: two regional fractions with different denominators",
+    "sha256": "c0110d4677e10e97d2d4cc984d3b87e143347071fdd5a0cbe37945e0caf20dd5"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure3.csv",
+    "rows": 6,
+    "revision": "Fixed0.54 contrast: absolute annual radiative-change contributions",
+    "sha256": "5325211e9e5f47fc54662124be6b97c0e07e20d9c81c92a02b78c91e0aee51f6"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure4.csv",
+    "rows": 394,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "60cbf44aeefd53a603d6477c2d4d1529c4d28aade4848bf29a8baf0f4e85190a"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure4_Observed.csv",
+    "rows": 1,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "a6a195a6095fe0f6c6072c2e309662cf6a5433295809b7bee6b8dd12b9228c2f"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure5.csv",
+    "rows": 9,
+    "revision": "Updated likelihood-selected model subset and observational reference",
+    "sha256": "57cabbd93b17baa474c67e132733791977667940cf0c4a1faad2535857fca259"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure6.csv",
+    "rows": 24,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "765a729fed4f24681c12eb94790b534ff2fb180050bc531060bc201f247464a8"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure7.csv",
+    "rows": 12,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "313a7eba076a9a1d6a982ca8e8739e7539b6a062ad0b13380d2afab0e251e9b4"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure7_maps.csv",
+    "rows": 21928,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "9a4835a6a363f49afa12dda381bfe6194df4db74661fb6f78aa6b9a69382ceca"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure8.csv",
+    "rows": 12,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "59e0b85493ac78c6c0536f217670344d3a09f7d625c20e9c1cad4dc00bf7ba48"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure8_maps.csv",
+    "rows": 19332,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "33fa5817e8956fe6c13920ba72e5722d7777da2768ba89183987411ffdc12d4f"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure9.csv",
+    "rows": 12,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "b81dfefeefb20c0fe8d1fca67823f1b966cb36ba2d40b97f8de866fb274eea3d"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure9_maps.csv",
+    "rows": 14162,
+    "revision": "Unchanged values; existing model, mask, extent, or validation data",
+    "sha256": "9468cd22ce4d26ea21064380326cb28488733706a0acc885670fd52d664c2a56"
+  }
+]

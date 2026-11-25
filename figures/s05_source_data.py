@@ -5,7 +5,7 @@ s05.py draws the CMIP6 models whose total-SIAF BMA weight in the 21-model pool
 (full_T07, at least five members) is at or above the pool's 90th percentile:
 one Gaussian per model (member mean and member spread), the unweighted,
 BMA-weighted and variance-constrained mixtures of those Gaussians, and the
-observed center with its model-based uncertainty. This script writes those
+observed center with its observed residual-based uncertainty. This script writes those
 plotted quantities, one row per component and model, with s05.py's own
 selection and weighting.
 
@@ -21,7 +21,7 @@ Columns
   subset_weight           BMA weight within the subset for this component, as
                           used by the BMA-weighted curve
   obs_center, obs_2sigma  observed SIAF (CERES-APRP, 1982-2014, p < 0.05) and
-                          its model-based 2-sigma; the plotted observed
+                          its observed residual-based 2-sigma; the plotted observed
                           Gaussian has scale obs_2sigma / 2
 
 Inputs are byte-identical copies of the files s05.py reads:
@@ -50,9 +50,9 @@ d = d[d.model.isin(cnt[cnt >= MIN_MEMBERS].index)]
 
 o = pd.read_csv(SD / 'SourceData_Figure4.csv')
 o = o[(o.rs_method == 'CERES') & (o.period == 'CMIP6') & np.isclose(o.pval, 0.05)].iloc[0]
-u = (pd.read_csv(HERE / 'uncertainty.csv')
-     .query("method == 'Common MMM trend' and block_years == 3").set_index('component'))
-OBS = {k: (float(o[OBSCOL[k]]), float(u.loc[UNC[k], 'joint_2sigma'])) for k in COLS}
+u = (pd.read_csv(HERE / 'observed_uncertainty.csv')
+     .query("block_years == 3").set_index('component'))
+OBS = {k: (float(o[OBSCOL[k]]), float(u.loc[UNC[k], 'halfwidth_2sigma'])) for k in COLS}
 
 
 def norm(x, mu, sd):

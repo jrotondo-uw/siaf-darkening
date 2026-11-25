@@ -48,26 +48,24 @@ from netCDF4 import Dataset as NC4Dataset
 # ============================================================
 # CONFIG
 # ============================================================
-DIR_SIAL    = '/glade/derecho/scratch/jrotondo/clara_a3_obs/'
-DIR_APPX    = '/glade/derecho/scratch/jrotondo/APP-x_observations/'
-DIR_SIC     = '/glade/derecho/scratch/jrotondo/SIC_data/'
-CACHE_CMIP6 = '/glade/work/jrotondo/ncc_paper/sensitivity_cache_cmip6/'
-CACHE_OBS   = '/glade/work/jrotondo/ncc_paper/sensitivity_cache_obs/'
-CERES_FILE  = ('/glade/derecho/scratch/jrotondo/ceres_data_updated/'
-               'CERES_EBAF_Ed4.2.1_Subset_200003-202512.nc')
-KERNEL_FILE = '/glade/work/jrotondo/ncc_paper/kernels/ERA5_kernel_alb_SFC.nc'
+DIR_SIAL = os.environ.get('SIAF_DIR_SIAL', '/glade/derecho/scratch/jrotondo/clara_a3_obs/')
+DIR_APPX = os.environ.get('SIAF_DIR_APPX', '/glade/derecho/scratch/jrotondo/APP-x_observations/')
+DIR_SIC = os.environ.get('SIAF_DIR_SIC', '/glade/derecho/scratch/jrotondo/SIC_data/')
+CACHE_CMIP6 = os.environ.get('SIAF_CACHE_CMIP6', '/glade/work/jrotondo/ncc_paper/sensitivity_cache_cmip6/')
+CACHE_OBS = os.environ.get('SIAF_CACHE_OBS', '/glade/work/jrotondo/ncc_paper/sensitivity_cache_obs/')
+CERES_FILE = os.environ.get('SIAF_CERES_FILE', '/glade/derecho/scratch/jrotondo/ceres_data_updated/CERES_EBAF_Ed4.2.1_Subset_200003-202512.nc')
+KERNEL_FILE = os.environ.get('SIAF_KERNEL_FILE', '/glade/work/jrotondo/ncc_paper/kernels/ERA5_kernel_alb_SFC.nc')
 KERNEL_VAR  = 'SFC_all'
 KERNEL_SCALE = 100.0
-OUT_DIR     = '/glade/work/jrotondo/ncc_paper/plots/sensitivity/'
+OUT_DIR = os.environ.get('SIAF_OUT_DIR', os.path.abspath('output/observational_weighting'))
 OUT_CSV     = os.path.join(OUT_DIR, 'siaf_pixelwise_summary.csv')
 PLOT_OUT    = os.path.join(OUT_DIR, 'siaf_pixelwise_p{pval}.png')
 os.makedirs(OUT_DIR, exist_ok=True)
 
-GISTEMP_PATH   = '/glade/work/jrotondo/gistemp_global.csv'
-COWTANWAY_PATH = '/glade/work/jrotondo/cowtan_way.txt'
-NCEP_PATH      = '/glade/work/jrotondo/ncep_air_sig995.nc'
-ERA5_GLOB      = ('/glade/campaign/collections/rda/data/d633001/e5.moda.an.sfc/'
-                  '*/e5.moda.an.sfc.128_167_2t.ll025sc.*.nc')
+GISTEMP_PATH = os.environ.get('SIAF_GISTEMP_PATH', '/glade/work/jrotondo/gistemp_global.csv')
+COWTANWAY_PATH = os.environ.get('SIAF_COWTANWAY_PATH', '/glade/work/jrotondo/cowtan_way.txt')
+NCEP_PATH = os.environ.get('SIAF_NCEP_PATH', '/glade/work/jrotondo/ncep_air_sig995.nc')
+ERA5_GLOB = os.environ.get('SIAF_ERA5_GLOB', '/glade/campaign/collections/rda/data/d633001/e5.moda.an.sfc/*/e5.moda.an.sfc.128_167_2t.ll025sc.*.nc')
 
 PSN25_PROJ4 = ('+proj=stere +lat_0=90 +lat_ts=70 +lon_0=-45 +k=1 '
                '+x_0=0 +y_0=0 +a=6378273 +b=6356889.449 +units=m +no_defs')
@@ -217,7 +215,7 @@ def regrid_sial_to_psn(arr, fill_zero=True):
     src = (np.where(ARCTIC_SIAL,
                     np.where(np.isfinite(arr), arr, np.float32(0.)), np.nan)
            if fill_zero else arr)
-    return scatter_avg(src.ravel().astype(np.float32), IDX_SIAL_TO_PSN, PSN_SHAPE)
+    return src.ravel().astype(np.float32)[IDX_SIAL_TO_PSN].reshape(PSN_SHAPE)
 
 def domain_mean(field_psn):
     """Area-weighted mean over DOMAIN_PSN, NaN pixels excluded."""
@@ -414,9 +412,9 @@ def load_kernel_psn(mn):
         k_lon2d, k_lat2d = np.meshgrid(k_lon, k_lat)
         k_raw = ds[vname].isel({tdim: mn-1}).values.astype(np.float32)
     k_raw = np.abs(k_raw) * KERNEL_SCALE
-    idx_k = build_scatter_index(k_lat2d.ravel(), k_lon2d.ravel(),
+    idx_k = build_nn_index(k_lat2d.ravel(), k_lon2d.ravel(),
                                  PSN_LAT.ravel(), PSN_LON.ravel())
-    return scatter_avg(k_raw.ravel(), idx_k, PSN_SHAPE)
+    return k_raw.ravel()[idx_k].reshape(PSN_SHAPE)
 
 # ============================================================
 # IS COMPUTATION
@@ -583,17 +581,19 @@ try:
     from global_land_mask import globe as _globe
     lp = np.where(PSN_LON > 180, PSN_LON - 360, PSN_LON)
     DOMAIN_PSN = (PSN_LAT >= 60.) & _globe.is_ocean(PSN_LAT, lp)
-except ImportError:
-    DOMAIN_PSN = (PSN_LAT >= 60.)
-    print('  WARNING: global-land-mask not available; land not excluded.')
+except ImportError as exc:
+    raise RuntimeError('Ocean mask is required for review calculations') from exc
 
+assert DOMAIN_PSN.sum() == 27027, 'Unexpected ocean domain'
 print(f'  PSN25 domain: {DOMAIN_PSN.sum():,} ocean pixels >= 60N')
 
 print('  Building SIAL -> PSN25 index ...')
-IDX_SIAL_TO_PSN  = build_scatter_index(
-    SIAL_LAT.ravel(), SIAL_LON.ravel(),
-    PSN_LAT.ravel(),  PSN_LON.ravel())
+# Restrict source centers to the declared Arctic support before target lookup.
+SIAL_SOURCE = np.flatnonzero(ARCTIC_SIAL.ravel())
+IDX_SIAL_TO_PSN = SIAL_SOURCE[build_nn_index(
+    SIAL_LAT.ravel()[SIAL_SOURCE], SIAL_LON.ravel()[SIAL_SOURCE],
+    PSN_LAT.ravel(), PSN_LON.ravel())]
 print('  Building CERES -> PSN25 index ...')
-IDX_CERES_TO_PSN = build_scatter_index(
+IDX_CERES_TO_PSN = build_nn_index(
     CERES_LAT.ravel(), CERES_LON.ravel(),
     PSN_LAT.ravel(),   PSN_LON.ravel())

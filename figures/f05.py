@@ -27,7 +27,7 @@ scratch:
 
 Conventions.  Every interval is written as sigma, never "s.d.".  Model spread
 in c-d is +/-2 sigma across models, matching the manuscript caption; the
-observational interval is 2 sigma from the CMIP6 paired block resampling,
+observational interval is 2 sigma from observed-minus-MMM residual block resampling,
 pooled member -> model -> family as in that run's summarize.py.
 """
 from pathlib import Path
@@ -80,7 +80,7 @@ for i, ax in enumerate(axes[0]):
     sl, b = np.polyfit(fam[k], fam.siaf, 1)
     xr = np.linspace(fam[k].min(), fam[k].max(), 100)
     ax.plot(xr, sl * xr + b, color=MOD_C, ls='--', lw=1.2)
-    ax.errorbar(ox, OBS_TOT, yerr=.04384, fmt='*', color=OBS_C, markersize=15,
+    ax.errorbar(ox, OBS_TOT, yerr=np.float64(0.0537936108477549), fmt='*', color=OBS_C, markersize=15,
                 capsize=4, label='Observed, 1982–2014', zorder=4)
     ax.text(.04, .95, f'r = {r:.2f}\np = {p:.3f}'.replace('-', '\u2212'),
             va='top', transform=ax.transAxes)
@@ -138,5 +138,5 @@ for ext in ('pdf', 'png'):
 chk = cd[(cd.region == 'darkening') & (cd.month == 'May')].iloc[0]
 s5 = float(sig[(sig.region == 'darkening') & (sig.month == 5)].halfwidth_2sigma.iloc[0])
 print(f'May darkening: obs {chk.observed:.4f} +/- {s5:.4f}, model {chk.model_mean:.4f} '
-      f'-> paper says 0.075 and 0.024 (direct -dalpha/dT, no SIC-sigma filter)')
+      f'(direct -dalpha/dT, 1982–2014, corrected spatial weighting)')
 print('wrote', OUT / 'f05.png')

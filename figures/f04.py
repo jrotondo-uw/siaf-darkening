@@ -1,6 +1,7 @@
+from pathlib import Path
 #!/usr/bin/env python
 """
-plot_siaf_spatial_both.py  (updated: fontsize=18, non-overlapping colorbars)
+plot_siaf_spatial_both.py  (updated: fontsize=37.3, non-overlapping colorbars)
 """
 
 import numpy as np
@@ -13,12 +14,12 @@ import os
 from scipy.interpolate import griddata
 
 matplotlib.rcParams.update({
-    'font.size':          18,
-    'axes.titlesize':     18,
-    'axes.labelsize':     18,
-    'xtick.labelsize':    18,
-    'ytick.labelsize':    18,
-    'legend.fontsize':    18,
+    'font.size':          37.3,
+    'axes.titlesize':     44.8,
+    'axes.labelsize':     37.3,
+    'xtick.labelsize':    37.3,
+    'ytick.labelsize':    37.3,
+    'legend.fontsize':    37.3,
     'figure.titlesize':   18,
 })
 
@@ -33,7 +34,7 @@ except ImportError:
 from pyproj import Transformer
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
-OUT_DIR   = '/glade/work/jrotondo/ncc_paper/plots/sensitivity/'
+OUT_DIR   = str(Path(__file__).resolve().parent.parent/'analysis_data/weighting_revision_20261125')
 NPZ_CERES = os.path.join(OUT_DIR, 'siaf_spatial_boot_ceres.npz')
 NPZ_HUANG = os.path.join(OUT_DIR, 'siaf_spatial_boot_huang.npz')
 PLOT_STEM = os.path.join(OUT_DIR, 'siaf_spatial_both')
@@ -65,15 +66,8 @@ psn_y      = psn_yy[:, 0]
 
 # ── REPAIR SPARSE ARTIFACTS ───────────────────────────────────────────────────
 def fill_sparse_map(arr, domain_mask):
-    valid = ~np.isnan(arr) & domain_mask
-    if not valid.any():
-        return arr
-    y_v, x_v = np.where(valid)
-    y_q, x_q = np.where(domain_mask)
-    filled    = griddata((y_v, x_v), arr[valid], (y_q, x_q), method='nearest')
-    out       = np.full_like(arr, np.nan)
-    out[y_q, x_q] = filled
-    return out
+    assert np.isfinite(arr[domain_mask]).all(), 'Unexpected holes; refusing display filling'
+    return np.where(domain_mask,arr,np.nan)
 
 # ── CARTOPY / IMSHOW HELPERS ──────────────────────────────────────────────────
 def make_psn_crs():
@@ -155,7 +149,7 @@ def make_figure(c_maps, h_maps, period, pval_str, out_path):
         3, 8, figure=fig,
         left=0.05, right=0.96, top=0.93, bottom=0.03,
         hspace=0.06, wspace=0.04,
-        width_ratios=[1, 1, 0.04, 0.06, 0.12, 1, 0.04, 0.06])
+        width_ratios=[1, 1, 0.05, 0.06, 0.26, 1, 0.05, 0.06])
     #                m1 m2  pd1   cb1   pd2   m3  pd3   cb2
     # cols:          0  1   2     3     4     5   6     7
 
@@ -177,32 +171,32 @@ def make_figure(c_maps, h_maps, period, pval_str, out_path):
 
         ax_c.text(-0.11, 0.5, row_label,
                   transform=ax_c.transAxes,
-                  fontsize=18, fontweight='bold', color=accent,
+                  fontsize=37.3, fontweight='bold', color=accent,
                   va='center', ha='right',
                   rotation=90, rotation_mode='anchor')
 
         if row == 0:
-            ax_c.set_title('CERES APRP\n(Donohoe et al., 2020)',
-                           fontsize=18, fontweight='bold', pad=10)
-            ax_h.set_title('ERA5 Radiative Kernel\n(Huang & Huang, 2023)',
-                           fontsize=18, fontweight='bold', pad=10)
+            ax_c.set_title('CERES APRP',
+                           fontsize=37.3, fontweight='bold', pad=10)
+            ax_h.set_title('ERA5 radiative kernel',
+                           fontsize=37.3, fontweight='bold', pad=10)
             ax_sig.set_title('Avg 2σ bootstrap\nuncertainty',
-                             fontsize=18, fontweight='bold', pad=10)
+                             fontsize=37.3, fontweight='bold', pad=10)
 
     # Colorbars mapped to the correct columns
     cb_val = fig.colorbar(last_im_val, cax=fig.add_subplot(gs[:, 3]))
     cb_sig = fig.colorbar(last_im_sig, cax=fig.add_subplot(gs[:, 7])) # Shifted to col 7
-    cb_val.set_label('W m⁻² K⁻¹', fontsize=18, labelpad=10)
-    cb_sig.set_label('W m⁻² K⁻¹', fontsize=18, labelpad=10)
-    cb_val.ax.tick_params(labelsize=18)
-    cb_sig.ax.tick_params(labelsize=18)
+    cb_val.set_label('W m⁻² K⁻¹', fontsize=37.3, labelpad=42)
+    cb_sig.set_label('W m⁻² K⁻¹', fontsize=37.3, labelpad=42)
+    cb_val.ax.tick_params(labelsize=37.3)
+    cb_sig.ax.tick_params(labelsize=37.3)
 
     clean_pval = pval_str.lstrip('0') or '0'
     '''fig.suptitle(
         f'SIAF Spatial Maps  |  {period}  |  p < 0.{clean_pval}\n'
         'Left: CERES     Center: ERA5 Kernel     '
         'Right: Avg 2σ = (σ_CERES + σ_Huang) / 2',
-        fontsize=18, fontweight='bold', y=0.965)'''
+        fontsize=37.3, fontweight='bold', y=0.965)'''
 
     fig.savefig(out_path, dpi=300, bbox_inches='tight',
                 facecolor=fig.get_facecolor())
@@ -218,7 +212,7 @@ for key in ceres_npz.files:
 print(f"\nFound {len(prefixes)} period/pval combination(s).")
 
 for prefix in sorted(prefixes):
-    if not prefix.startswith('Obs-era_'): continue
+    if not prefix.startswith('Obs-era_') or not np.isclose(float(prefix.split('_')[1]),0.05): continue
     parts  = prefix.split('_')
     period = parts[0]
     pval_s = parts[1]

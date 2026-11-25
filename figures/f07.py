@@ -1,3 +1,4 @@
+from pathlib import Path
 #!/usr/bin/env python
 """
 Figure 7 — IS vs RS for the expanded ensemble.
@@ -22,9 +23,9 @@ matplotlib.rcParams.update({
     'legend.fontsize': 17.1,
 })
 
-CMIP6_CSV = '/glade/derecho/scratch/jrotondo/siaf_cmip6_summary_final.csv'
-OBS_CSV   = '/glade/work/jrotondo/ncc_paper/plots/sensitivity/siaf_pixelwise_summary.csv'
-PLOT_OUT  = '/glade/work/jrotondo/ncc_paper/plots/cmip6_pistone_only/f04_family.png'
+CMIP6_CSV = str(Path(__file__).resolve().parent / 'siaf_cmip6_summary_final.csv')
+OBS_CSV   = str(Path(__file__).resolve().parent / 'siaf_pixelwise_summary.csv')
+PLOT_OUT  = str(Path(__file__).resolve().parent / 'figures/f04_family.png')
 MIN_MEMBERS = 3
 
 FAMILY = {**{m:'CESM2' for m in ['CESM2','CESM2-WACCM','CESM2-FV2','CESM2-WACCM-FV2']},
@@ -60,12 +61,10 @@ OBS_STYLE = {
 
 
 # 24 Nov 2026: the observed IS interval (gray band and the vertical bars on both
-# observational points) is the model-based 2-sigma from uncertainty_is.csv (is_boot.py:
+# observational points) is the residual-based 2-sigma from uncertainty_is.csv (is_boot.py:
 # the SIAF model-based procedure without radiative weighting), not the pairs bootstrap.
 # The CERES-APRP RS interval is still the bootstrap 2-sigma.
-_U = pd.read_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uncertainty_is.csv'))
-IS_2S_MODEL = float(_U[(_U.method == 'Common MMM trend') & (_U.block_years == 3) &
-                       (_U.component == 'total')].two_sigma_IS.iloc[0])
+IS_2S_MODEL = np.float64(0.0184955359883705)  # Observed-minus-MMM residual 2 SD; fixed temperature.
 
 
 def load_obs(df_obs, method):

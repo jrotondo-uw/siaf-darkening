@@ -9,7 +9,7 @@ CMIP6 family (kind = family) and one row for the observations (kind = observed):
   sie_1982_1991_1e6km2       1982-1991 sea ice extent, panel b x axis (10^6 km2)
   siaf_total                 total SIAF, y axis of both panels (W m-2 K-1)
   *_2sigma                   the error bars drawn: 2 sigma across a family's members,
-                             and for the observed total the model-based 2-sigma interval
+                             and for the observed total the observed residual-based 2-sigma interval
 Family values are family means of model means, as plotted.
 The inputs (sie_aggregation_source.py, sie_df_common.pkl, obs_sie_by_month.pkl,
 siaf_pixelwise_summary.csv, siaf_cmip6_summary_final.csv) are read from the folder
@@ -22,8 +22,7 @@ import pandas as pd
 
 HERE = Path(__file__).resolve().parent
 R = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else HERE
-OBS_2SIGMA = 0.04384      # the observed interval f05.py draws (model-based 2 sigma)
-assert 'yerr=.04384' in (HERE / 'f05.py').read_text(), 'f05.py no longer draws 0.04384'
+OBS_2SIGMA = float(pd.read_csv(R/'observed_uncertainty.csv').query("component=='total' and block_years==3").halfwidth_2sigma.iloc[0])
 
 src = (R / 'sie_aggregation_source.py').read_text()
 src = src[:src.index('lbls = list(fam.index)')]

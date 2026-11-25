@@ -2,7 +2,7 @@
 """Source data for Figure 4: the gridded SIAF maps and their 2-sigma uncertainty, as plotted.
 
 Reads the same files as f04.py (siaf_spatial_boot_{ceres,huang}.npz; observational
-era 1982-2024, p < 0.05), applies the same nearest-neighbour gap filling inside the
+era 1982-2024, p < 0.05), verifies complete coverage within the
 analysis domain, and writes one row per domain cell of the 25 km NSIDC polar
 stereographic grid to source_data/SourceData_Figure4_maps.csv.
 
@@ -11,13 +11,12 @@ Columns
   lat, lon          cell centre (degrees north, degrees east)
   siaf_<c>_ceres    component <c> with the CERES APRP radiative sensitivity (left column)
   siaf_<c>_era5     component <c> with the ERA5 radiative kernel (centre column)
-  siaf_<c>_2sigma   April-September mean half-width of the bootstrap 2-sigma interval,
+  siaf_<c>_2sigma   2 sigma of the April-September mean from bootstrap draws,
                     averaged over the two radiative-sensitivity methods (right column)
                     <c> is area (area loss, top row), drk (darkening, middle row) or
                     tot (total, bottom row); all in W m-2 K-1
   filled_ceres, filled_era5
-                    True where that method has no estimate of its own for the cell and
-                    f04.py fills it from the nearest cell that has one
+                    False for every cell: corrected fields have complete domain coverage
 """
 import os
 import numpy as np
@@ -26,26 +25,19 @@ from pathlib import Path
 from scipy.interpolate import griddata
 from pyproj import Transformer
 
-OUT_DIR = '/glade/work/jrotondo/ncc_paper/plots/sensitivity/'
+OUT_DIR = str(Path(__file__).resolve().parent.parent/'analysis_data/weighting_revision_20261125')
 NPZ = {'ceres': os.path.join(OUT_DIR, 'siaf_spatial_boot_ceres.npz'),
        'era5': os.path.join(OUT_DIR, 'siaf_spatial_boot_huang.npz')}
-PREFIX = 'Obs-era_005'
+PREFIX = 'Obs-era_0.05'
 PSN25_PROJ4 = ('+proj=stere +lat_0=90 +lat_ts=70 +lon_0=-45 +k=1 '
                '+x_0=0 +y_0=0 +a=6378273 +b=6356889.449 +units=m +no_defs')
 DEST = Path(__file__).resolve().parent.parent / 'source_data' / 'SourceData_Figure4_maps.csv'
 
 
 def fill_sparse_map(arr, domain_mask):
-    """Identical to f04.py."""
-    valid = ~np.isnan(arr) & domain_mask
-    if not valid.any():
-        return arr
-    y_v, x_v = np.where(valid)
-    y_q, x_q = np.where(domain_mask)
-    filled = griddata((y_v, x_v), arr[valid], (y_q, x_q), method='nearest')
-    out = np.full_like(arr, np.nan)
-    out[y_q, x_q] = filled
-    return out
+    """Full-domain corrected field; no display gap filling."""
+    assert np.isfinite(arr[domain_mask]).all()
+    return np.where(domain_mask, arr, np.nan)
 
 
 z = {k: np.load(p) for k, p in NPZ.items()}
