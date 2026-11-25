@@ -25,7 +25,7 @@ Columns
                           Gaussian has scale obs_2sigma / 2
 
 Inputs are byte-identical copies of the files s05.py reads:
-SourceData_Figure5.csv (siaf_cmip6_summary_final.csv), SourceData_Figure4.csv
+SourceData_Figure6.csv (siaf_cmip6_summary_final.csv), SourceData_Figure4.csv
 (siaf_pixelwise_summary.csv) and uncertainty.csv. Output goes to
 ../source_data/ when run from the repository, or to the path given as the
 first argument.
@@ -43,7 +43,7 @@ COLS = {'ext': 'siaf_ext_global', 'drk': 'siaf_drk_global', 'tot': 'siaf_global'
 OBSCOL = {'ext': 'SIAF_ext_global', 'drk': 'SIAF_drk_global', 'tot': 'SIAF_tot_global'}
 UNC = {'ext': 'area_loss', 'drk': 'darkening', 'tot': 'total'}
 
-d = pd.read_csv(SD / 'SourceData_Figure5.csv')
+d = pd.read_csv(SD / 'SourceData_Figure6.csv')
 d = d[d.rs_method == 'full_T07']
 cnt = d.groupby('model').size()
 d = d[d.model.isin(cnt[cnt >= MIN_MEMBERS].index)]
