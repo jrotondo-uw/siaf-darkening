@@ -103,9 +103,9 @@
   },
   {
     "file": "SourceData_Supplementary_Figure11.csv",
-    "rows": 5279,
-    "revision": "Public validation pairs; 176 Tara and36 Raven/SLEIGH individual pairs excluded",
-    "sha256": "875fb1c86d4b9e7877b6f2270f525bca955d2bbb1301328425e227017aa89c28"
+    "rows": 5455,
+    "revision": "Public validation pairs; 36 Raven/SLEIGH individual pairs excluded",
+    "sha256": "8d825660983020a031fd0ac36bdcea3a66a3a132268455023c0541eb3ee18327"
   },
   {
     "file": "SourceData_Supplementary_Figure2.csv",

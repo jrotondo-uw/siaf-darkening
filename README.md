@@ -95,7 +95,7 @@ Contains collocation algorithms, nearest-neighbor fallback logic, and Lin's Conc
 
 ## Data Inputs
 
-The satellite and model inputs are available from the archives listed below. Individual Tara and Raven/SLEIGH observations, coordinates and matchup pairs are not redistributed; access is available upon request to the data providers, subject to permission. Public figure-level validation summary statistics are retained. Tara data provenance and access are described in `validation/tara_surface_flux/README_broadband.md`.
+The satellite and model inputs are available from the archives listed below. Individual Raven/SLEIGH observations and matchup pairs are not redistributed; access is available upon request to the data providers, subject to permission. Public figure-level validation summary statistics are retained. Tara QA-treated data retain their documented DAMOCLES provenance and redistribution permission in `validation/tara_surface_flux/README_broadband.md`.
 - **CLARA-A3 SAL**: EUMETSAT CM SAF (DOI: 10.5676/EUM_SAF_CM/CLARA_AVHRR/V003)
 - **APP-x**: NOAA NCEI (CDR Version 2.0)
 - **Sea ice concentration**: NOAA/NSIDC Climate Data Record Version 6 (G02202)

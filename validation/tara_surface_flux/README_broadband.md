@@ -24,14 +24,24 @@ matchup tables use the `tara_broadband_` prefix. The old figure, plotting code,
 collocation script, and notebook are backed up in
 `../backups/tara_broadband_20261022/`.
 
-## Data provenance and availability
+## Data provenance and credit
 
 The Tara drifting ice station radiation measurements were collected within the
-DAMOCLES research project (https://www.damocles-eu.org/). Please credit DAMOCLES
-for the measurements in any reuse.
+DAMOCLES research project (https://www.damocles-eu.org/). They are redistributed
+here in QA-treated form with the permission of the DAMOCLES investigators, via
+Erko Jakobson (University of Tartu) and Timo Vihma (FMI); there is no official
+Tara Arctic archive. Please credit DAMOCLES for the measurements in any reuse.
 
-The original radiometer workbook, daily QA-treated observations, coordinate file
-and individual satellite matchup pairs are not redistributed in this release.
-These data are available upon request to the data providers, subject to permission.
-The processing code, QA metadata and aggregate validation statistics are retained.
-The QA choices above are our own, not provider-supplied QC.
+Deposited here (QA-treated, `tara_broadband_` prefix):
+
+| file | contents |
+|---|---|
+| `tara_broadband_daily.csv` | daily broadband albedo, 1 Apr - 20 Sep 2007 |
+| `tara_broadband_clara_matchups.csv` | CLARA-A3 collocated pairs |
+| `tara_broadband_appx_matchups.csv` | APP-x collocated pairs |
+| `tara_broadband_validation_stats.csv` | bias, RMSE, correlation, CCC |
+
+The screening in `tara_broadband_processing.json` is our own, documented above;
+it is not provider-supplied QC. The original radiometer workbook
+(`Tara_radiomet_Apr-Oct_clean.xls`, 34 MB) is not redistributed here and is
+available from FMI.

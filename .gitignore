@@ -15,8 +15,8 @@ __pycache__/
 *.npz
 *.csv
 !source_data/*.csv
-# Only aggregate Tara validation statistics are included.
-!validation/tara_surface_flux/tara_broadband_validation_stats.csv
+# QA-treated Tara broadband albedo, redistributed with DAMOCLES permission
+!validation/tara_surface_flux/tara_broadband_*.csv
 *.zip
 
 # figures
