@@ -45,20 +45,20 @@ Script names follow the paper's figure numbers, except Supplementary Figure 11. 
 | Figure | Script | Source data (`source_data/`) |
 |---|---|---|
 | Figure 1 | `f01.py` | `SourceData_Figure1.csv` |
-| Figure 2 | `f02.py` | `SourceData_Figure2.csv` |
-| Figure 3 | `f03.py` | `SourceData_Figure3.csv` |
+| Figure 2 | `f02.py` | `SourceData_Figure2.csv`, `SourceData_Figure2_Bootstrap.csv` |
+| Figure 3 | `f03.py` | `SourceData_Figure3.csv`, `SourceData_Figure3_Bootstrap.csv` |
 | Figure 4 | `f04.py` | `SourceData_Figure4_maps.csv` (the mapped values), `SourceData_Figure4.csv` (pan-Arctic summaries) |
-| Figure 5 | `f05.py` | `SourceData_Figure5.csv` (a–b: family means and the observed point), `SourceData_Figure5_cd.csv` (c–d: observations and model means), `SourceData_Figure5_cd_models.csv` (c–d: individual models) |
-| Figure 6 | `f06.py` | `SourceData_Figure6.csv` |
-| Figure 7 | `f07.py` | `SourceData_Figure7.csv`, `SourceData_Figure7_Observed.csv` |
+| Figure 5 | `f05.py` | `SourceData_Figure5.csv` (a–b: family means and the observed point), `SourceData_Figure5_Members.csv` (a–b: 378 ensemble members), `SourceData_Figure5_Bootstrap.csv` (a–d: residual-bootstrap realizations), `SourceData_Figure5_cd.csv` (c–d: observations and model means), `SourceData_Figure5_cd_models.csv` (c–d: individual models) |
+| Figure 6 | `f06.py` | `SourceData_Figure6.csv`, `SourceData_Figure6_Observed.csv`, `SourceData_Figure6_Bootstrap.csv` |
+| Figure 7 | `f07.py` | `SourceData_Figure7.csv`, `SourceData_Figure7_FamilyMeans.csv`, `SourceData_Figure7_Observed.csv`, `SourceData_Figure7_Bootstrap.csv` |
 | Figure 8 | `f08.py` | `SourceData_Figure8.csv` |
 | Figure 9 | `f09.py` | `SourceData_Figure9.csv` |
-| Supplementary Figure 1 | `s01.py` | `SourceData_Supplementary_Figure1.csv` |
+| Supplementary Figure 1 | `s01.py` | `SourceData_Supplementary_Figure1.csv`, `SourceData_Supplementary_Figure1_Bootstrap.csv` |
 | Supplementary Figure 2 | `s02.py` | `SourceData_Supplementary_Figure2.csv` |
 | Supplementary Figure 3 | `s03.py` | `SourceData_Supplementary_Figure3.csv` |
-| Supplementary Figure 4 | `s04.py` | `SourceData_Supplementary_Figure4.csv`, `SourceData_Supplementary_Figure4_Observed.csv` |
+| Supplementary Figure 4 | `s04.py` | `SourceData_Supplementary_Figure4.csv`, `SourceData_Supplementary_Figure4_FamilyMeans.csv`, `SourceData_Supplementary_Figure4_Observed.csv`, `SourceData_Supplementary_Figure4_Bootstrap.csv` |
 | Supplementary Figure 5 | `s05.py` | `SourceData_Supplementary_Figure5.csv` |
-| Supplementary Figure 6 | `s06.py` | `SourceData_Supplementary_Figure6.csv` |
+| Supplementary Figure 6 | `s06.py` | `SourceData_Supplementary_Figure6.csv`, `SourceData_Supplementary_Figure6_AnnualCurves.csv` |
 | Supplementary Figures 7–9 | `s07.py`, `s08.py`, `s09.py`: April–May, June–July and August–September, otherwise identical | `SourceData_Supplementary_Figure7_maps.csv`, `SourceData_Supplementary_Figure8_maps.csv`, `SourceData_Supplementary_Figure9_maps.csv` (the classified cells); `SourceData_Supplementary_Figure7.csv`, `SourceData_Supplementary_Figure8.csv`, `SourceData_Supplementary_Figure9.csv` (the share printed on each panel) |
 | Supplementary Figure 10 | `s10.py`: a supplied image, which the script only checks for | `SourceData_Supplementary_Figure10.csv` (a description of the panels; the overpass geometry behind the image is not in this repository) |
 | Supplementary Figure 11 | `s09_validation.py`, written by `make_s09.py` | `SourceData_Supplementary_Figure11.csv` |
@@ -75,7 +75,7 @@ Supporting scripts:
 - `uncertainty_is/` (`extract_is.py`, `run_is.sh`, `is_boot.py`, `is_seeds.py`): the model-based 2σ on the observed ice sensitivity, i.e. the SIAF model-based procedure (common family-weighted multi-model-mean trend subtraction, paired circular 3-year blocks, 4,000 replicates) applied to the albedo series without radiative weighting. It writes `uncertainty_is.csv`, which `f07.py` reads for the gray band in Figure 7; `uncertainty.csv` holds the SIAF model-based uncertainty read by `f06.py`, `f08.py` and `s05.py`.
 - `f07_observed_source_data.py`: writes `source_data/SourceData_Figure7_Observed.csv`, the two observational points, the ice-sensitivity band and the family-weighted multi-model mean drawn in Figure 7, with their intervals.
 - `s05_source_data.py`: writes `source_data/SourceData_Supplementary_Figure5.csv`, the subset models, their weights and the observed target drawn in Supplementary Figure 5, with the selection and weighting of `s05.py`.
-- `f04_source_data.py`, `f05_ab_source_data.py`, `f05_cd_source_data.py`, `s07_09_source_data.py`: write `SourceData_Figure4_maps.csv`, `SourceData_Figure5.csv`, `SourceData_Figure5_cd_models.csv` and `SourceData_Supplementary_Figure{7,8,9}_maps.csv`, the values drawn in Figure 4, Figure 5 and Supplementary Figures 7–9. Each reads the same inputs as its figure script; the docstrings define the columns.
+- `f04_source_data.py`, `f05_ab_source_data.py`, `f05_cd_source_data.py`, `s07_09_source_data.py`, `export_distribution_source_data.py`: write `SourceData_Figure4_maps.csv`, `SourceData_Figure5.csv`, `SourceData_Figure5_cd_models.csv`, `SourceData_Supplementary_Figure{7,8,9}_maps.csv`, and the distributional/member/family/reanalysis/annual-ROC source-data tables. Each reads the same inputs as its figure script; the docstrings define the columns.
 - `*_superseded.py`: earlier versions kept for the record; none of them draws a figure in the paper.
 
 ## Validation Routines (`validation/`)

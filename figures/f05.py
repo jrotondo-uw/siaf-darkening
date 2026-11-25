@@ -34,6 +34,7 @@ from pathlib import Path
 import numpy as np, pandas as pd, matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 
 R = Path(__file__).resolve().parent
 OUT = R / 'figures'
@@ -59,34 +60,71 @@ exec(compile(src, 'saved_sie_aggregation', 'exec'))
 fam.to_csv(OUT / 'f05_family_means.csv')
 fam_sd.to_csv(OUT / 'f05_family_spread.csv')
 
+mem_ab = pd.merge(
+    siaf_mem[['model', 'member', 'siaf_global']],
+    sie_mem[['model', 'member', 'trend', 'early']],
+    on=['model', 'member'], how='inner'
+)
+assert len(mem_ab) == 378 and mem_ab.model.nunique() == 31
+
+# Reconstruct the 10,000 historical total-SIAF residual-bootstrap draws
+AN_DIR = R.parent / 'analysis_data' / 'observed_uncertainty_20261125'
+_m_tr = pd.read_csv(AN_DIR / 'SIAF_model_member_calendar_trends.csv')
+_b_tot = float(_m_tr.groupby(['family', 'model'])['total'].mean().groupby('family').mean().mean())
+_a_c = pd.read_csv(AN_DIR / 'advisor_annual_CERES.csv').sort_values('year')
+
+def _block_boot_slopes(y, T, year, b, L=3, B=10000):
+    y = np.asarray(y, dtype=float); y = y - y.mean()
+    T = np.asarray(T, dtype=float); T = T - T.mean()
+    t = np.asarray(year, dtype=float); t = t - t.mean()
+    n = len(t)
+    res = y - float(b) * t
+    starts = np.random.default_rng(20261023 + L).integers(0, n, size=(B, int(np.ceil(n / L))))
+    idx = ((starts[:, :, None] + np.arange(L)) % n).reshape(B, -1)[:, :n]
+    return res[idx] @ T / (T @ T)
+
+_sl_tot = _block_boot_slopes(_a_c.total, _a_c.temperature, _a_c.year, _b_tot)
+obs_tot_draws = OBS_TOT + (_sl_tot - _sl_tot.mean())
+assert np.isclose(2 * obs_tot_draws.std(ddof=1), 0.0537936108477549, atol=1e-12)
+
 # ---------------------------------------------------------------- c, d
 cd = pd.read_csv(R / 'f05_cd_panels.csv')
 sig = pd.read_csv(R / 'f05_cd_obs_sigma.csv')
 mem = pd.read_csv(R / 'f05_cd_models.csv')
+obs_cd_ser = pd.read_csv(AN_DIR / 'observed_Fig5_series.csv')
 sig['month_name'] = sig.month.map(dict(zip(range(4, 10), MONTHS)))
 
 fig, axes = plt.subplots(2, 2, figsize=(10.0, 8.4))
 x = np.arange(6)
+rng_ab = np.random.default_rng(20261125)
+ab_ymin = min(-0.012, float(mem_ab.siaf_global.min()) - 0.008, float(obs_tot_draws.min()) - 0.008)
+ab_ymax = max(0.315, float(mem_ab.siaf_global.max()) + 0.012, float(obs_tot_draws.max()) + 0.012)
 
 for i, ax in enumerate(axes[0]):
-    k, ox, xlab, title = [('trend', obs_slope, 'SIE trend (10$^6$ km$^2$ yr$^{-1}$)',
-                           'Retreat rate'),
-                          ('early', obs_early, '1982–1991 SIE (10$^6$ km$^2$)',
-                           'Initial extent')][i]
+    k, ox, xlab, title, ojit = [
+        ('trend', obs_slope, 'SIE trend (10$^6$ km$^2$ yr$^{-1}$)', 'Retreat rate', 0.0028),
+        ('early', obs_early, '1982–1991 SIE (10$^6$ km$^2$)', 'Initial extent', 0.20),
+    ][i]
+    ax.scatter(mem_ab[k], mem_ab.siaf_global, s=11, c='0.62', alpha=0.40, lw=0,
+               zorder=1, rasterized=True)
     ax.errorbar(fam[k], fam.siaf, xerr=fam_sd[k], yerr=fam_sd.siaf,
-                fmt='none', ecolor=MOD_C, alpha=.23, lw=.8)
-    ax.scatter(fam[k], fam.siaf, c=MOD_C, s=35, label='CMIP6 family mean', zorder=3)
+                fmt='none', ecolor=MOD_C, alpha=.23, lw=.8, zorder=2)
+    ax.scatter(fam[k], fam.siaf, c=MOD_C, s=36, edgecolors='white', linewidths=0.5,
+               zorder=3)
     r, p = stats.pearsonr(fam[k], fam.siaf)
     sl, b = np.polyfit(fam[k], fam.siaf, 1)
     xr = np.linspace(fam[k].min(), fam[k].max(), 100)
-    ax.plot(xr, sl * xr + b, color=MOD_C, ls='--', lw=1.2)
-    ax.errorbar(ox, OBS_TOT, yerr=np.float64(0.0537936108477549), fmt='*', color=OBS_C, markersize=15,
-                capsize=4, label='Observed, 1982–2014', zorder=4)
+    ax.plot(xr, sl * xr + b, color=MOD_C, ls='--', lw=1.2, zorder=3.5)
+    ax.scatter(ox + rng_ab.uniform(-ojit, ojit, len(obs_tot_draws)), obs_tot_draws,
+               s=5, c=OBS_C, alpha=0.025, lw=0, zorder=2.8, rasterized=True)
+    ax.errorbar(ox, OBS_TOT, yerr=np.float64(0.0537936108477549), fmt='*', color=OBS_C,
+                markersize=15, markeredgecolor='white', markeredgewidth=0.7,
+                capsize=4, elinewidth=1.8, capthick=1.6, zorder=5)
     ax.text(.04, .95, f'r = {r:.2f}\np = {p:.3f}'.replace('-', '\u2212'),
             va='top', transform=ax.transAxes)
     ax.set_title(chr(97 + i) + '  ' + title, loc='left', weight='bold', fontsize=15)
     ax.set_xlabel(xlab)
-    ax.set_ylim(0, .30)
+    ax.set_ylim(ab_ymin, ab_ymax)
 axes[0, 0].set_xticks([-.15, -.10, -.05, 0])
 axes[0, 0].set_ylabel('Total SIAF (W m$^{-2}$ K$^{-1}$)')
 
@@ -99,15 +137,22 @@ for i, (ax, (region, var, ylab, title, where)) in enumerate(zip(axes[1], SPEC)):
     sub = cd[cd.region == region].set_index('month').loc[MONTHS]
     ss = sig[sig.region == region].set_index('month_name').loc[MONTHS]
     rng = np.random.default_rng(0)
+    rng_obs = np.random.default_rng(100 + i)
     for j, m in enumerate(MONTHS):
         v = mem[(mem.region == region) & (mem.month == m)][var].astype(float).dropna()
         ax.scatter(j + rng.uniform(-.14, .14, len(v)), v, s=14, c='0.6',
                    alpha=.45, lw=0, zorder=1)
+        z_obs = obs_cd_ser[(obs_cd_ser.component == region) & (obs_cd_ser.month == j + 4)].sort_values('year')
+        sl_m = _block_boot_slopes(z_obs.anomaly, z_obs.temperature, z_obs.year, z_obs.MMM_trend.iloc[0])
+        assert np.isclose(2 * sl_m.std(ddof=1), float(ss.loc[m, 'halfwidth_2sigma']), atol=1e-12)
+        obs_m_draws = float(sub.loc[m, 'observed']) + (sl_m - sl_m.mean())
+        ax.scatter(j + rng_obs.uniform(-.06, .06, len(obs_m_draws)), obs_m_draws,
+                   s=5, c=OBS_C, alpha=0.025, lw=0, zorder=2, rasterized=True)
     ax.errorbar(x, sub.model_mean, yerr=2 * sub.model_sd, fmt='o-', color=MOD_C,
-                lw=1.6, markersize=7, capsize=4, zorder=3,
-                label='CMIP6 model mean')
+                lw=1.6, markersize=7, capsize=4, zorder=3)
     ax.errorbar(x, sub.observed, yerr=ss.halfwidth_2sigma, fmt='D-', color=OBS_C,
-                lw=2.0, markersize=8, capsize=4, zorder=4, label='Observed')
+                lw=2.0, markersize=7.5, markeredgecolor='white', markeredgewidth=0.7,
+                capsize=4, elinewidth=1.8, capthick=1.6, zorder=4)
     ax.axhline(0, color='0.5', lw=.8, ls=':')
     ax.set_xticks(x)
     ax.set_xticklabels(MLAB)
@@ -124,8 +169,28 @@ for ax in axes.ravel():
 
 # Legends sit inside the panels: a top-of-figure legend costs vertical room and
 # forces the type down, and shorter strings are the only lever on on-page size.
-axes[0, 0].legend(fontsize=12, framealpha=.85, loc='lower left')
-axes[1, 0].legend(fontsize=12, framealpha=.85, loc='upper left',
+leg_ab = [
+    Line2D([0], [0], marker='o', color='none', markerfacecolor=MOD_C, markeredgecolor='white',
+           markeredgewidth=0.5, markersize=6.5, label='CMIP6 family mean'),
+    Line2D([0], [0], marker='o', color='none', markerfacecolor='0.55', markeredgecolor='none',
+           markersize=4.5, alpha=0.65, label='CMIP6 member'),
+    Line2D([0], [0], marker='*', color=OBS_C, markerfacecolor=OBS_C, markeredgecolor='white',
+           markeredgewidth=0.5, markersize=12, lw=1.6, label='Observed, 1982–2014'),
+    Line2D([0], [0], marker='o', color='none', markerfacecolor=OBS_C, markeredgecolor='none',
+           markersize=4.5, alpha=0.45, label='Obs. residual bootstrap'),
+]
+axes[0, 0].legend(handles=leg_ab, fontsize=11, framealpha=.92, facecolor='white', loc='lower left')
+leg_cd = [
+    Line2D([0], [0], marker='o', color=MOD_C, markerfacecolor=MOD_C, markersize=7, lw=1.6,
+           label='CMIP6 model mean'),
+    Line2D([0], [0], marker='D', color=OBS_C, markerfacecolor=OBS_C, markeredgecolor='white',
+           markeredgewidth=0.6, markersize=7, lw=2.0, label='Observed'),
+    Line2D([0], [0], marker='o', color='none', markerfacecolor='0.55', markeredgecolor='none',
+           markersize=4.5, alpha=0.65, label='CMIP6 model'),
+    Line2D([0], [0], marker='o', color='none', markerfacecolor=OBS_C, markeredgecolor='none',
+           markersize=4.5, alpha=0.45, label='Obs. residual bootstrap'),
+]
+axes[1, 0].legend(handles=leg_cd, fontsize=11, framealpha=.92, facecolor='white', loc='upper left',
                   bbox_to_anchor=(0, .88))
 # No footer: the editor does not allow text in a figure file that is not part
 # of the figure. Period, member, weighting and interval definitions are all

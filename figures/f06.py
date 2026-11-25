@@ -24,10 +24,12 @@ from matplotlib.lines import Line2D
 
 CMIP6_CSV = str(Path(__file__).resolve().parent / 'siaf_cmip6_summary_final.csv')
 OBS_CSV   = str(Path(__file__).resolve().parent / 'siaf_pixelwise_summary.csv')
-BOOT_NPZ  = '/glade/work/jrotondo/siaf_weight_fix_review_20261125/results/new_pairs_replicates_not_available.npz'
-OUT_DIR   = str(Path(__file__).resolve().parent / 'figures')
+R_FIG     = Path(__file__).resolve().parent
+AN_DIR    = R_FIG.parent / 'analysis_data' / 'observed_uncertainty_20261125'
+BOOT_CSV  = R_FIG.parent / 'source_data' / 'SourceData_Figure6_Bootstrap.csv'
+OUT_DIR   = str(R_FIG / 'figures')
 os.makedirs(OUT_DIR, exist_ok=True)
-PLOT_OUT  = os.path.join(OUT_DIR, 'f03.png')
+PLOT_OUT  = os.path.join(OUT_DIR, 'f06.png')
 
 MIN_MEMBERS = 3
 SCALE = 0.0347 * 0.5
@@ -97,12 +99,29 @@ obs = dict(tot=float(o.SIAF_tot_global), ext=float(o.SIAF_ext_global),
            ext_loc_e=float(o.sigma2_ext_per_area) / SCALE,
            drk_loc_e=float(o.sigma2_drk_per_area) / SCALE)
 
-obs_boot = None
-if os.path.exists(BOOT_NPZ):
-    z = np.load(BOOT_NPZ)
-    if 'CERES_CMIP6' in z:
-        obs_boot = z['CERES_CMIP6'][:, 0]
-        print(f'loaded {obs_boot.size} observational bootstrap replicates')
+# Reconstruct the 10,000 historical total-SIAF residual-bootstrap draws (panel a)
+_m_tr = pd.read_csv(AN_DIR / 'SIAF_model_member_calendar_trends.csv')
+_b_tot = float(_m_tr.groupby(['family', 'model'])['total'].mean().groupby('family').mean().mean())
+_a_c = pd.read_csv(AN_DIR / 'advisor_annual_CERES.csv').sort_values('year')
+_y = np.asarray(_a_c.total, float); _y -= _y.mean()
+_T = np.asarray(_a_c.temperature, float); _T -= _T.mean()
+_t = np.asarray(_a_c.year, float); _t -= _t.mean()
+_n = len(_t)
+_res = _y - _b_tot * _t
+_starts = np.random.default_rng(20261023 + 3).integers(0, _n, size=(10000, int(np.ceil(_n / 3))))
+_idx = ((_starts[:, :, None] + np.arange(3)) % _n).reshape(10000, -1)[:, :_n]
+_sl = _res[_idx] @ _T / (_T @ _T)
+obs_boot = obs['tot'] + (_sl - _sl.mean())
+assert np.isclose(2 * obs_boot.std(ddof=1), obs['err'], atol=1e-6)
+print(f'reconstructed {obs_boot.size} historical residual bootstrap draws for panel a')
+
+# Load the 1,000 footprint-normalized pairs-bootstrap draws (panel b) from curated source data
+_b6 = pd.read_csv(BOOT_CSV)
+obs_ext_loc_boot = _b6.loc[(_b6.panel == 'b') & (_b6.component == 'area_loss'), 'value_W_m2_K'].to_numpy(float)
+obs_drk_loc_boot = _b6.loc[(_b6.panel == 'b') & (_b6.component == 'darkening'), 'value_W_m2_K'].to_numpy(float)
+assert np.isclose(2 * np.nanstd(obs_ext_loc_boot, ddof=0), obs['ext_loc_e'], atol=1e-4)
+assert np.isclose(2 * np.nanstd(obs_drk_loc_boot, ddof=0), obs['drk_loc_e'], atol=1e-4)
+print(f'loaded {obs_ext_loc_boot.size} pairs-bootstrap local draws for panel b')
 
 mmm = float(fam.tot.mean())
 mmm_2s = float(2 * fam.tot.std(ddof=1))
@@ -156,15 +175,21 @@ for i in range(n):
                 capsize=5, lw=1.8, zorder=5)
     # individual data points
     if is_obs:
-        pts = obs_boot
+        jit = rng.uniform(-w * 0.30, w * 0.30, size=len(obs_boot))
+        ax.scatter(x[i] + jit, obs_boot, s=6, facecolor='#1a1a1a', edgecolor='none',
+                   alpha=0.055, zorder=4, rasterized=True)
     else:
         pts = df.loc[df.family == fams[i], 'siaf_global'].values
-    if pts is not None and len(pts):
-        if len(pts) > 400:
-            pts = rng.choice(pts, 400, replace=False)
-        jit = rng.uniform(-w * 0.30, w * 0.30, size=len(pts))
-        ax.scatter(x[i] + jit, pts, s=9, facecolor=COL_PT, edgecolor='none',
-                   alpha=0.45, zorder=6, rasterized=True)
+        if len(pts):
+            jit = rng.uniform(-w * 0.30, w * 0.30, size=len(pts))
+            ax.scatter(x[i] + jit, pts, s=9, facecolor=COL_PT, edgecolor='none',
+                       alpha=0.45, zorder=6, rasterized=True)
+
+ymin_a = min(-0.045, float(df.siaf_global.min()) - 0.01, float(obs_boot.min()) - 0.01,
+             float(min(t - e for t, e in zip(tot, err))) - 0.01)
+ymax_a = max(0.28, float(df.siaf_global.max()) + 0.01, float(obs_boot.max()) + 0.012,
+             float(max(t + e for t, e in zip(tot, err))) + 0.012)
+ax.set_ylim(ymin_a, ymax_a)
 
 ax.set_ylabel('Pan-Arctic annual SIAF\n(W m$^{-2}$ K$^{-1}$)')
 ax.legend(handles=[mpatches.Patch(facecolor=COL_EXT, label=r'SIAF$_{\mathrm{area}}$'),
@@ -174,8 +199,12 @@ ax.legend(handles=[mpatches.Patch(facecolor=COL_EXT, label=r'SIAF$_{\mathrm{area
                    Line2D([0], [0], marker='o', color='none',
                           markerfacecolor=COL_PT, markeredgecolor='none',
                           markersize=5, alpha=0.6,
-                          label='Individual model members')],
-          loc='lower left', bbox_to_anchor=(0, 1.01), ncol=2,
+                          label='Individual model members'),
+                   Line2D([0], [0], marker='o', color='none',
+                          markerfacecolor='#1a1a1a', markeredgecolor='none',
+                          markersize=5, alpha=0.5,
+                          label='Obs. bootstrap draws')],
+          loc='lower left', bbox_to_anchor=(0, 1.01), ncol=3,
           framealpha=0.92, frameon=False)
 
 # ---- panel b: local intensity, grouped ----
@@ -196,24 +225,32 @@ for i in range(n):
                 lw=2.0 if is_obs else 0.8, hatch=hatch, zorder=3)
         ax2.errorbar(xe, elc[i], yerr=ele[i], fmt='none',
                      color=COL_OBS_EDGE if is_obs else '#222222',
-                     capsize=4, zorder=5)
+                     capsize=4, lw=1.6 if is_obs else 1.4, zorder=6)
     if np.isfinite(dlc[i]):
         ax2.bar(xd, dlc[i], w2, color=COL_DRK, edgecolor=edge,
                 lw=2.0 if is_obs else 0.8, hatch=hatch, zorder=3)
         ax2.errorbar(xd, dlc[i], yerr=dle[i], fmt='none',
                      color=COL_OBS_EDGE if is_obs else '#222222',
-                     capsize=4, zorder=5)
-    if not is_obs:
+                     capsize=4, lw=1.6 if is_obs else 1.4, zorder=6)
+    if is_obs:
+        for xpos, vals in ((xe, obs_ext_loc_boot), (xd, obs_drk_loc_boot)):
+            vals = vals[np.isfinite(vals)]
+            jit = rng.uniform(-w2 * 0.30, w2 * 0.30, size=len(vals))
+            ax2.scatter(xpos + jit, vals, s=6, facecolor='#1a1a1a',
+                        edgecolor='none', alpha=0.14, zorder=4, rasterized=True)
+    else:
         sub = df.loc[df.family == fams[i]]
         for xpos, vals in ((xe, sub.ext_loc.values), (xd, sub.drk_loc.values)):
             vals = vals[np.isfinite(vals)]
             if not len(vals):
                 continue
-            if len(vals) > 400:
-                vals = rng.choice(vals, 400, replace=False)
             jit = rng.uniform(-w2 * 0.32, w2 * 0.32, size=len(vals))
             ax2.scatter(xpos + jit, vals, s=7, facecolor=COL_PT,
                         edgecolor='none', alpha=0.40, zorder=6, rasterized=True)
+
+ymax_b = max(48.0, float(df.ext_loc.max()) + 2.0, float(obs_ext_loc_boot.max()) + 2.0,
+             float(max(v + e for v, e in zip(elc, ele))) + 2.0)
+ax2.set_ylim(0, ymax_b)
 
 ax2.set_xticks(x)
 ax2.set_xticklabels(labels, rotation=45, ha='right')

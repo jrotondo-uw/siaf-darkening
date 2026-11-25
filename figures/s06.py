@@ -1,6 +1,11 @@
 # %%
+import os
 import pickle
+from pathlib import Path
 import numpy as np
+import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 plt.rcParams.update({
@@ -16,21 +21,34 @@ plt.rcParams.update({
 # ── Config ────────────────────────────────────────────────────────────
 EXP         = 'obs'   # change to 'cmip6' for the other experiment
 OUTPUT_ROOT = "/glade/work/jrotondo/j_of_clim_dk_sea_ice_paper/output/albedo_disc/"
-PKL_PATH    = f"{OUTPUT_ROOT}/{EXP}/plot_data_{EXP}.pkl"
+_R_FIG      = Path(__file__).resolve().parent
+_DEFAULT_PKL = f"{OUTPUT_ROOT}/{EXP}/plot_data_{EXP}.pkl"
+PKL_PATH = os.environ.get('SIAF_ROC_PKL', _DEFAULT_PKL)
+CSV_CURVES = _R_FIG.parent / 'source_data' / 'SourceData_Supplementary_Figure6_AnnualCurves.csv'
 
 N_SIGMA = 2   # shading half-width, matching the 2-sigma convention used throughout
 
 
 # ── Load ──────────────────────────────────────────────────────────────
-with open(PKL_PATH, 'rb') as fh:
-    d = pickle.load(fh)
-
-
-exp_key        = d['exp_key']
-exp_label      = d['exp_label']
-roc_store      = d['roc_store']
-roc_edge_store = d['roc_edge_store']
-MONTH_ORDER    = d['MONTH_ORDER']
+MONTH_ORDER = ['April', 'May', 'June', 'July', 'August', 'September']
+if EXP == 'obs' and not os.environ.get('SIAF_ROC_PKL') and CSV_CURVES.exists():
+    exp_key = 'obs'
+    _cdf = pd.read_csv(CSV_CURVES)
+    roc_store = {m: {} for m in MONTH_ORDER}
+    roc_edge_store = {m: {} for m in MONTH_ORDER}
+    for (dom, mo, prod, yr), g in _cdf.groupby(['domain', 'month', 'product', 'year'], sort=False):
+        target = roc_store if dom == 'Full Arctic' else roc_edge_store
+        target.setdefault(mo, {}).setdefault(prod, {})[int(yr)] = (
+            g['tpr'].to_numpy(float),
+            g['fpr'].to_numpy(float),
+        )
+else:
+    with open(PKL_PATH, 'rb') as fh:
+        d = pickle.load(fh)
+    exp_key        = d['exp_key']
+    roc_store      = d['roc_store']
+    roc_edge_store = d['roc_edge_store']
+    MONTH_ORDER    = d['MONTH_ORDER']
 
 
 # ── Helpers ───────────────────────────────────────────────────────────
@@ -88,13 +106,20 @@ for ax, store, panel_label, title in [
             if s is None:
                 continue
 
+            # Faint individual annual ROC curves behind mean and 2-sigma band
+            for tpr, fpr in roc_dict.values():
+                order = np.argsort(fpr)
+                tpr_i = np.interp(FPR_GRID, fpr[order], tpr[order])
+                ax.plot(FPR_GRID, tpr_i, color=col, ls=ls, lw=0.5, alpha=0.14,
+                        zorder=1, rasterized=True)
+
             # +/- N_SIGMA band, clipped to [0, 1] since TPR is bounded
             lo = np.clip(s['mean'] - N_SIGMA * s['std'], 0, 1)
             hi = np.clip(s['mean'] + N_SIGMA * s['std'], 0, 1)
             ax.fill_between(FPR_GRID, lo, hi,
-                            color=col, alpha=0.10, linewidth=0)
+                            color=col, alpha=0.10, linewidth=0, zorder=2)
             line, = ax.plot(FPR_GRID, s['mean'],
-                            color=col, ls=ls, lw=1.8,
+                            color=col, ls=ls, lw=1.8, zorder=3,
                             label=f"{month} {product} (AUC={s['auc']:.3f})")
             ax.scatter(s['opt_fpr'], s['opt_tpr'],
                        color=col, marker='o', s=55, zorder=5,
@@ -118,7 +143,8 @@ for ax, store, panel_label, title in [
 
 
 plt.tight_layout()
-out_png = f"{OUTPUT_ROOT}/{EXP}/roc_curves_{EXP}.png"
+_out_dir = Path(f"{OUTPUT_ROOT}/{EXP}")
+out_png = str(_out_dir / f"roc_curves_{EXP}.png") if _out_dir.exists() else str(Path(__file__).resolve().parent / "figures/s06.png")
 plt.savefig(out_png, dpi=300, bbox_inches='tight')
 plt.show()
 print(f"Saved → {out_png}")

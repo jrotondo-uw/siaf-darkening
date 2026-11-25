@@ -13,6 +13,7 @@ import numpy as np, pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 
 matplotlib.rcParams.update({
     'font.size': 17.1,
@@ -23,9 +24,12 @@ matplotlib.rcParams.update({
     'legend.fontsize': 17.1,
 })
 
-CMIP6_CSV = str(Path(__file__).resolve().parent / 'siaf_cmip6_summary_final.csv')
-OBS_CSV   = str(Path(__file__).resolve().parent / 'siaf_pixelwise_summary.csv')
-PLOT_OUT  = str(Path(__file__).resolve().parent / 'figures/f04_family.png')
+R_FIG     = Path(__file__).resolve().parent
+AN_DIR    = R_FIG.parent / 'analysis_data' / 'observed_uncertainty_20261125'
+BOOT_CSV  = R_FIG.parent / 'source_data' / 'SourceData_Figure7_Bootstrap.csv'
+CMIP6_CSV = str(R_FIG / 'siaf_cmip6_summary_final.csv')
+OBS_CSV   = str(R_FIG / 'siaf_pixelwise_summary.csv')
+PLOT_OUT  = str(R_FIG / 'figures/f07.png')
 MIN_MEMBERS = 3
 
 FAMILY = {**{m:'CESM2' for m in ['CESM2','CESM2-WACCM','CESM2-FV2','CESM2-WACCM-FV2']},
@@ -129,9 +133,14 @@ if o_prim:
 # every member, coloured by family
 for f in fams:
     s = df[df.family == f]
-    ax.scatter(s.rs_arctic, s.is_tot_arctic, s=45, color=cols[f], alpha=0.75,
+    ax.scatter(s.rs_arctic, s.is_tot_arctic, s=45, color=cols[f], alpha=0.72,
                edgecolors='white', linewidths=0.4, zorder=3,
                label=f'{f} (n={int(fam.n_mem[f])})')
+
+# 18 individual family means (open diamonds) corresponding to the MMM error bars
+ax.scatter(fam.rs_arctic, fam.is_tot_arctic, marker='D', s=68,
+           facecolors='none', edgecolors='#222222', linewidths=1.5, zorder=5,
+           label='Family means (18)')
 
 # family-weighted MMM
 ax.errorbar(MMM_RS, MMM_IS, xerr=MMM_RS_2s, yerr=MMM_IS_2s, fmt='none',
@@ -139,6 +148,38 @@ ax.errorbar(MMM_RS, MMM_IS, xerr=MMM_RS_2s, yerr=MMM_IS_2s, fmt='none',
 ax.scatter(MMM_RS, MMM_IS, marker='D', color='#222222', s=95,
            edgecolors='white', linewidths=0.9, zorder=8,
            label='Family-weighted MMM ($\\pm2\\sigma$)')
+
+# Reconstruct 10,000 IS residual-bootstrap draws (vertical uncertainty) and
+# load 1,000 CERES RS pairs-bootstrap draws (horizontal uncertainty) separately
+_ois = pd.read_csv(AN_DIR / 'observed_IS_monthly_series.csv')
+_bis = float(pd.read_csv(AN_DIR / 'IS_MMM_trends.csv', index_col=0).MMM_trend.loc['total'])
+_z = _ois[_ois.component == 'total'].groupby('year')[['anomaly', 'temperature']].mean().reset_index().sort_values('year')
+_y = _z.anomaly.to_numpy(float); _y -= _y.mean()
+_T = _z.temperature.to_numpy(float); _T -= _T.mean()
+_t = _z.year.to_numpy(float); _t -= _t.mean()
+_n = len(_t)
+_res = _y - _bis * _t
+_starts = np.random.default_rng(20261023 + 3).integers(0, _n, size=(10000, int(np.ceil(_n / 3))))
+_idx = ((_starts[:, :, None] + np.arange(3)) % _n).reshape(10000, -1)[:, :_n]
+_sl_is = _res[_idx] @ _T / (_T @ _T)
+assert np.isclose(2 * _sl_is.std(ddof=1), IS_2S_MODEL, atol=1e-12)
+obs_is_draws = o_prim['is_'] + (_sl_is - _sl_is.mean())
+
+_b7 = pd.read_csv(BOOT_CSV)
+obs_ceres_rs_draws = _b7.loc[_b7.axis == 'x', 'value'].to_numpy(float)
+assert np.isclose(2 * np.nanstd(obs_ceres_rs_draws, ddof=0), obs['CERES']['rs_2s'], atol=1e-2)
+
+_rng7 = np.random.default_rng(20261125)
+# Plot 1D marginal distributions directly along each observational error bar
+for method in ('CERES', 'Kernel'):
+    o = obs[method]
+    if o is None:
+        continue
+    st = OBS_STYLE[method]
+    ax.scatter(o['rs'] + _rng7.uniform(-0.42, 0.42, len(obs_is_draws)), obs_is_draws,
+               s=5, color=st['color'], alpha=0.03, edgecolors='none', zorder=6, rasterized=True)
+ax.scatter(obs_ceres_rs_draws, obs['CERES']['is_'] + _rng7.uniform(-0.0009, 0.0009, len(obs_ceres_rs_draws)),
+           s=6, color=OBS_STYLE['CERES']['color'], alpha=0.14, edgecolors='none', zorder=6, rasterized=True)
 
 # both observational RS estimates
 for method in ('CERES', 'Kernel'):
@@ -164,19 +205,20 @@ for sp in ('top', 'right'):
 # 23 Nov 2026: the 21-entry legend sat outside the axes and, cropped tight,
 # widened the canvas well past the 11 in the font sizes assume, so the plot
 # printed small. Three columns under the axes instead: observations and the
-# MMM across the first row, the 18 families below.
+# MMM across the top, the 18 families below.
 _h, _l = ax.get_legend_handles_labels()
 _fam = [(a, b) for a, b in zip(_h, _l) if ' (n=' in b]
 _ref = [(a, b) for a, b in zip(_h, _l) if ' (n=' not in b]
-_rows = -(-len(_h) // 3)
-_cols = [[r_] for r_ in _ref[:3]] + [[] for _ in range(3 - len(_ref[:3]))]
-_it = iter(_fam)
-for _c in _cols:
-    while len(_c) < _rows:
-        _nx = next(_it, None)
-        if _nx is None:
-            break
-        _c.append(_nx)
+# Order ref: MMM, Family means, CERES, Kernel -> 2 rows x 3 cols (col 2 row 2 blank)
+_ref_map = {b: (a, b) for a, b in _ref}
+_blank = (Line2D([0], [0], color='none', ls='none'), '')
+_col_refs = [
+    [_ref_map['Family-weighted MMM ($\\pm2\\sigma$)'], _ref_map['Family means (18)']],
+    [_ref_map[OBS_STYLE['CERES']['label']], _blank],
+    [_ref_map[OBS_STYLE['Kernel']['label']], _blank],
+]
+assert len(_fam) == 18
+_cols = [_col_refs[c] + _fam[c*6:(c+1)*6] for c in range(3)]
 _ord = [x for _c in _cols for x in _c]
 fig.legend([x[0] for x in _ord], [x[1] for x in _ord], loc='outside lower center',
            ncol=3, fontsize=15, frameon=False, handlelength=1.4,

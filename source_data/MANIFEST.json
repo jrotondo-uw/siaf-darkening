@@ -12,10 +12,22 @@
     "sha256": "e4f1da99d2629cdf2b4fe9fbfce0e78e16d97af3b89692a33e5335c2738b6a3f"
   },
   {
+    "file": "SourceData_Figure2_Bootstrap.csv",
+    "rows": 22000,
+    "revision": "Companion draws: 10,000 observed-minus-MMM 3-year block residual realizations (1982-2014) and 1,000 observational pairs-bootstrap realizations (1982-2024) for CERES and ERA5 kernel",
+    "sha256": "107d3f61e1432546d45af9a432a2245e26b9656e415c1334895cab3238c3bbb2"
+  },
+  {
     "file": "SourceData_Figure3.csv",
     "rows": 72,
     "revision": "Corrected monthly observed summaries; divide by six for contribution to annual feedback",
     "sha256": "f4d3fee11a253f6ea40223d34af6701570c853923b11438ac1b7854346b3bdfa"
+  },
+  {
+    "file": "SourceData_Figure3_Bootstrap.csv",
+    "rows": 24000,
+    "revision": "Companion draws: 1,000 monthly observational pairs-bootstrap realizations of total SIAF (p < 0.05; divide by 6 for contribution to annual feedback)",
+    "sha256": "b7409fde75e4b0c0b6b59f9d42e6d72df8a5c14615f6f5b26f6f120b5b3e03fa"
   },
   {
     "file": "SourceData_Figure4.csv",
@@ -36,6 +48,18 @@
     "sha256": "1fc415b9cb01944f0c9b3ab6f735cb51c0509b6b43d765211db3407d71135935"
   },
   {
+    "file": "SourceData_Figure5_Bootstrap.csv",
+    "rows": 10000,
+    "revision": "Companion draws: 10,000 observed-minus-MMM 3-year block residual realizations backing panels a-d",
+    "sha256": "2a0edc9711824891eab2f309b7466451cf0e0b73bfda993b9fc97825d01fa406"
+  },
+  {
+    "file": "SourceData_Figure5_Members.csv",
+    "rows": 378,
+    "revision": "Companion table: 378 individual CMIP6 ensemble members (31 models, 18 families) plotted in panels a-b",
+    "sha256": "80032a6e2e1e5d25797c3d16800b6ee67f90ec0f5b5115dc14075841bb74ebb8"
+  },
+  {
     "file": "SourceData_Figure5_cd.csv",
     "rows": 12,
     "revision": "Monthly native-grid observations and model summaries; own residual intervals",
@@ -54,6 +78,12 @@
     "sha256": "02b45f932b2dd6c8b8e6aaa36bac66c50d5d5f4f470ff2408987f256a7755231"
   },
   {
+    "file": "SourceData_Figure6_Bootstrap.csv",
+    "rows": 12000,
+    "revision": "Companion draws: 10,000 historical total-SIAF residual realizations (panel a) and 1,000 footprint-normalized pairs-bootstrap realizations (panel b)",
+    "sha256": "bf14c0cbaa9cd72e57cd3568b4247c0b84801efd9f46428da17d85385eba1cb3"
+  },
+  {
     "file": "SourceData_Figure6_Observed.csv",
     "rows": 3,
     "revision": "Added companion: observed global bars/residual intervals and local bars/sampling intervals",
@@ -64,6 +94,18 @@
     "rows": 394,
     "revision": "Unchanged values; existing model, mask, extent, or validation data",
     "sha256": "a9ca84185b253004de9761d85307c385f43c484be0ae6b86e926442ea349131f"
+  },
+  {
+    "file": "SourceData_Figure7_Bootstrap.csv",
+    "rows": 11000,
+    "revision": "Companion draws: 10,000 observed-minus-MMM IS residual realizations (y-axis) and 1,000 CERES pairs-bootstrap RS realizations (x-axis)",
+    "sha256": "57648a8492edfaca9d7ab5ef2a66878967b21cc821ef686f8cfbf28c71ed3f7b"
+  },
+  {
+    "file": "SourceData_Figure7_FamilyMeans.csv",
+    "rows": 18,
+    "revision": "Companion table: 18 CMIP6 model-family means (open diamonds in Figure 7)",
+    "sha256": "6b78b4aeddb0313978b051599be8187310b706bcf925b3e6755cbb012ea08802"
   },
   {
     "file": "SourceData_Figure7_Observed.csv",
@@ -108,6 +150,12 @@
     "sha256": "8d825660983020a031fd0ac36bdcea3a66a3a132268455023c0541eb3ee18327"
   },
   {
+    "file": "SourceData_Supplementary_Figure1_Bootstrap.csv",
+    "rows": 12000,
+    "revision": "Companion draws: 1,000 threshold-specific observational pairs-bootstrap realizations across p < 0.01, 0.05, and 0.10",
+    "sha256": "6ea91c6a4871658603057dbc9162b0d2e3464599b4f3dec76697ccc624f26600"
+  },
+  {
     "file": "SourceData_Supplementary_Figure2.csv",
     "rows": 6,
     "revision": "Fixed0.54 contrast: two regional fractions with different denominators",
@@ -126,10 +174,22 @@
     "sha256": "60cbf44aeefd53a603d6477c2d4d1529c4d28aade4848bf29a8baf0f4e85190a"
   },
   {
+    "file": "SourceData_Supplementary_Figure4_Bootstrap.csv",
+    "rows": 2000,
+    "revision": "Companion draws: 1,000 CERES p < 0.05 pairs-bootstrap SIAF realizations for 1982-2014 and 1982-2024",
+    "sha256": "d153173beefaf87d6b13662ae135da47deed1a583b97e5fc066063628d88d470"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure4_FamilyMeans.csv",
+    "rows": 18,
+    "revision": "Companion table: 18 CMIP6 model-family means and 2-sigma member spreads for Arctic amplification and SIAF",
+    "sha256": "79a2ed8c0ca55d70d612c97b6e4140fa0bce8e72373b20a7ab7d32eba09da8a5"
+  },
+  {
     "file": "SourceData_Supplementary_Figure4_Observed.csv",
     "rows": 1,
-    "revision": "Unchanged values; existing model, mask, extent, or validation data",
-    "sha256": "a6a195a6095fe0f6c6072c2e309662cf6a5433295809b7bee6b8dd12b9228c2f"
+    "revision": "Updated observed reanalysis Arctic amplification (NCEP, ERA5) and CERES p < 0.05 SIAF centers and pairs-bootstrap 2-sigma intervals for 1982-2014 and 1982-2024",
+    "sha256": "2a7e4a18a491db2ab155d611797dd4c881bedd9d369b3703296856c05d75fcc5"
   },
   {
     "file": "SourceData_Supplementary_Figure5.csv",
@@ -142,6 +202,12 @@
     "rows": 24,
     "revision": "Unchanged values; existing model, mask, extent, or validation data",
     "sha256": "765a729fed4f24681c12eb94790b534ff2fb180050bc531060bc201f247464a8"
+  },
+  {
+    "file": "SourceData_Supplementary_Figure6_AnnualCurves.csv",
+    "rows": 86880,
+    "revision": "Companion table: 20 annual ROC curves per month, product (CLARA-A3, APP-x), and domain (Full Arctic, MIZ)",
+    "sha256": "9058abfe1e4737f059dbd3202129eb4594f9cf0a23ecd2a3d53caf62bfdf0518"
   },
   {
     "file": "SourceData_Supplementary_Figure7.csv",
