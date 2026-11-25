@@ -1,7 +1,7 @@
 from pathlib import Path
 #!/usr/bin/env python
 """
-Figure 3 (revision) — CMIP6 SIAF decomposition by model family.
+Figure 6 — CMIP6 SIAF decomposition by model family.
 
 Changes from the submitted version:
   * individual ensemble members overlaid on every bar, as the editor requires

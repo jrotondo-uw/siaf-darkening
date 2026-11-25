@@ -1,6 +1,6 @@
 # Sea ice darkening of surviving Arctic sea ice
 
-Analysis code for *"Sea Ice Darkening of Surviving Arctic Sea Ice Accelerates Radiative Forcing"* (Rotondo et al., Nature Climate Change).
+Analysis code for *"Darkening of surviving Arctic sea ice contributes one third of the sea ice albedo feedback"* (Rotondo et al., submitted to *Communications Earth & Environment*).
 
 The sea ice albedo feedback (SIAF) is decomposed into two spatially distinct components — loss of ice **area**, and **darkening** of ice that persists — and compared against 378 CMIP6 historical ensemble members. SIAF is computed as the product of an ice sensitivity (IS, the change in surface albedo per degree of global warming) and a radiative sensitivity (RS, the top-of-atmosphere flux response per unit albedo change).
 
@@ -10,7 +10,8 @@ The sea ice albedo feedback (SIAF) is decomposed into two spatially distinct com
 python/            core analysis, decomposition, and model evaluation routines
 shell/             PBS submission scripts for Derecho execution
 notebooks/         interactive workflows and figure development (final_figures.ipynb, siaf_figures_revised.ipynb)
-figures/           standalone publication figure generation scripts (f01–f09, s01–s09, s11)
+figures/           standalone publication figure generation scripts (f01–f09, s01–s10; see Figure Generation)
+source_data/       numerical source data for every figure, also deposited on Zenodo
 validation/        satellite–in-situ validation collocation routines (SHEBA, Tara, MOSAiC, airborne campaigns)
 sensitivity/       atmospheric, kernel, cloud/aerosol, and decadal sensitivity checks
 sanity_checks/     ocean-masking and grid-regridding verification tests
@@ -37,16 +38,42 @@ logs/              run and execution logs
 
 ## Figure Generation (`figures/`)
 
-The directory `figures/` provides modular, standalone plotting scripts:
-- `f01.py`–`f09.py`: Main Text Figures 1 through 9.
-- `s01.py`–`s09.py`, `s11.py`: Supplementary Figures 1 through 9.
-- `bivariate_model.py`, `bivariate_diag.py`: Joint BMA and Bayesian likelihood weighting models.
+Script names follow the paper's figure numbers, except Supplementary Figure 11. The numbers behind each figure are in `source_data/`, which is also deposited on Zenodo (doi:10.5281/zenodo.24204444).
+
+| Figure | Script | Source data (`source_data/`) |
+|---|---|---|
+| Figure 1 | `f01.py` | `SourceData_Figure1.csv` |
+| Figure 2 | `f02.py` | `SourceData_Figure2.csv` |
+| Figure 3 | `f03.py` | `SourceData_Figure3.csv` |
+| Figure 4 | `f04.py` | `SourceData_Figure4.csv` |
+| Figure 5 | `f05.py` | `SourceData_Figure5.csv` (a–b), `SourceData_Figure5_cd.csv` (c–d) |
+| Figure 6 | `f06.py` | `SourceData_Figure6.csv` |
+| Figure 7 | `f07.py` | `SourceData_Figure7.csv`, `SourceData_Figure7_Observed.csv` |
+| Figure 8 | `f08.py` | `SourceData_Figure8.csv` |
+| Figure 9 | `f09.py` | `SourceData_Figure9.csv` |
+| Supplementary Figure 1 | `s01.py` | `SourceData_Supplementary_Figure1.csv` |
+| Supplementary Figure 2 | `s02.py` | `SourceData_Supplementary_Figure2.csv` |
+| Supplementary Figure 3 | `s03.py` | `SourceData_Supplementary_Figure3.csv` |
+| Supplementary Figure 4 | `s04.py` | `SourceData_Supplementary_Figure4.csv`, `SourceData_Supplementary_Figure4_Observed.csv` |
+| Supplementary Figure 5 | `s05.py` | `SourceData_Supplementary_Figure5.csv` |
+| Supplementary Figure 6 | `s06.py` | `SourceData_Supplementary_Figure6.csv` |
+| Supplementary Figures 7–9 | `s07.py`, `s08.py`, `s09.py`: April–May, June–July and August–September, otherwise identical | `SourceData_Supplementary_Figure7.csv`, `SourceData_Supplementary_Figure8.csv`, `SourceData_Supplementary_Figure9.csv` |
+| Supplementary Figure 10 | `s10.py`: a supplied image, which the script only checks for | `SourceData_Supplementary_Figure10.csv` |
+| Supplementary Figure 11 | `s09_validation.py`, written by `make_s09.py` | `SourceData_Supplementary_Figure11.csv` |
+
+`source_data/SourceData_Supplementary_DiagnosticConsistency.csv` holds the per-model ice sensitivities of the four-way test in the Supplementary Information's Diagnostic consistency section (all-sky or clear-sky albedo regressed on 2 m air or blended temperature, 25 models). That test has no figure.
+
+Supporting scripts:
+- `run_one.py`: runs one figure script and saves its figure as PNG and PDF at 300 dpi.
 - `regen_figs.sh`: Master batch execution script.
-- `make_s09.py`: writes `s09_validation.py`, the generator for the in-situ albedo validation figure (Supplementary Figure 12).
+- `bivariate_model.py`, `bivariate_diag.py`: Joint BMA and Bayesian likelihood weighting models.
+- `make_s09.py`: writes `s09_validation.py`, the generator for the in-situ albedo validation figure (Supplementary Figure 11).
 - `bivariate_model_31.py`, `bivariate_sdcheck_31.py`, `restage_f05_31.py`, `restage_f05_nofilter.py`, `fig5_nofilter/`: Figure 5c–d on the 31-model headline ensemble (one retained member per model), without the filter that dropped pixels whose SIC σ over the record is below 0.005; `f05.py` draws panels c–d from the staged `f05_cd_*.csv` tables.
 - `compute_leakage_budget.py`, `compute_leakage_flux.py`, `siaf_obs_core.py` (written by `make_core.py`: a header plus the verbatim first 588 lines of `python/siaf_obs_analysis.py`): Supplementary Figure 3, the two-sided classification leakage in W m⁻², converted with the published radiative sensitivity, masks and area weights; `s03.py` draws it from `leakage_flux.csv`.
-- `uncertainty_is/` (`extract_is.py`, `run_is.sh`, `is_boot.py`, `is_seeds.py`): the model-based 2σ on the observed ice sensitivity, i.e. the SIAF model-based procedure (common family-weighted multi-model-mean trend subtraction, paired circular 3-year blocks, 4,000 replicates) applied to the albedo series without radiative weighting. It writes `uncertainty_is.csv`, which `f07.py` reads for the gray band in Figure 7; `uncertainty.csv` holds the SIAF model-based uncertainty read by `f06.py` and `s05.py`.
+- `uncertainty_is/` (`extract_is.py`, `run_is.sh`, `is_boot.py`, `is_seeds.py`): the model-based 2σ on the observed ice sensitivity, i.e. the SIAF model-based procedure (common family-weighted multi-model-mean trend subtraction, paired circular 3-year blocks, 4,000 replicates) applied to the albedo series without radiative weighting. It writes `uncertainty_is.csv`, which `f07.py` reads for the gray band in Figure 7; `uncertainty.csv` holds the SIAF model-based uncertainty read by `f06.py`, `f08.py` and `s05.py`.
 - `f07_observed_source_data.py`: writes `source_data/SourceData_Figure7_Observed.csv`, the two observational points, the ice-sensitivity band and the family-weighted multi-model mean drawn in Figure 7, with their intervals.
+- `s05_source_data.py`: writes `source_data/SourceData_Supplementary_Figure5.csv`, the subset models, their weights and the observed target drawn in Supplementary Figure 5, with the selection and weighting of `s05.py`.
+- `*_superseded.py`: earlier versions kept for the record; none of them draws a figure in the paper.
 
 ## Validation Routines (`validation/`)
 

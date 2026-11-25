@@ -23,6 +23,6 @@ authors:
     given-names: "Melinda A."
     affiliation: "Polar Science Center, Applied Physics Laboratory, University of Washington, Seattle, WA, USA"
 title: "siaf-darkening: Analysis code for Arctic sea ice darkening SIAF decomposition"
-version: 1.0.0
-date-released: 2026-11-12
+version: 1.0.6
+date-released: 2026-11-24
 url: "https://github.com/jrotondo-uw/siaf-darkening"

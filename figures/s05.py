@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 """
-Supplementary Fig. 6 (was Extended Data Fig. 6) and Supplementary Table 4.
+Supplementary Fig. 5 (was Extended Data Fig. 6) and Supplementary Table 5.
 
 Both are regenerated with sigma_obs/2 as the Gaussian scale (R2 c2), on the
-same 21-model / >=5-member ensemble as Fig. 5 so that every PDF-based result
+same 21-model / >=5-member ensemble as Fig. 8 so that every PDF-based result
 shares one ensemble and one convention.  300 dpi, larger type.
 """
 import os
@@ -152,7 +152,7 @@ plt.close(fig)
 print(f'\n-> {out}  (dpi={DPI})')
 
 # ======================================================================
-# Supplementary Table 4 — BMA weights, same ensemble and convention
+# Supplementary Table 5 — BMA weights, same ensemble and convention
 # ======================================================================
 models = sorted(d.model.unique())
 recs = []

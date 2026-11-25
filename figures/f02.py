@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Figure 1 (revision) — pan-Arctic SIAF partitioned into area loss and darkening.
+Figure 2 — pan-Arctic SIAF partitioned into area loss and darkening.
 
 Reviewer 2 read this figure as a model-observation comparison, which it never
 was: both bars in each pair are observational, evaluated over two periods. The

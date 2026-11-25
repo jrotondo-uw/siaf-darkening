@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Fig 4 — IS vs RS for the expanded ensemble.
+Figure 7 — IS vs RS for the expanded ensemble.
 
 Every ensemble member is plotted and coloured by model family. No per-model
 markers or error bars: the member cloud carries the spread directly, and
